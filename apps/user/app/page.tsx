@@ -50,9 +50,60 @@ export default function Home() {
             <p>The transfer is free-no gas </p>
           </div>
         </div>
+        <div className="p-10">
+          <div>
+            <p className="text-gray-700">Why Us <span className="text-red-700">?</span></p>
+            <div className="flex gap-5 w-[100%]">
+
+            <div className="flex flex-col  bg-gradient-to-tr from-green-100 to-green-50 mt-5  rounded-2xl" >
+              <div className="p-10">
+            <img src="./first.png" alt="" />
+              </div>
+              <div className="p-5">
+                <h1 className="font-semibold text-green-600 mb-2">Securuty..</h1>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam voluptatibus odio animi optio ratione. Minima quo quos harum inventore quod.</p>
+              </div>
+            </div>
+            
+            <div className="flex flex-col  bg-gradient-to-tr from-blue-100 to-blue-50 mt-5   shadow-lg rounded-2xl" >
+              <div className="p-10">
+            <img src="./user.png" alt="" />
+              </div>
+              <div className="p-5">
+                <h1 className="font-semibold text-blue-600 mb-2">Privecy..</h1>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam voluptatibus odio animi optio ratione. Minima quo quos harum inventore quod.</p>
+              </div>
+            </div>
+            
+            <div className="flex flex-col  bg-gradient-to-tr from-green-100 to-green-50 mt-5  rounded-lg shadow-sm" >
+              <div className="p-10">
+            <img src="./relabily.png" alt="" />
+              </div>
+              <div className="p-5">
+                <h1 className="font-semibold text-green-600 mb-2">Reliability..</h1>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam voluptatibus odio animi optio ratione. Minima quo quos harum inventore quod.</p>
+              </div>
+            </div>
+            
+            <div className="flex flex-col  bg-gradient-to-tr from-blue-100 to-blue-50 mt-5   shadow-lg rounded-2xl" >
+              <div className="p-10">
+            <img src="./transparency.png" alt="" />
+              </div>
+              <div className="p-5">
+                <h1 className="font-semibold text-blue-600 mb-2">Transparency..</h1>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam voluptatibus odio animi optio ratione. Minima quo quos harum inventore quod.</p>
+              </div>
+            </div>
+            
+            
+
+            </div>
+
+          </div>
+        </div>
       </div>
 
-      <div className="flex bg-gradient-to-t mt-14  from-gray-200 to-purple-200 rounded-2xl flex-col">
+      <div className="flex bg-gradient-to-t  mt-2  from-gray-200 to-purple-200 rounded-2xl flex-col">
         <div className="flex items-center flex-col rounded-b-2xl">
           <div className="pt-20 text-[12px]  text-purple-500  font-semibold">
             <p>FEATURE</p>
