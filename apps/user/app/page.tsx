@@ -55,43 +55,43 @@ export default function Home() {
             <p className="text-gray-700">Why Us <span className="text-red-700">?</span></p>
             <div className="flex gap-5 w-[100%]">
 
-            <div className="flex flex-col  bg-gradient-to-tr from-green-100 to-green-50 mt-5  rounded-2xl" >
+            <div className="flex flex-col w-[25%] bg-gradient-to-tr from-green-100 to-green-50 mt-5  rounded-2xl" >
               <div className="p-10">
             <img src="./first.png" alt="" />
               </div>
               <div className="p-5">
                 <h1 className="font-semibold text-green-600 mb-2">Securuty..</h1>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam voluptatibus odio animi optio ratione. Minima quo quos harum inventore quod.</p>
+                <p>At PayTm, we prioritize the safety of your transactions. Our robust security measures ensure your funds and personal information remain protected at all times.</p>
               </div>
             </div>
             
-            <div className="flex flex-col  bg-gradient-to-tr from-blue-100 to-blue-50 mt-5   shadow-lg rounded-2xl" >
+            <div className="flex flex-col w-[25%]  bg-gradient-to-tr from-blue-100 to-blue-50 mt-5   shadow-lg rounded-2xl" >
               <div className="p-10">
             <img src="./user.png" alt="" />
               </div>
               <div className="p-5">
                 <h1 className="font-semibold text-blue-600 mb-2">Privecy..</h1>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam voluptatibus odio animi optio ratione. Minima quo quos harum inventore quod.</p>
+                <p>At PayTm, we are committed to protecting your personal and financial information. Our strict privacy policies ensure that your data remains secure and confidential at all times.</p>
               </div>
             </div>
             
-            <div className="flex flex-col  bg-gradient-to-tr from-green-100 to-green-50 mt-5  rounded-lg shadow-sm" >
+            <div className="flex flex-col w-[25%]  bg-gradient-to-tr from-green-100 to-green-50 mt-5  rounded-lg shadow-sm" >
               <div className="p-10">
             <img src="./relabily.png" alt="" />
               </div>
               <div className="p-5">
                 <h1 className="font-semibold text-green-600 mb-2">Reliability..</h1>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam voluptatibus odio animi optio ratione. Minima quo quos harum inventore quod.</p>
+                <p>At PayTm, we ensure that your transactions are processed quickly, securely, and without disruption. Our Wallet infrastructure is designed to provide seamless and dependable financial services at all times.</p>
               </div>
             </div>
             
-            <div className="flex flex-col  bg-gradient-to-tr from-blue-100 to-blue-50 mt-5   shadow-lg rounded-2xl" >
+            <div className="flex flex-col w-[25%] bg-gradient-to-tr from-blue-100 to-blue-50 mt-5   shadow-lg rounded-2xl" >
               <div className="p-10">
             <img src="./transparency.png" alt="" />
               </div>
               <div className="p-5">
                 <h1 className="font-semibold text-blue-600 mb-2">Transparency..</h1>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam voluptatibus odio animi optio ratione. Minima quo quos harum inventore quod.</p>
+                <p>At PayTm, we believe in complete transparency, ensuring our customers have full visibility into their transactions, fees, and policies. We are committed to providing clear, honest, and accessible financial services.</p>
               </div>
             </div>
             
