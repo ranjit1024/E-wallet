@@ -14,6 +14,6 @@
     "@prisma/client": "^6.5.0"
   },
   "exports":{
-    "./clinet":"./index.ts"
+    "./clinet":"./src/index.ts"
   }
 }
