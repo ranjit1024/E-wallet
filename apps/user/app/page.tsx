@@ -2,8 +2,7 @@
 import bank from "./Hdfc.png";
 import { Poppins } from "next/font/google";
 import {animate, motion} from "framer-motion"
-import { tr } from "framer-motion/client";
-
+import { PrismaClient } from "@repo/prisma/clinet";
 
 const poppins = Poppins({
   subsets: ["latin"], // Supports Latin characters
