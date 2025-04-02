@@ -117,7 +117,7 @@ export default function Home() {
             viewport={{
               once:true
             }}
-            className="flex flex-col w-[25%]  bg-gradient-to-tr from-blue-100 to-blue-50 mt-5   shadow-lg rounded-2xl" >
+            className="flex flex-col w-[25%]  bg-gradient-to-tr from-blue-100 to-blue-50 mt-5   shadow-sm rounded-2xl" >
               <div className="p-10">
             <img src="./user.png" alt="" />
               </div>
@@ -173,7 +173,7 @@ export default function Home() {
             viewport={{
               once:true
             }}
-            className="flex flex-col w-[25%] bg-gradient-to-tr from-blue-100 to-blue-50 mt-5   shadow-lg rounded-2xl" >
+            className="flex flex-col w-[25%] bg-gradient-to-tr from-blue-100 to-blue-50 mt-5   shadow-sm rounded-2xl" >
               <div className="p-10">
             <img src="./transparency.png" alt="" />
               </div>
