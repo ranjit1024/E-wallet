@@ -1,4 +1,5 @@
 "use client";
+import Logo from "@repo/ui/logo"
 import { Poppins } from "next/font/google";
 const poppins = Poppins({
   subsets: ["latin"], // Supports Latin characters
@@ -6,24 +7,27 @@ const poppins = Poppins({
   style: ["normal", "italic"], // Choose styles
   variable: "--font-poppins", // Optional: Use CSS variable
 });
+
 export default function () {
   return (
     <div className={`grid grid-cols-[50%,50%] h-[100vh] ${poppins.className}`}>
       <div className="bg-[url('/safe.jpg')] bg-cover bg-center"></div>
 
-      <div className="flex justify-center text-gray-900 bg-gradient-to-b from-gray-100 to-blue-100  w-[100%]  flex-col items-center">
-        <div className="text-[7vh] font-semibold mb-4">Create an account</div>
+      <div className=" flex pl-20 pt-2  text-gray-900 bg-gradient-to-b from-gray-100 to-blue-100  w-[100%]  flex-col ">
+        
 
-        <div className="text-gray-400 mb-5">
-          <p>
-            Already have an accoutn?{" "}
-            <span className="underline text-blue-700 hover:cursor-pointer">
-              Log in
-            </span>
-          </p>
-        </div>
+        
 
         <div className="w-[80%] flex items-center flex-col space-y-6 ">
+        <div className="text-center m-auto w-[50%] ">
+      <Logo size={"20"}/>
+
+        </div>
+        <div className="text-[9vh] mb-2 ">
+          <p className="">Welcome back</p> 
+          
+          
+          </div>
           <div className="w-full ">
             <label className="block mb-2 text-sm text-slate-600">Email</label>
             <input
@@ -32,25 +36,7 @@ export default function () {
             />
           </div>
 
-          <div className="w-full ">
-            <label className="block mb-1 text-sm text-slate-600">
-              Contact Number
-            </label>
-            <div className="relative">
-              <input
-                id="contactNumber"
-                className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-300 rounded-md pr-3 pl-3  py-2 transition duration-300 ease  focus:outline-none focus:border-slate-400   hover:border-blue-300  focus:shadow shadow-sm "
-                placeholder="e.g., +1 123-456-7890"
-                pattern="^\+\d{1,3}\s\d{1,3}-\d{3}-\d{4}$"
-                title="Phone number must be in the format: +1 123-456-7890"
-                max="16"
-                required
-              />
-            </div>
-            <p className="mt-2 text-xs text-slate-400">
-              Include your country code for international numbers.
-            </p>
-          </div>
+         
 
           <div className="w-full ">
             <label className="block mb-2 text-sm text-slate-600">
@@ -84,11 +70,20 @@ export default function () {
           <div className="w-full">
             <button
               type="button"
-              className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             >
               Sign up
             </button>
           </div>
+
+          <div className="text-gray-600 -mt-3">
+          <p>
+            Already have an account?{" "}
+            <span className="underline text-blue-900 hover:cursor-pointer">
+              Log in
+            </span>
+          </p>
+        </div>
 
           
         </div>

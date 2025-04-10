@@ -2,7 +2,7 @@
 import bank from "./Hdfc.png";
 import { Poppins } from "next/font/google";
 import { animate, motion } from "framer-motion";
-import { PrismaClient } from "@repo/prisma/clinet";
+
 import { useRouter } from "next/navigation";
 
 const poppins = Poppins({
@@ -18,19 +18,25 @@ export default function Home() {
     <div className={poppins.className}>
       <div className="flex bg-gradient-to-t  from-gray-100 to-blue-100 rounded-b-2xl flex-col">
         <div className="p-3  flex justify-between items-center bg-gradient-to-tr from-blue-50 shadow-sm to-blue-100">
-          <div>PayTm</div>
+          <div className="flex items-center w-[7vh]">
+            <img src="/logo.png" alt="" />
+            <p className="text-2xl text-slate-700 font-semibold">PayTm</p>
+            </div>
           <div></div>
           <div className="flex gap-4">
             <button
-              className="rounded-md bg-blue-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-blue-700 focus:shadow-none active:bg-blue-700 hover:bg-blue-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2"
+              className="rounded-md bg-blue-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-blue-700 focus:shadow-none active:bg-blue-700 hover:bg-blue-700 active:shadow-none disabled:Ppointer-events-none disabled:opacity-50 disabled:shadow-none ml-2"
               type="button"
             >
               Sing In
             </button>
 
             <button
-              className="rounded-md border border-slate-300 py-2 px-4 text-center text-sm transition-all shadow-sm hover:shadow-lg text-slate-600 hover:text-white hover:bg-blue-600 hover:border-blue-800 focus:text-white focus:bg-blue-800 focus:border-slate-800 active:border-slate-800 active:text-white active:bg-slate-800 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+              className="rounded-md border border-slate-300 py-2 px-4 text-centePr text-sm transition-all shadow-sm hover:shadow-lg text-slate-600 hover:text-white hover:bg-blue-600 hover:border-blue-800 focus:text-white focus:bg-blue-800 focus:border-slate-800 active:border-slate-800 active:text-white active:bg-slate-800 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
               type="button"
+              onClick={()=>{
+                router.push("/signup")
+              }}
             >
               Sign Up
             </button>
