@@ -1,54 +1,66 @@
 import db from "@repo/prisma/clinet"
 import  CredentialsProvider  from "next-auth/providers/credentials"
 import brcypt from "bcrypt"
+import Email from "next-auth/providers/email";
+import { pages } from "next/dist/build/templates/app-page";
 
 export const authOptions = {
     providers: [
         CredentialsProvider({
             name:"Credentials",
             credentials:{
-                phone:{label:"Phone number", type:"number", placeholder:'Enter Your Phone Number'},
-                password:{label:"password", type:"password", placeholder:"enter your password"}
+                name:{label:"name", type:'text', placeholder:'Ener your name'},
+                Email:{label:"Email", type:"text", placeholder:"Enter Email"},
+                password:{label:"password", type:"password", placeholder:"enter your password"},
             },
             async authorize(credentials:any){
+                console.log(credentials)
                 const hashedsValue = await brcypt.hash(credentials.password, 10);
                 const existuser = await db.user.findFirst({
                     where:{
-                        number:credentials.number
+                        email:credentials.email
                     }
                 });
 
                 if (existuser){
-                    const passwrodValidator = await brcypt.compare(credentials.password,  existuser.passwrod);
+                    console.log("already")
+                    const passwrodValidator = await brcypt.compare(credentials.password,  existuser.password);
                     if(passwrodValidator){
+                        console.log('password does not match')
                         return {
                             id:existuser.id.toString(),
                             name: existuser.name,
-                            email:existuser.number
+                            email:existuser.email,
+                            
                         }
                     }
                     return null
                 }
 
                 try{
+                    console.log("Enter")
                     const user = await db.user.create({
                         data:{
-                            email:credentials.name,
-                            number:credentials.number,
                             name:credentials.name,
-                            passwrod:hashedsValue
+                            email:credentials.email,
+
+                            password:hashedsValue
                         }
                     })
                 }
                 catch{
                     console.log("something went workd")
+                
                 }
+                console.log(credentials)
                 return credentials
             }
             
         }),
         
     ],
-     
+    pages:{
+        signIn:"/signin"
+    }
     
 } 

@@ -1,6 +1,9 @@
 "use client";
-import Logo from "@repo/ui/logo"
+import Logo from "@repo/ui/logo";
 import { Poppins } from "next/font/google";
+import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
+import { useState } from "react";
 const poppins = Poppins({
   subsets: ["latin"], // Supports Latin characters
   weight: ["100", "400"], // Choose font weights
@@ -9,34 +12,50 @@ const poppins = Poppins({
 });
 
 export default function () {
+  const router = useRouter();
+  const [email,setEmail] = useState("fsd")
+  const [password,setPassword] = useState("fsdf")
+  // const email = useState("")
+  const res = async () => {
+
+    const res = await signIn("credentials",{
+      email,
+      password,
+      redirect:true,
+      callbackUrl:"/"
+    })
+  }
+  console.log(res)
+
   return (
     <div className={`grid grid-cols-[50%,50%] h-[100vh] ${poppins.className}`}>
       <div className="bg-[url('/safe.jpg')] bg-cover bg-center"></div>
 
-      <div className=" flex pl-20 pt-2  text-gray-900 bg-gradient-to-b from-gray-100 to-blue-100  w-[100%]  flex-col ">
-        
-
-        
-
-        <div className="w-[80%] flex items-center flex-col space-y-6 ">
-        <div className="text-center m-auto w-[50%] ">
-      <Logo size={"20"}/>
-
-        </div>
-        <div className="text-[9vh] mb-2 ">
-          <p className="">Welcome back</p> 
-          
-          
+      <div className=" flex pl-20 text-gray-900 bg-gradient-to-b from-gray-100 to-blue-100  w-[100%]  flex-col ">
+        <div className="text-[7vh] mb-5">
+          <div className="text-center w-[50%] m-auto pt-5 pb-12">
+            <div className={`flex items-center justify-center  w-[20vh] `}>
+              <img src="/logo.png" height={"50vh"} width={"50vh"} alt="" />
+              <p className="text-[60%] text-blue-600 font-black">PayTm</p>
+            </div>
           </div>
+          <p className="text-[7vh] pb-7 font-medium">Welcome Back </p>
+        </div>
+
+        <div className="w-[80%] flex  flex-col space-y-6 ">
+          
           <div className="w-full ">
             <label className="block mb-2 text-sm text-slate-600">Email</label>
             <input
               className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-300 rounded-md px-3 py-2 transition duration-300  ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
               placeholder="example@gmail.com"
+              onChange={(e)=>{
+                setEmail(e.target.value)
+              }}
             />
           </div>
 
-         
+          
 
           <div className="w-full ">
             <label className="block mb-2 text-sm text-slate-600">
@@ -47,6 +66,9 @@ export default function () {
                 type="password"
                 className="w-full pl-3 pr-3 py-2 bg-transparent shadow-sm placeholder:text-slate-400 text-slate-600 text-sm border border-slate-300 rounded-md transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300  focus:shadow"
                 placeholder="Your password"
+                onChange={(e)=>[
+                  setPassword(e.target.value)
+                ]}
               />
               <p className="flex items-start mt-2 text-xs text-slate-400">
                 <svg
@@ -71,21 +93,25 @@ export default function () {
             <button
               type="button"
               className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              onClick={res}
             >
               Sign up
             </button>
           </div>
 
           <div className="text-gray-600 -mt-3">
-          <p>
-            Already have an account?{" "}
-            <span className="underline text-blue-900 hover:cursor-pointer">
-              Log in
-            </span>
-          </p>
-        </div>
-
-          
+            <p>
+              Already have an account?{" "}
+              <span
+                onClick={() => {
+                  signIn();
+                }}
+                className="underline text-blue-900 hover:cursor-pointer"
+              >
+                Log in
+              </span>
+            </p>
+          </div>
         </div>
       </div>
     </div>
