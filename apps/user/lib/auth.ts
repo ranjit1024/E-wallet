@@ -3,6 +3,8 @@ import  CredentialsProvider  from "next-auth/providers/credentials"
 import brcypt from "bcrypt"
 import Email from "next-auth/providers/email";
 import { pages } from "next/dist/build/templates/app-page";
+import { error } from "console";
+import { s } from "framer-motion/client";
 
 export const authOptions = {
     providers: [
@@ -34,16 +36,19 @@ export const authOptions = {
                             
                         }
                     }
+                   
+                }
+                else{
+                    console.log('user not expo')
                     return null
                 }
 
                 try{
-                    console.log("Enter")
+                    
                     const user = await db.user.create({
                         data:{
                             name:credentials.name,
                             email:credentials.email,
-
                             password:hashedsValue
                         }
                     })
@@ -60,7 +65,8 @@ export const authOptions = {
         
     ],
     pages:{
-        signIn:"/signin"
+        signIn:"/signin",
+        
     }
     
 } 

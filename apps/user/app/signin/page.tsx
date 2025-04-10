@@ -1,9 +1,13 @@
 "use client";
 import Logo from "@repo/ui/logo";
 import { Poppins } from "next/font/google";
-import { useRouter } from "next/navigation";
+import { useRouter, useServerInsertedHTML } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
+import { useSession } from "next-auth/react";
+import { useSearchParams } from "next/navigation";
+import Error from "@repo/ui/errro"
+
 const poppins = Poppins({
   subsets: ["latin"], // Supports Latin characters
   weight: ["100", "400"], // Choose font weights
@@ -12,24 +16,39 @@ const poppins = Poppins({
 });
 
 export default function () {
+  const session = useSession();
   const router = useRouter();
-  const [email,setEmail] = useState("fsd")
-  const [password,setPassword] = useState("fsdf")
-  // const email = useState("")
-  const res = async () => {
+  const serachParams = useSearchParams();
 
+  const [email,setEmail] = useState("fsd");
+  const [password,setPassword] = useState("fsdf");
+  const error = serachParams.get("error");
+  const [credentialsError, setShowCredentailError] = useState(false)
+  // const email = useState("");
+  const res = async () => {
     const res = await signIn("credentials",{
       email,
       password,
-      redirect:true,
+      redirect:false,
       callbackUrl:"/"
     })
+
+    if(res?.error){
+      setShowCredentailError(true)
+    }
+    else if(res?.ok){
+      router.push('/')
+    }
   }
-  console.log(res)
+  
 
   return (
     <div className={`grid grid-cols-[50%,50%] h-[100vh] ${poppins.className}`}>
+      {/* {error && <p className="text-red-500 mb-4">{getErrorMessage()}</p>} */}
       <div className="bg-[url('/safe.jpg')] bg-cover bg-center"></div>
+      {
+        credentialsError ? <Error/>:null
+      }
 
       <div className=" flex pl-20 text-gray-900 bg-gradient-to-b from-gray-100 to-blue-100  w-[100%]  flex-col ">
         <div className="text-[7vh] mb-5">
@@ -50,7 +69,8 @@ export default function () {
               className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-300 rounded-md px-3 py-2 transition duration-300  ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
               placeholder="example@gmail.com"
               onChange={(e)=>{
-                setEmail(e.target.value)
+                setEmail(e.target.value);
+
               }}
             />
           </div>
@@ -105,6 +125,7 @@ export default function () {
               <span
                 onClick={() => {
                   signIn();
+                  
                 }}
                 className="underline text-blue-900 hover:cursor-pointer"
               >
