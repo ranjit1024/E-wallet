@@ -17,7 +17,23 @@ export default function Home() {
   return (
     <div className={poppins.className}>
       <div className="flex bg-gradient-to-t  from-gray-100 to-blue-100 rounded-b-2xl flex-col">
-        <div className="p-3  flex justify-between items-center bg-gradient-to-tr from-blue-50 shadow-sm to-blue-100">
+        
+        <motion.div
+          initial={{
+            y: 10,
+            filter: "blur(5px)",
+          }}
+          animate={{
+            y: 0,
+            filter: "blur(0px",
+          }}
+          transition={{
+            duration: 0.9,
+            ease: "linear",
+          }}
+          className=" flex  items-center flex-col mb-12 "
+        >
+          <div className="p-2  flex justify-between items-center bg-gradient-to-tr from-blue-50 shadow-sm to-blue-100 w-[100%]">
           <div className="flex items-center w-[7vh]">
             <img src="/logo.png" alt="" />
             <p className="text-2xl text-slate-700 font-semibold">PayTm</p>
@@ -42,22 +58,9 @@ export default function Home() {
             </button>
           </div>
         </div>
-        <motion.div
-          initial={{
-            y: 20,
-            filter: "blur(5px)",
-          }}
-          animate={{
-            y: 0,
-            filter: "blur(0px",
-          }}
-          transition={{
-            duration: 0.9,
-            ease: "linear",
-          }}
-          className=" flex  items-center flex-col mb-12 "
-        >
+          
           <div className="bg-gradient-to-tr from-blue-600 to-white  w-[3.5rem]  h-[4.5rem] border-[3px] border-blue-600 rounded-e-2xl rounded-t-full mt-24 "></div>
+          
           <div
             className={`${poppins.className} mt-5 font-[600] text-[#0578f9]  text-[8vh] w-[90vw] text-center`}
           >

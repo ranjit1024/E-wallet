@@ -19,7 +19,7 @@ export const authOptions = {
                 });
 
                 if (existuser){
-                    const passwrodValidator = await brcypt.compare(credentials.password,  existuser.password);
+                    const passwrodValidator = await brcypt.compare(credentials.password,  existuser.passwrod);
                     if(passwrodValidator){
                         return {
                             id:existuser.id.toString(),
