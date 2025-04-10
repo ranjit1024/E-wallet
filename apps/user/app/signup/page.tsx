@@ -1,5 +1,5 @@
 "use client";
-import Logo from "@repo/ui/logo"
+import Logo from "@repo/ui/logo";
 import { Poppins } from "next/font/google";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
@@ -16,19 +16,18 @@ export default function () {
     <div className={`grid grid-cols-[50%,50%] h-[100vh] ${poppins.className}`}>
       <div className="bg-[url('/safe.jpg')] bg-cover bg-center"></div>
 
-      <div className=" flex pl-20 pt-2  text-gray-900 bg-gradient-to-b from-gray-100 to-blue-100  w-[100%]  flex-col ">
-        <div className="text-center ">
-      <Logo size={"10"}/>
-        </div>
-        <div className="text-[9vh] mb-2 ">
-          <p className="">Create an </p> 
-          
-          <p className="-mt-4">Account</p> 
+      <div className=" flex pl-20 text-gray-900 bg-gradient-to-b from-gray-100 to-blue-100  w-[100%]  flex-col ">
+        <div className="text-[7vh] mb-5">
+          <div className="text-center w-[50%] m-auto pt-4 pb-6">
+            <div className={`flex items-center  w-[20vh] `}>
+              <img src="/logo.png" height={"90vh"} width={"90vh"} alt="" />
+              <p className="text-[90%] text-blue-600 font-black">PayTm</p>
+            </div>
           </div>
+          <p className="text-[7vh] font-medium">Create an Account </p>
+        </div>
 
-        
-
-        <div className="w-[80%] flex items-center flex-col space-y-6 ">
+        <div className="w-[80%] flex  flex-col space-y-6 ">
           <div className="w-full ">
             <label className="block mb-2 text-sm text-slate-600">Email</label>
             <input
@@ -96,18 +95,18 @@ export default function () {
           </div>
 
           <div className="text-gray-600 -mt-3">
-          <p>
-            Already have an account?{" "}
-            <span
-            onClick={()=>{
-             signIn()
-            }} className="underline text-blue-900 hover:cursor-pointer">
-              Log in
-            </span>
-          </p>
-        </div>
-
-          
+            <p>
+              Already have an account?{" "}
+              <span
+                onClick={() => {
+                  signIn();
+                }}
+                className="underline text-blue-900 hover:cursor-pointer"
+              >
+                Log in
+              </span>
+            </p>
+          </div>
         </div>
       </div>
     </div>
