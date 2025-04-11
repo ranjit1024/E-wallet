@@ -4,7 +4,7 @@ import { Poppins } from "next/font/google";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
-import Error from "@repo/ui/errro"
+import Error from "@repo/ui/toast"
 const poppins = Poppins({
   subsets: ["latin"], // Supports Latin characters
   weight: ["100", "400"], // Choose font weights
@@ -27,15 +27,18 @@ export default function () {
       name,
       password,
       redirect:false,
-      
     })
 
     if (res?.error == "email") {
-      setError(true)
+      setError(true);
+      return;
     } 
     else if(res?.error == "blank"){
       setCredentailBlank(true);
       return;
+    }
+    else if(res?.ok ){
+      router.push('/')
     }
 
   }

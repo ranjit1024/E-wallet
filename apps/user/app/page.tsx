@@ -34,7 +34,7 @@ export default function Home() {
           }}
           className=" flex  items-center flex-col mb-12 "
         >
-          <div className="p-2  flex justify-between items-center bg-gradient-to-tr from-blue-50 shadow-sm to-blue-100 w-[100%]">
+          <div className="p-2  flex justify-between items-center bg-gradient-to-tr from-blue-100 shadow-md to-blue-100 w-[100%]">
           <div className="flex items-center w-[7vh]">
             <img src="/logo.png" alt="" />
             <p className="text-2xl text-slate-700 font-semibold">PayTm</p>
@@ -44,6 +44,9 @@ export default function Home() {
             <button
               className="rounded-md bg-blue-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-blue-700 focus:shadow-none active:bg-blue-700 hover:bg-blue-700 active:shadow-none disabled:Ppointer-events-none disabled:opacity-50 disabled:shadow-none ml-2"
               type="button"
+              onClick={()=>{
+                signIn()
+              }}
             >
               Sing In
             </button>

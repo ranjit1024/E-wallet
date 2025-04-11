@@ -27,13 +27,14 @@ export const authOptions = {
         const callbackArray =callbackUrl.split('?');
         console.log(callbackArray[0])
         
-        // const hashPassword = brcypt.hash(credentials.password, 10);
+        const hashPassword = await brcypt.hash(credentials.password, 10);
 
         const exixstUser = await db.user.findFirst({
           where: {
             email: credentials.email,
           },
         });
+
         if(callbackArray[0] === "http://localhost:3000/signup"){
             if(credentials.name == "" || credentials.email == "" || credentials.password == ""){
                 console.log("blank")
@@ -42,13 +43,35 @@ export const authOptions = {
             }
             else if(exixstUser){
                 throw new Error("email")
-            
+            }
+            else{
+                const newUser = await db.user.create({
+                    data:{
+                        name:credentials.name,
+                        email:credentials.email,
+                        password:hashPassword
+                    }
+                    
+                });
+                
             }
         }
         else if(callbackArray[0] === "http://localhost:3000/signin"){
             console.log("sign in")
+          
             if(!exixstUser){
                 throw new Error("not match")
+            }
+            else {
+              if(exixstUser){
+                const matchpassword = await brcypt.compare(credentials.password, hashPassword);
+                console.log(matchpassword)
+                if(!matchpassword){
+                  throw new Error("password mismatch")
+                }
+                
+              }
+
             }
         }
        

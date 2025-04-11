@@ -6,7 +6,7 @@ import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
-import Error from "@repo/ui/errro"
+import Error from "@repo/ui/toast"
 
 const poppins = Poppins({
   subsets: ["latin"], // Supports Latin characters
@@ -30,21 +30,23 @@ export default function () {
     const res = await signIn("credentials",{
       email,
       password,
-      redirect:false,
-      // callbackUrl:"/"
+      redirect:false
     })
 
     if(res?.error === "not match"){
       setShowCredentailError(true);
-      return
-    }
-    else if(res?.error == "black"){
-      setCredentailBlank(true);
       return;
+      
     }
-    // else if(res?.ok){
-    //   router.push('/')
-    // }
+  
+    else if(res?.error == "password mismatch"){
+      setShowCredentailError(true);
+      return;
+      
+    }
+    else if(res?.ok){
+      router.push('/')
+    }
   }
   
 
