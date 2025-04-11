@@ -23,22 +23,28 @@ export default function () {
   const [email,setEmail] = useState("fsd");
   const [password,setPassword] = useState("fsdf");
   const error = serachParams.get("error");
-  const [credentialsError, setShowCredentailError] = useState(false)
+  const [credentialsError, setShowCredentailError] = useState(false);
+  const [credentialsBlank, setCredentailBlank] = useState(false);
   // const email = useState("");
   const res = async () => {
     const res = await signIn("credentials",{
       email,
       password,
       redirect:false,
-      callbackUrl:"/"
+      // callbackUrl:"/"
     })
 
-    if(res?.error){
-      setShowCredentailError(true)
+    if(res?.error === "not match"){
+      setShowCredentailError(true);
+      return
     }
-    else if(res?.ok){
-      router.push('/')
+    else if(res?.error == "black"){
+      setCredentailBlank(true);
+      return;
     }
+    // else if(res?.ok){
+    //   router.push('/')
+    // }
   }
   
 
@@ -47,7 +53,10 @@ export default function () {
       {/* {error && <p className="text-red-500 mb-4">{getErrorMessage()}</p>} */}
       <div className="bg-[url('/safe.jpg')] bg-cover bg-center"></div>
       {
-        credentialsError ? <Error/>:null
+        credentialsError ? <Error data="Email or password is invalid"/>:null
+      }
+      {
+        credentialsBlank?<Error data="Enter details"></Error>:null
       }
 
       <div className=" flex pl-20 text-gray-900 bg-gradient-to-b from-gray-100 to-blue-100  w-[100%]  flex-col ">
@@ -124,12 +133,12 @@ export default function () {
               Already have an account?{" "}
               <span
                 onClick={() => {
-                  signIn();
+                  router.push('/signup')
                   
                 }}
                 className="underline text-blue-900 hover:cursor-pointer"
               >
-                Log in
+                Sign in
               </span>
             </p>
           </div>

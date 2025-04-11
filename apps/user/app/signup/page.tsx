@@ -4,6 +4,7 @@ import { Poppins } from "next/font/google";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
+import Error from "@repo/ui/errro"
 const poppins = Poppins({
   subsets: ["latin"], // Supports Latin characters
   weight: ["100", "400"], // Choose font weights
@@ -13,9 +14,11 @@ const poppins = Poppins({
 
 export default function () {
   const router = useRouter();
-  const [email,setEmail] = useState("fsda")
-  const [name,setName] = useState("fsd")
-  const [password,setPassword] = useState("fsdf")
+  const [email,setEmail] = useState("")
+  const [name,setName] = useState("")
+  const [password,setPassword] = useState("")
+  const [error, setError] = useState(false);
+  const [credentialsBlank, setCredentailBlank] = useState(false);
   // const email = useState("")
   const res = async () => {
 
@@ -23,15 +26,29 @@ export default function () {
       email,
       name,
       password,
-      redirect:true,
-      callbackUrl:"/"
+      redirect:false,
+      
     })
+
+    if (res?.error == "email") {
+      setError(true)
+    } 
+    else if(res?.error == "blank"){
+      setCredentailBlank(true);
+      return;
+    }
+
   }
 
   return (
     <div className={`grid grid-cols-[50%,50%] h-[100vh] ${poppins.className}`}>
+    {
+      error?<Error data="Email is already taken"/>:null
+    }
+    {
+      credentialsBlank ? <Error data="Enter details"/>:null
+    }
       <div className="bg-[url('/safe.jpg')] bg-cover bg-center"></div>
-
       <div className=" flex pl-20 text-gray-900 bg-gradient-to-b from-gray-100 to-blue-100  w-[100%]  flex-col ">
         <div className="text-[7vh] mb-5">
           <div className="text-center w-[50%] m-auto pt-5 pb-12">

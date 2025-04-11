@@ -1,4 +1,8 @@
-export default function(){
+export default function(
+  {data}:{
+    data:string
+  }
+){
     return <div className="max-w-xs absolute top-2 right-2 bg-white border border-gray-200 rounded-xl shadow-lg " role="alert" tabIndex={1} aria-labelledby="hs-toast-error-example-label">
     <div className="flex p-4">
       <div className="shrink-0">
@@ -7,8 +11,8 @@ export default function(){
         </svg>
       </div>
       <div className="ms-3">
-        <p id="hs-toast-error-example-label" className="text-sm text-gray-700 dark:text-neutral-400">
-          Email or Password is Invalid.
+        <p id="hs-toast-error-example-label" className="text-sm text-red-700 ">
+          {data}
         </p>
       </div>
     </div>
