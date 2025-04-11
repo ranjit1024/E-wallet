@@ -59,7 +59,7 @@ export default function () {
         credentialsBlank?<Error data="Enter details"></Error>:null
       }
 
-      <div className=" flex pl-20 text-gray-900 bg-gradient-to-b from-gray-100 to-blue-100  w-[100%]  flex-col ">
+      <div className=" flex pl-20 text-gray-900 bg-gradient-to-b from-gray-50 to-blue-50  w-[100%]  flex-col shadow-lg bg-whi rounded-xl p-10 ">
         <div className="text-[7vh] mb-5">
           <div className="text-center w-[50%] m-auto pt-5 pb-12">
             <div className={`flex items-center justify-center  w-[20vh] `}>
@@ -67,12 +67,12 @@ export default function () {
               <p className="text-[60%] text-blue-600 font-black">PayTm</p>
             </div>
           </div>
-          <p className="text-[7vh] pb-7 font-medium">Welcome Back </p>
+          <p className="text-[7vh] pb-2 text-slate-600 font-semibold">Welcome Back </p>
         </div>
 
-        <div className="w-[80%] flex  flex-col space-y-6 ">
+        <div className="w-[90%] flex  flex-col space-y-6 ">
           
-          <div className="w-full ">
+          <div className="w-full">
             <label className="block mb-2 text-sm text-slate-600">Email</label>
             <input
               className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-300 rounded-md px-3 py-2 transition duration-300  ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
@@ -121,7 +121,7 @@ export default function () {
           <div className="w-full">
             <button
               type="button"
-              className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              className="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 transition-colors duration-200 text-white font-semibold py-2 rounded-lg w-full"
               onClick={res}
             >
               Sign up
@@ -130,7 +130,7 @@ export default function () {
 
           <div className="text-gray-600 -mt-3">
             <p>
-              Already have an account?{" "}
+              New to PayTm?{" "}
               <span
                 onClick={() => {
                   router.push('/signup')
@@ -138,7 +138,7 @@ export default function () {
                 }}
                 className="underline text-blue-900 hover:cursor-pointer"
               >
-                Sign in
+                Sign up
               </span>
             </p>
           </div>

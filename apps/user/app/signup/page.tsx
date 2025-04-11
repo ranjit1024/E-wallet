@@ -48,8 +48,8 @@ export default function () {
     {
       credentialsBlank ? <Error data="Enter details"/>:null
     }
-      <div className="bg-[url('/safe.jpg')] bg-cover bg-center"></div>
-      <div className=" flex pl-20 text-gray-900 bg-gradient-to-b from-gray-100 to-blue-100  w-[100%]  flex-col ">
+      <div className="bg-[url('/safe.jpg')] h-[100%] w-[100%] bg-[#2cb2ed] bg-cover bg-no-repeat bg bg-center"></div>
+      <div className=" flex pl-20 text-gray-900 bg-gradient-to-b from-gray-100 to-sky-100 w-[100%]  flex-col ">
         <div className="text-[7vh] mb-5">
           <div className="text-center w-[50%] m-auto pt-5 pb-12">
             <div className={`flex items-center  w-[20vh] `}>
@@ -57,10 +57,10 @@ export default function () {
               <p className="text-[60%] text-blue-600 font-black">PayTm</p>
             </div>
           </div>
-          <p className="text-[7vh] font-medium">Create an Account </p>
+          <p className="text-[7vh] pb-2 text-slate-600 font-semibold">Create an Account </p>
         </div>
 
-        <div className="w-[80%] flex  flex-col space-y-6 ">
+        <div className="w-[90%] flex  flex-col space-y-6 ">
           <div className="w-full ">
             <label className="block mb-2 text-sm text-slate-600">Name</label>
             <input

@@ -4,6 +4,7 @@ import { Poppins } from "next/font/google";
 import { animate, motion } from "framer-motion";
 
 import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 const poppins = Poppins({
   subsets: ["latin"], // Supports Latin characters
@@ -81,7 +82,11 @@ export default function Home() {
           </div>
 
           <div className="pt-10">
-            <button className="bg-[#deebfe]  delay-10 px-7 py-2 tracking-wide rounded-lg text-[#1985ff] font-[500] transition delay-150 duration-300 ease-in-out  hover:scale-110 hover:bg-blue-500 hover:text-white">
+            <button className="bg-[#deebfe]  delay-10 px-7 py-2 tracking-wide rounded-lg text-[#1985ff] font-[500] transition delay-150 duration-300 ease-in-out  hover:scale-110 hover:bg-blue-500 hover:text-white"
+            onClick={()=>{
+              signIn()
+            }}>
+              
               Try PayTm
             </button>
           </div>
