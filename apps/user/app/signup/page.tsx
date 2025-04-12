@@ -56,8 +56,8 @@ export default function () {
         <div className="text-[7vh] mb-5">
           <div className="text-center w-[50%] m-auto pt-5 pb-12">
             <div className={`flex items-center  w-[20vh] `}>
-              <img src="/logo.png" height={"50vh"} width={"50vh"} alt="" />
-              <p className="text-[60%] text-blue-600 font-black">PayTm</p>
+              
+            <p className="text-[70%] text-blue-600 font-black">Pay<span className="text-teal-600">Tm</span></p>
             </div>
           </div>
           <p className="text-[7vh] pb-2 text-slate-600 font-semibold">Create an Account </p>

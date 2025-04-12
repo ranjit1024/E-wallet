@@ -8,7 +8,7 @@ import { signIn } from "next-auth/react";
 
 const poppins = Poppins({
   subsets: ["latin"], // Supports Latin characters
-  weight: ["400", "100"], // Choose font weights
+  weight: ["100", "400"], // Choose font weights
   style: ["normal", "italic"], // Choose styles
   variable: "--font-poppins", // Optional: Use CSS variable
 });
@@ -34,33 +34,12 @@ export default function Home() {
           }}
           className=" flex  items-center flex-col mb-12 "
         >
-          <div className="p-2  flex justify-between items-center bg-gradient-to-tr from-blue-100 shadow-md to-blue-100 w-[100%]">
+          <div className="p-2  flex justify-between items-center bg-gradient-to-tr from-blue-100  to-blue-100 w-[100%]">
           <div className="flex items-center w-[7vh]">
-            <img src="/logo.png" alt="" />
-            <p className="text-2xl text-slate-700 font-semibold">PayTm</p>
+          <p className="text-[4vh] text-blue-600 font-black">Pay<span className="text-teal-600">Tm</span></p>
             </div>
           <div></div>
-          <div className="flex gap-4">
-            <button
-              className="rounded-md bg-blue-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-blue-700 focus:shadow-none active:bg-blue-700 hover:bg-blue-700 active:shadow-none disabled:Ppointer-events-none disabled:opacity-50 disabled:shadow-none ml-2"
-              type="button"
-              onClick={()=>{
-                signIn()
-              }}
-            >
-              Sing In
-            </button>
-
-            <button
-              className="rounded-md border border-slate-300 py-2 px-4 text-centePr text-sm transition-all shadow-sm hover:shadow-lg text-slate-600 hover:text-white hover:bg-blue-600 hover:border-blue-800 focus:text-white focus:bg-blue-800 focus:border-slate-800 active:border-slate-800 active:text-white active:bg-slate-800 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-              type="button"
-              onClick={()=>{
-                router.push("/signup")
-              }}
-            >
-              Sign Up
-            </button>
-          </div>
+          
         </div>
           
           <div className="bg-gradient-to-tr from-blue-600 to-white  w-[3.5rem]  h-[4.5rem] border-[3px] border-blue-600 rounded-e-2xl rounded-t-full mt-24 "></div>
@@ -101,148 +80,12 @@ export default function Home() {
 
         <div className="p-10">
           <div>
-            <p className="text-gray-700">
-              Why Us <span className="text-red-700">?</span>
-            </p>
-            <div className="flex gap-5 w-[100%]">
-              <motion.div
-                initial={{
-                  filter: "",
-                  opacity: 0,
-                  scale: 0.5,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  scale: 1,
-                }}
-                transition={{
-                  duration: 0.6,
-                  ease: "circOut",
-                }}
-                viewport={{
-                  once: true,
-                }}
-                className="flex flex-col w-[25%] bg-gradient-to-tr from-green-100 to-green-50 mt-5  rounded-2xl"
-              >
-                <div className="p-10">
-                  <img src="./first.png" alt="" />
-                </div>
-                <div className="p-5">
-                  <h1 className="font-semibold text-green-600 mb-2">
-                    Securuty..
-                  </h1>
-                  <p>
-                    At PayTm, we prioritize the safety of your transactions. Our
-                    robust security measures ensure your funds and personal
-                    information remain protected at all times.
-                  </p>
-                </div>
-              </motion.div>
+          
+            <div className=" w-[100%]  ">
 
-              <motion.div
-                initial={{
-                  filter: "",
-                  opacity: 0,
-                  scale: 0.5,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  scale: 1,
-                }}
-                transition={{
-                  duration: 0.7,
-                  ease: "circOut",
-                }}
-                viewport={{
-                  once: true,
-                }}
-                className="flex flex-col w-[25%]  bg-gradient-to-tr from-blue-100 to-blue-50 mt-5   shadow-sm rounded-2xl"
-              >
-                <div className="p-10">
-                  <img src="./user.png" alt="" />
-                </div>
-                <div className="p-5">
-                  <h1 className="font-semibold text-blue-600 mb-2">
-                    Privecy..
-                  </h1>
-                  <p>
-                    At PayTm, we are committed to protecting your personal and
-                    financial information. Our strict privacy policies ensure
-                    that your data remains secure and confidential at all times.
-                  </p>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{
-                  filter: "",
-                  opacity: 0,
-                  scale: 0.5,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  scale: 1,
-                }}
-                transition={{
-                  duration: 0.8,
-                  ease: "circOut",
-                }}
-                viewport={{
-                  once: true,
-                }}
-                className="flex flex-col w-[25%]  bg-gradient-to-tr from-green-100 to-green-50 mt-5  rounded-lg shadow-sm"
-              >
-                <div className="p-10">
-                  <img src="./relabily.png" alt="" />
-                </div>
-                <div className="p-5">
-                  <h1 className="font-semibold text-green-600 mb-2">
-                    Reliability..
-                  </h1>
-                  <p>
-                    At PayTm, we ensure that your transactions are processed
-                    quickly, securely, and without disruption. Our Wallet
-                    infrastructure is designed to provide seamless and
-                    dependable financial services at all times.
-                  </p>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{
-                  filter: "",
-                  opacity: 0,
-                  scale: 0.5,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  scale: 1,
-                }}
-                transition={{
-                  duration: 0.9,
-                  ease: "circOut",
-                }}
-                viewport={{
-                  once: true,
-                }}
-                className="flex flex-col w-[25%] bg-gradient-to-tr from-blue-100 to-blue-50 mt-5   shadow-sm rounded-2xl"
-              >
-                <div className="p-10">
-                  <img src="./transparency.png" alt="" />
-                </div>
-                <div className="p-5">
-                  <h1 className="font-semibold text-blue-600 mb-2">
-                    Transparency..
-                  </h1>
-                  <p>
-                    At PayTm, we believe in complete transparency, ensuring our
-                    customers have full visibility into their transactions,
-                    fees, and policies. We are committed to providing clear,
-                    honest, and accessible financial services.
-                  </p>
-                </div>
-              </motion.div>
+              {/* <img src="./dashboard.webp" className="bg-cover" alt="" /> */}
             </div>
+           
           </div>
         </div>
       </div>
@@ -318,7 +161,7 @@ export default function Home() {
               margin: "-200px",
               once: true,
             }}
-            className="bg-gray-50 p-6 rounded-2xl w-[50%] h-[50vh]"
+            className="bg-gray-50 p-6 rounded-2xl w-[50%] h-[30vh]"
           >
             <div className="bg-gray-100 rounded-lg p-1 w-fit">
               <img src="./lock.png" alt="" width={25} />
@@ -351,7 +194,7 @@ export default function Home() {
               margin: "-200px",
               once: true,
             }}
-            className="bg-gray-50 p-6 rounded-2xl w-[50%] h-[50vh]"
+            className="bg-gray-50 p-6 rounded-2xl w-[50%] h-[30vh]"
           >
             <div className="bg-gray-100 rounded-lg p-1 w-fit">
               <img src="./trust.png" alt="" width={25} />
