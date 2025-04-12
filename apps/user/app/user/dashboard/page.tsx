@@ -61,7 +61,7 @@ export default function DashBoard() {
       className={`h-[100vh]  bg-gradient-to-tr to-gray-50 from-gray-50 ${poppins.className}`}
     >
       
-      <div className="pt-1  text-gray-950">
+      <div className="pt-1 ml-2  text-gray-950">
         <p>Hey,ranjit</p>
         <p className="text-gray-600 text-sm">Mondat, 29 march 2025</p>
       </div>

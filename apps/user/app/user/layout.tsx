@@ -84,8 +84,9 @@ export default function RootLayout({
     <div
       className={`h-[100vh]  bg-gradient-to-tr to-gray-50 from-gray-50 ${poppins.className}`}
     >
+        
       <div className="grid grid-cols-[20%,80%]   ">
-        <div className="relative">
+        <div className="relative mr-1">
           <AppBar />
 
           <div className="mt-8 p-2 h-[80vh]  text-gray-600 ">
@@ -110,6 +111,7 @@ export default function RootLayout({
 
           
         </div>
+
      
       {children}
       </div>
