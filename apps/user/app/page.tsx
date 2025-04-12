@@ -36,6 +36,7 @@ export default function Home() {
         >
           <div className="p-2  flex justify-between items-center bg-gradient-to-tr from-blue-100  to-blue-100 w-[100%]">
           <div className="flex items-center w-[7vh]">
+            
           <p className="text-[1.4rem] text-blue-600 font-black">PayTm</p>
             </div>
           <div></div>

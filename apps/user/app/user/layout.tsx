@@ -13,7 +13,11 @@ const poppins = Poppins({
   variable: "--font-poppins",
 });
 
-export default function ProtectedPage() {
+export default function RootLayout({
+    children,
+  }: Readonly<{
+    children: React.ReactNode;
+  }>)  {
   const { data: session, status } = useSession();
   const router = useRouter();
   const [isActive, setIsActive] = useState<number | null>(null);
@@ -22,7 +26,7 @@ export default function ProtectedPage() {
   const images = [
     <li
       id="dashboard"
-      className={`flex items-center gap-2 p-[0.4rem] mb-2 hover:cursor-pointer transition-all duration-100  rounded-lg m-2 `}
+      className={`flex items-center gap-3 p-[0.4rem] mb-2 hover:cursor-pointer transition-all duration-100  rounded-lg m-2 `}
     >
       <img
         width="48"
@@ -33,7 +37,7 @@ export default function ProtectedPage() {
       />
       <p>DashBoard</p>
     </li>,
-    <li id="acc" className="flex items-center gap-2 p-[0.4rem] mb-1 hover:cursor-pointer  transition-all duration-100  rounded-lg m-2  ">
+    <li id="acc" className="flex items-center gap-3 p-[0.4rem] mb-1 hover:cursor-pointer  transition-all duration-100  rounded-lg m-2  ">
       <img
         className="size-5"
         width="48"
@@ -44,7 +48,7 @@ export default function ProtectedPage() {
       <p>Accounts</p>
     </li>,
 
-    <li className="flex items-center gap-2 p-[0.4rem] mb-2 hover:cursor-pointer transition-all duration-100  rounded-lg m-2  ">
+    <li className="flex items-center gap-3 p-[0.4rem] mb-2 hover:cursor-pointer transition-all duration-100  rounded-lg m-2  ">
       <img
         className="size-5"
         width="48"
@@ -54,7 +58,7 @@ export default function ProtectedPage() {
       />
       <p>Transaction</p>
     </li>,
-    <li className="flex items-center gap-2 p-[0.4rem] mb-2 hover:cursor-pointer transition-all duration-100  rounded-lg m-2 ">
+    <li className="flex items-center gap-3 p-[0.4rem] mb-2 hover:cursor-pointer transition-all duration-100  rounded-lg m-2 ">
       <img
         width="48"
         height="48"
@@ -81,23 +85,12 @@ export default function ProtectedPage() {
       className={`h-[100vh]  bg-gradient-to-tr to-gray-50 from-gray-50 ${poppins.className}`}
     >
       <div className="grid grid-cols-[20%,80%]   ">
-        <div className=" dashbord h-[100vh]">
+        <div className="relative">
           <AppBar />
 
-          <div className="mt-10 p-2  text-gray-600 ">
+          <div className="mt-8 p-2 h-[80vh]  text-gray-600 ">
             <ul>
-              {/* <li onClick={()=>{
-              const dash = document.getElementById('dashboard');
-              
-
-            }} id="dashboard" className={`flex items-center gap-2 p-2 mb-2 hover:cursor-pointer hover:scale-[102%] transition-all duration-100  rounded-lg m-2 `}>
-                <img width="48" className="size-5" height="48" src="https://img.icons8.com/pulsar-line/48/home.png" alt="home"/>
-                <p>DashBoard</p>
-              </li>
-
-            
-              
-              */}
+             
 
               {images.map((item, index) => {
                 return (
@@ -114,8 +107,11 @@ export default function ProtectedPage() {
               })}
             </ul>
           </div>
+
+          
         </div>
-        <div>dsf</div>
+     
+      {children}
       </div>
     </div>
   );
