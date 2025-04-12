@@ -3,7 +3,7 @@
 import AppBar from "@repo/ui/appBar";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { Poppins } from "next/font/google";
 
@@ -16,7 +16,55 @@ const poppins = Poppins({
 export default function ProtectedPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
+  const [isActive, setIsActive] = useState<number | null>(null);
+  // const itmes = ["DashBoard","Accounts","Trancaction", "Payee"];
 
+  const images = [
+    <li
+      id="dashboard"
+      className={`flex items-center gap-2 p-[0.4rem] mb-2 hover:cursor-pointer transition-all duration-100  rounded-lg m-2 `}
+    >
+      <img
+        width="48"
+        className="size-5"
+        height="48"
+        src="https://img.icons8.com/pulsar-line/48/home.png"
+        alt="home"
+      />
+      <p>DashBoard</p>
+    </li>,
+    <li id="acc" className="flex items-center gap-2 p-[0.4rem] mb-1 hover:cursor-pointer  transition-all duration-100  rounded-lg m-2  ">
+      <img
+        className="size-5"
+        width="48"
+        height="48"
+        src="https://img.icons8.com/pulsar-line/48/commercial-development-management.png"
+        alt="commercial-development-management"
+      />
+      <p>Accounts</p>
+    </li>,
+
+    <li className="flex items-center gap-2 p-[0.4rem] mb-2 hover:cursor-pointer transition-all duration-100  rounded-lg m-2  ">
+      <img
+        className="size-5"
+        width="48"
+        height="48"
+        src="https://img.icons8.com/pulsar-line/48/exchange.png"
+        alt="exchange"
+      />
+      <p>Transaction</p>
+    </li>,
+    <li className="flex items-center gap-2 p-[0.4rem] mb-2 hover:cursor-pointer transition-all duration-100  rounded-lg m-2 ">
+      <img
+        width="48"
+        height="48"
+        className="size-5 "
+        src="https://img.icons8.com/pulsar-line/48/card-in-use.png"
+        alt="card-in-use"
+      />
+      <p>Payee</p>
+    </li>,
+  ];
   useEffect(() => {
     if (status === "loading") return; // Wait for session to load
     if (!session) {
@@ -29,54 +77,41 @@ export default function ProtectedPage() {
   }
 
   return (
-    <div className={`h-[100vh]  bg-gradient-to-tr to-blue-50 from-gray-50 ${poppins.className}`}>
+    <div
+      className={`h-[100vh]  bg-gradient-to-tr to-gray-50 from-gray-50 ${poppins.className}`}
+    >
       <div className="grid grid-cols-[20%,80%]   ">
-        <div className="bg-white dashbord h-[100vh]">
+        <div className=" dashbord h-[100vh]">
           <AppBar />
 
           <div className="mt-10 p-2  text-gray-600 ">
             <ul>
-              <li className="flex items-center gap-2 p-3 ">
-                <svg
-                  className="size-5"
-                  xmlns="http://www.w3.org/2000/svg"
-                  x="0px"
-                  y="0px"
-                  width="48"
-                  height="48"
-                  viewBox="0 0 48 48"
-                >
-                  <path
-                    fill="none"
-                    stroke="#000"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-miterlimit="10"
-                    stroke-width="3"
-                    d="M13.4,13.8l-3.6,2.9c-1.4,1.1-2.3,2.9-2.3,4.7v18.1c0,1.1,0.9,2,2,2h20"
-                  ></path>
-                  <path
-                    fill="none"
-                    stroke="#000"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-miterlimit="10"
-                    stroke-width="3"
-                    d="M35,41.5h3.5c1.1,0,2-0.9,2-2V21.4c0-1.8-0.8-3.6-2.3-4.7L24.6,6c-0.4-0.3-0.9-0.3-1.2,0l-4.6,3.6"
-                  ></path>
-                  <path
-                    fill="none"
-                    stroke="#000"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-miterlimit="10"
-                    stroke-width="3"
-                    d="M18.5,35.7v-8.2c0-0.6,0.4-1,1-1h8.9c0.6,0,1,0.4,1,1v14"
-                  ></path>
-                </svg>
+              {/* <li onClick={()=>{
+              const dash = document.getElementById('dashboard');
+              
+
+            }} id="dashboard" className={`flex items-center gap-2 p-2 mb-2 hover:cursor-pointer hover:scale-[102%] transition-all duration-100  rounded-lg m-2 `}>
+                <img width="48" className="size-5" height="48" src="https://img.icons8.com/pulsar-line/48/home.png" alt="home"/>
                 <p>DashBoard</p>
               </li>
-             
+
+            
+              
+              */}
+
+              {images.map((item, index) => {
+                return (
+                  <div
+                    key={index}
+                    onClick={() => {
+                      setIsActive(index);
+                    }}
+                    className={`${isActive === index ? "bg-white opacity-100 shadow-sm rounded-lg" : 'opacity-90'}`}
+                  >
+                    {item}
+                  </div>
+                );
+              })}
             </ul>
           </div>
         </div>
