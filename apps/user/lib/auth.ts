@@ -60,15 +60,22 @@ export const authOptions = {
             console.log("sign in")
           
             if(!exixstUser){
-                throw new Error("not match")
+                throw new Error("not match");
+                
             }
             else {
               if(exixstUser){
-                const matchpassword = await brcypt.compare(credentials.password, hashPassword);
+                console.log('dada');
+
+        
+
+                const matchpassword = await brcypt.compare(credentials.password, exixstUser.password);
                 console.log(matchpassword)
                 if(!matchpassword){
                   throw new Error("password mismatch")
                 }
+                
+
                 
               }
 

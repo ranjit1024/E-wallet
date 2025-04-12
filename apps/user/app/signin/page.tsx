@@ -45,7 +45,7 @@ export default function () {
       
     }
     else if(res?.ok){
-      router.push('/dashboard')
+      router.push('/user/dashboard')
     }
   }
   
@@ -66,7 +66,11 @@ export default function () {
           <div className="text-center w-[50%] m-auto pt-5 pb-12">
             <div className={`flex items-center justify-center  w-[20vh] `}>
              
-              <p className="text-[70%] text-blue-600 font-black">Pay<span className="text-teal-600">Tm</span></p>
+            <div className="flex gap-1 items-center">
+        <img width="30" height="40" src="https://img.icons8.com/pulsar-gradient/48/circled.png" alt="circled"/>
+          
+        <p className="font-normal  text-[1.5rem] bg-gradient-to-r from-blue-500  to-cyan-900 inline-block text-transparent bg-clip-text  ">PayTm</p>
+      </div>
             </div>
           </div>
           <p className="text-[7vh] pb-2 text-slate-600 font-semibold">Welcome Back </p>

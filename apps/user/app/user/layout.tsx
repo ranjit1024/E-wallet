@@ -4,7 +4,7 @@ import AppBar from "@repo/ui/appBar";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-
+import {Skeleton} from "@repo/ui/sceleton"
 import { Poppins } from "next/font/google";
 
 const poppins = Poppins({
@@ -20,13 +20,18 @@ export default function RootLayout({
   }>)  {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const [isActive, setIsActive] = useState<number | null>(null);
+  const [isActive, setIsActive] = useState<number | null>();
+
   // const itmes = ["DashBoard","Accounts","Trancaction", "Payee"];
 
   const images = [
-    <li
+    <li 
+      
       id="dashboard"
-      className={`flex items-center gap-3 p-[0.4rem] mb-2 hover:cursor-pointer transition-all duration-100  rounded-lg m-2 `}
+      onClick={()=>{
+        router.push('/user/dashboard')
+      }}
+      className={`flex  items-center gap-3 p-[0.4rem] mb-2 hover:cursor-pointer transition-all duration-100  rounded-lg m-2 `}
     >
       <img
         width="48"
@@ -37,16 +42,17 @@ export default function RootLayout({
       />
       <p>DashBoard</p>
     </li>,
-    <li id="acc" className="flex items-center gap-3 p-[0.4rem] mb-1 hover:cursor-pointer  transition-all duration-100  rounded-lg m-2  ">
-      <img
-        className="size-5"
-        width="48"
-        height="48"
-        src="https://img.icons8.com/pulsar-line/48/commercial-development-management.png"
-        alt="commercial-development-management"
-      />
-      <p>Accounts</p>
+    <li
+      onClick={()=>{
+        router.push('/user/transfer')
+      }}
+      id="transfer"
+      className={`flex items-center gap-3 p-[0.4rem] mb-2 hover:cursor-pointer transition-all duration-100  rounded-lg m-2 `}
+    >
+     <img className="size-[1.3rem]" width="48" height="48" src="https://img.icons8.com/pulsar-line/48/online-money-transfer.png" alt="online-money-transfer"/>
+      <p>Transfer</p>
     </li>,
+    
 
     <li className="flex items-center gap-3 p-[0.4rem] mb-2 hover:cursor-pointer transition-all duration-100  rounded-lg m-2  ">
       <img
@@ -58,16 +64,7 @@ export default function RootLayout({
       />
       <p>Transaction</p>
     </li>,
-    <li className="flex items-center gap-3 p-[0.4rem] mb-2 hover:cursor-pointer transition-all duration-100  rounded-lg m-2 ">
-      <img
-        width="48"
-        height="48"
-        className="size-5 "
-        src="https://img.icons8.com/pulsar-line/48/card-in-use.png"
-        alt="card-in-use"
-      />
-      <p>Payee</p>
-    </li>,
+   
   ];
   useEffect(() => {
     if (status === "loading") return; // Wait for session to load
@@ -77,7 +74,7 @@ export default function RootLayout({
   }, [session, status, router]);
 
   if (status === "loading") {
-    return <div>Loading...</div>;
+    return <div><Skeleton/></div>;
   }
 
   return (

@@ -37,7 +37,11 @@ export default function Home() {
           <div className="p-2  flex justify-between items-center bg-gradient-to-tr from-blue-100  to-blue-100 w-[100%]">
           <div className="flex items-center w-[7vh]">
             
-          <p className="text-[1.4rem] text-blue-600 font-black">PayTm</p>
+          <div className="flex gap-1 items-center">
+        <img width="30" height="40" src="https://img.icons8.com/pulsar-gradient/48/circled.png" alt="circled"/>
+          
+        <p className="font-medium text-[1.2rem] bg-gradient-to-r from-blue-500  to-cyan-900 inline-block text-transparent bg-clip-text  ">PayTm</p>
+      </div>
             </div>
           <div></div>
           

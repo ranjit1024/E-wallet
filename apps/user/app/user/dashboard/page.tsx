@@ -17,6 +17,7 @@ import {
   Legend
 } from "recharts";
 import { Poppins } from "next/font/google";
+import { getTicksOfAxis } from "recharts/types/util/ChartUtils";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -116,12 +117,13 @@ export default function DashBoard() {
         <div className="h-64  ">
           <ResponsiveContainer width="100%" height="100%">
           <LineChart data={data2} >
-            <CartesianGrid strokeDasharray="0" vertical={false} stroke="#eee" />
-            <XAxis dataKey="date" tickLine={false} minTickGap={100}  />
+            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#eee" />
+            <XAxis dataKey="date" tickLine={false} minTickGap={100} padding={{left:10, right:10}} tickCount={12}/>
             <YAxis
               tickFormatter={(value) => `${value / 1000}k`}
               tickLine={false}
               axisLine={false}
+              tickMargin={3}
             />
             <Tooltip
               contentStyle={{
@@ -154,6 +156,7 @@ export default function DashBoard() {
               strokeWidth={2}
               dot={{ r: 3 }}
               name="Desposits"
+              activeDot={{ r: 8 }}
             />
           </LineChart>
         </ResponsiveContainer>
