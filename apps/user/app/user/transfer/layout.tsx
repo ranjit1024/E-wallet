@@ -53,23 +53,23 @@ export default function RootLayout({
 
         
     <div className="w-[100%] flex justify-center items-center">
-      <div className="backdrop-blur-md mt-4 bg-[rgba(0,0,0,0.0.02)] border border-white/20 shadow-md transform  w-[99%] rounded-xl px-2 py-1 flex justify-between items-center z-50">
+      <div className="backdrop-blur-md mt-4 bg-gray-900/10 text-gray-600 transsi border border-white/20 shadow-md transform  w-[99%] rounded-xl px-2 py-1 flex justify-between items-center z-50">
       
         <button ref={click} 
         onClick={()=>{
           router.push('/user/transfer/inittransfer')
         }}
-        className="px-2 py-2  focus:bg-gray-50 w-[33%] focus:rounded-xl focus:shadow-inner text-gray-500 focus:text-black">Transfer</button>
+        className="px-2 py-2  focus:bg-gray-50 transition-all ease-in-out duration-100 w-[33%] focus:rounded-xl focus:shadow-inner text-gray-800 focus:text-black">Transfer</button>
         <button
         onClick={()=>{
           router.push("/user/transfer/withdraw")
         }}
-         className="px-2 py-2  focus:bg-gray-50 w-[33%] focus:rounded-xl focus:shadow-inner text-gray-500 focus:text-black">Withdrawal</button>
+         className="px-2 py-2  focus:bg-gray-50 w-[33%] focus:rounded-xl focus:shadow-inner text-gray-800 focus:text-black">Withdrawal</button>
         <button
         onClick={()=>{
           router.push("/user/transfer/deposit")
         }}
-        className="px-2 py-2  focus:bg-gray-50 focus:rounded-xl w-[33%] focus:shadow-inner text-gray-500 focus:text-black">Deposit</button>
+        className="px-2 py-2  focus:bg-gray-50 focus:rounded-xl w-[33%] focus:shadow-inner text-gray-800 focus:text-black">Deposit</button>
         </div>
         
       </div>

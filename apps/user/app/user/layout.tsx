@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import {Skeleton} from "@repo/ui/sceleton"
 import { Poppins } from "next/font/google";
-
+import  Profile  from "@repo/ui/profile"
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["200", "400", "500", "600", "700"],
@@ -86,6 +86,9 @@ export default function RootLayout({
       <div className="grid grid-cols-[20%,80%]   ">
         <div className="relative mr-1">
           <AppBar />
+          {/* <Profile/> */}
+
+          
         
 
           <div className="mt-8 p-2 h-[80vh]  text-gray-600 ">
