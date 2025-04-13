@@ -112,6 +112,8 @@ export default function DashBoard() {
 
       </div>
 
+ 
+
         <div className="mt-4 p-4 bg-white text-gray-950 shadow-md rounded-xl m-3 ">
           <p className="font-medium text-md text-gray-500">Spend Activity</p>
         <div className="h-64  ">
