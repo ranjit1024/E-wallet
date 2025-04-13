@@ -64,7 +64,13 @@ export default function DashBoard() {
       
     
 
-      <div className="mt-4 p-4 bg-white shadow-md rounded-xl m-3 ">
+
+   
+
+        
+    <div className="mt-4 p-4 bg-white shadow-md rounded-xl m-3" >
+
+    
         <div className="flex justify-center gap-4 flex-col">
       <p className="font-medium  text-gray-500">Balance</p>
         <p className=" text-3xl pb-3 ">86,908.90 </p>
@@ -105,8 +111,13 @@ export default function DashBoard() {
           </BarChart>
         </ResponsiveContainer>
         </div>
+        
 
 
+
+       
+
+       
       </div>
 
  
