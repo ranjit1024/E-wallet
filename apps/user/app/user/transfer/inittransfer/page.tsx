@@ -1,3 +1,6 @@
+"use client"
+import { animate, motion } from "framer-motion";
+
 export default function(){
     
     return <div>
@@ -6,7 +9,20 @@ export default function(){
 
     <div className="flex items-center h-[80vh] justify-center flex-col">
       
-      <div className="p-7 bg-white  shadow-md rounded-2xl w-[70%] ">
+      <motion.div className="p-7 bg-white  shadow-md rounded-2xl w-[70%]
+       "  
+       initial={{
+         opacity:0,
+         y:20
+       }}
+       animate={{
+        opacity:1,
+        y:0
+       }}
+       transition={{
+         duration:0.6,
+         ease:"linear"
+       }}>
       <div className="w-full  ">
     <p  className="mb-2">Enter email</p>
   <div className="relative w-[100%]">
@@ -27,7 +43,7 @@ Initiate Transfer
 
 
 
-      </div>
+      </motion.div>
       </div>
     </div>
 }

@@ -2,6 +2,7 @@ import db from "@repo/prisma/clinet";
 import CredentialsProvider from "next-auth/providers/credentials";
 import brcypt from "bcrypt";
 import { error } from "console";
+import { Session } from "inspector";
  
 
 
@@ -90,9 +91,17 @@ export const authOptions = {
         
     },
     }),
-    
   ],
+  session:{
+    strategy:"jwt",
+    maxAge:60*60,
+
+  },
+  jwt:{
+    maxAge:60 * 60
+  },
   pages: {
     signIn: "/signin",
   },
+
 };
