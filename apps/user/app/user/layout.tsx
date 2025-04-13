@@ -54,7 +54,9 @@ export default function RootLayout({
     </li>,
     
 
-    <li className="flex items-center gap-3 p-[0.4rem] mb-2 hover:cursor-pointer transition-all duration-100  rounded-lg m-2  ">
+    <li onClick={()=>{
+      router.push("/user/transaction")
+    }} className="flex items-center gap-3 p-[0.4rem] mb-2 hover:cursor-pointer transition-all duration-100  rounded-lg m-2  ">
       <img
         className="size-5"
         width="48"
