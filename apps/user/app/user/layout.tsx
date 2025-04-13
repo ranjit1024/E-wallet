@@ -44,7 +44,7 @@ export default function RootLayout({
     </li>,
     <li
       onClick={()=>{
-        router.push('/user/transfer')
+        router.push('/user/transfer/inittransfer')
       }}
       id="transfer"
       className={`flex items-center gap-3 p-[0.4rem] mb-2 hover:cursor-pointer transition-all duration-100  rounded-lg m-2 `}
@@ -81,10 +81,10 @@ export default function RootLayout({
     <div
       className={`h-[100vh]  bg-gradient-to-tr to-gray-50 from-gray-50 ${poppins.className}`}
     >
-        
       <div className="grid grid-cols-[20%,80%]   ">
         <div className="relative mr-1">
           <AppBar />
+        
 
           <div className="mt-8 p-2 h-[80vh]  text-gray-600 ">
             <ul>
@@ -109,8 +109,14 @@ export default function RootLayout({
           
         </div>
 
-     
+      <div>
+      <div className="pt-1 ml-2  text-gray-950">
+        <p>Hey,ranjit</p>
+        <p className="text-gray-600 text-sm">Mondat, 29 march 2025</p>
+      </div>
       {children}
+
+      </div>
       </div>
     </div>
   );

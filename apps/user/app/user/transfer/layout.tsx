@@ -24,48 +24,7 @@ export default function RootLayout({
 
   // const itmes = ["DashBoard","Accounts","Trancaction", "Payee"];
 
-  const images = [
-    <li 
-      
-      id="dashboard"
-      onClick={()=>{
-        router.push('/user/dashboard')
-      }}
-      className={`flex  items-center gap-3 p-[0.4rem] mb-2 hover:cursor-pointer transition-all duration-100  rounded-lg m-2 `}
-    >
-      <img
-        width="48"
-        className="size-5"
-        height="48"
-        src="https://img.icons8.com/pulsar-line/48/home.png"
-        alt="home"
-      />
-      <p>DashBoard</p>
-    </li>,
-    <li
-      onClick={()=>{
-        router.push('/user/transfer')
-      }}
-      id="transfer"
-      className={`flex items-center gap-3 p-[0.4rem] mb-2 hover:cursor-pointer transition-all duration-100  rounded-lg m-2 `}
-    >
-     <img className="size-[1.3rem]" width="48" height="48" src="https://img.icons8.com/pulsar-line/48/online-money-transfer.png" alt="online-money-transfer"/>
-      <p>Transfer</p>
-    </li>,
-    
-
-    <li className="flex items-center gap-3 p-[0.4rem] mb-2 hover:cursor-pointer transition-all duration-100  rounded-lg m-2  ">
-      <img
-        className="size-5"
-        width="48"
-        height="48"
-        src="https://img.icons8.com/pulsar-line/48/exchange.png"
-        alt="exchange"
-      />
-      <p>Transaction</p>
-    </li>,
-   
-  ];
+  
   useEffect(() => {
     if (status === "loading") return; // Wait for session to load
     if (!session) {
@@ -82,36 +41,23 @@ export default function RootLayout({
       className={`h-[100vh]  bg-gradient-to-tr to-gray-50 from-gray-50 ${poppins.className}`}
     >
         
-      <div className="grid grid-cols-[20%,80%]   ">
-        <div className="relative mr-1">
-          <AppBar />
-
-          <div className="mt-8 p-2 h-[80vh]  text-gray-600 ">
-            <ul>
-             
-
-              {images.map((item, index) => {
-                return (
-                  <div
-                    key={index}
-                    onClick={() => {
-                      setIsActive(index);
-                    }}
-                    className={`${isActive === index ? "bg-white opacity-100 shadow-sm rounded-lg" : 'opacity-90'}`}
-                  >
-                    {item}
-                  </div>
-                );
-              })}
-            </ul>
-          </div>
-
+      
           
+
+        
+    <div className="w-[100%] flex justify-center items-center">
+      <div className="backdrop-blur-md mt-4 bg-[rgba(0,0,0,0.0.05)] border border-white/20 shadow-md transform  w-[99%] rounded-xl px-2 py-1 flex justify-between items-center z-50">
+      
+        <button  className="px-2 py-2  focus:bg-gray-50 w-[33%] focus:rounded-xl focus:shadow-inner text-gray-500 focus:text-black">Transfer</button>
+        <button className="px-2 py-2  focus:bg-gray-50 w-[33%] focus:rounded-xl focus:shadow-inner text-gray-500 focus:text-black">Withdrawal</button>
+        <button className="px-2 py-2  focus:bg-gray-50 focus:rounded-xl w-[33%] focus:shadow-inner text-gray-500 focus:text-black">Deposit</button>
         </div>
+        
+      </div>
+      {children}
 
      
-      {children}
-      </div>
+    
     </div>
   );
 }
