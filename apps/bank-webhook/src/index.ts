@@ -8,6 +8,13 @@ App.get("/", (req,res)=>{
     })
 });
 
+App.post("/hdfcWebhook", (req,res)=>{
+    const paymentInformation = {
+        token:req.body.token,
+        userid:req.body.user_indentifier,
+        amount:req.body.amount  
+    }
+})
 
 App.listen(3000, ()=>{
     console.log('listing on port 3000')

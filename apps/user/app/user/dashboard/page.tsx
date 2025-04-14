@@ -3,6 +3,7 @@
 import AppBar from "@repo/ui/appBar";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+
 import { useEffect, useState } from "react";
 import {
   BarChart,
@@ -54,6 +55,7 @@ export default function DashBoard() {
     { date: "Oct 1", spend: 900, revenue: 870 },
     { date: "Oct 3", spend: 870, revenue: 880 },
   ];
+  
   
 
 
