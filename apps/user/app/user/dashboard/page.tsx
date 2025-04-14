@@ -114,7 +114,7 @@ export default function DashBoard() {
         
 
 
-
+      
        
 
        
@@ -157,7 +157,7 @@ export default function DashBoard() {
               stroke="red"
               strokeWidth={2}
               dot={{ r: 3 }}
-              name="Spend"
+              name="Withdraw"
             />
             <Line
               type="monotone"
