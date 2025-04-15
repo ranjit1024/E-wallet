@@ -53,19 +53,16 @@ export default function () {
     }
       <div className="bg-[url('/safe.jpg')] h-[100%] w-[100%] bg-[#2cb2ed] bg-cover bg-no-repeat bg bg-center"></div>
       <div className=" flex pl-20 text-gray-900 bg-gradient-to-b from-gray-100 to-sky-100 w-[100%]  flex-col ">
-        <div className="text-[7vh] mb-5">
+        <div className="text-[1vh] mb-5">
           <div className="text-center w-[50%] m-auto pt-5 pb-12">
             <div className={`flex items-center  w-[20vh] `}>
               
-            <div className="flex gap-1 items-center">
-        <img width="30" height="40" src="https://img.icons8.com/pulsar-gradient/48/circled.png" alt="circled"/>
-          
-        <p className="font-normal  text-[1.5rem] bg-gradient-to-r from-blue-500  to-cyan-900 inline-block text-transparent bg-clip-text  ">PayTm</p>
-      </div>
+            <Logo/>
             </div>
           </div>
           <p className="text-[7vh] pb-2 text-slate-600 font-semibold">Create an Account </p>
         </div>
+        
 
         <div className="w-[90%] flex  flex-col space-y-6 ">
           <div className="w-full ">
