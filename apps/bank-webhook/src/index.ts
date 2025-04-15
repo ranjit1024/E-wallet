@@ -11,9 +11,34 @@ App.get("/", (req,res)=>{
 App.post("/hdfcWebhook", async (req,res)=>{
     const paymentInformation = {
         token:req.body.token,
-        userid:req.body.user_indentifier,
+        userId:req.body.user_indentifier,
         amount:req.body.amount  
-    }
+    };
+    const findBalance = db.user.findFirst({
+        where:{
+            id:paymentInformation.userId,
+        }
+    })
+
+
+
+    await db.balance.update({
+        where:{
+            userId:paymentInformation.userId
+        },
+        data:{
+            amount: findBalance   +  paymentInformation.amount
+        }
+    })
+
+    await db.onRampTransaction.update({
+        where:{
+            token:paymentInformation.token
+        },
+        data:{
+            status:"Succes"
+        }
+    })
  
 })
 
