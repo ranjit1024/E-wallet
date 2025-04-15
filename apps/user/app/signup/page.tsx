@@ -38,7 +38,7 @@ export default function () {
       return;
     }
     else if(res?.ok ){
-      router.push('/')
+      router.push('/user/dashboard')
     }
 
   }

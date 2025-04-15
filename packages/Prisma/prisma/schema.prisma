@@ -19,6 +19,7 @@ model User {
   name     String
   password String
   balances Balance[]
+  onramp  OnRampTransaction[]
 }
 
 model Merchant{
@@ -39,10 +40,11 @@ model OnRampTransaction {
   id  Int @id @default(autoincrement())
   status OnRampStatus
   token String @unique
+  provider  String
   amount  Int
   startTime DateTime
   userId  Int
-  user User
+  user User @relation(fields: [userId], references: [id])
 }
 
 enum Authtype{
