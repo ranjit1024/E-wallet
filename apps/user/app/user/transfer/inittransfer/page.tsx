@@ -2,7 +2,8 @@
 import { motion } from "framer-motion";
 export default function () {
   return (
-    <div className="h-[80vh] flex justify-center items-center">
+    <div className="h-[80vh] relative flex justify-center items-center">
+      
       <motion.div
         initial={{
           y: 20,
@@ -50,7 +51,7 @@ export default function () {
             className="rounded-md mt-3 w-[100%] bg-blue-600 py-2 px-4 border border-transparent text-center text-md text-white transition-all shadow-md hover:shadow-lg focus:bg-blue-700 focus:shadow-none active:bg-blue-700 hover:bg-blue-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none "
             type="button"
           >
-            Initiate Deposite
+            Initiate Transfer
           </button>
         </div>
       </motion.div>
