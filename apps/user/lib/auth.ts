@@ -3,7 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import brcypt from "bcrypt";
 import { error } from "console";
 import { Session } from "inspector";
- 
+import { SessionStrategy } from "next-auth";
 
 
 export const authOptions = {
@@ -19,7 +19,7 @@ export const authOptions = {
           placeholder: "enter your password",
         },
       },
-      async authorize(credentials: any, req) {
+      authorize : async(credentials: any, req)=>{
         // findig user in db;
         const callbackUrl = String(req.query?.callbackUrl || req.headers?.referer);
         
@@ -57,6 +57,7 @@ export const authOptions = {
                 
             }
         }
+
         else if(callbackArray[0] === "http://localhost:3000/signin"){
             console.log("sign in")
           
@@ -68,39 +69,58 @@ export const authOptions = {
               if(exixstUser){
                 console.log('dada');
 
-        
-
                 const matchpassword = await brcypt.compare(credentials.password, exixstUser.password);
-                console.log(matchpassword)
+                console.log(matchpassword);
+                
                 if(!matchpassword){
                   throw new Error("password mismatch")
                 }
-                
+                else if(exixstUser && matchpassword){
+                  console.log(exixstUser)
+                  return exixstUser
+                }
 
-                
+
               }
-
+              
             }
-        }
-       
-        
-        //checking password
-        
-        console.log(credentials);
-        return credentials
-        
-    },
-    }),
-  ],
-  secret:process.env.JWT_SECTET,
-  session:{
-    strategy:"jwt",
-    maxAge:60*60,
 
+            
+        }
+        
+       
+
+        
+       return credentials;
+      },
+    }),
+
+ 
+
+  ],
+
+  callbacks: {
+    async jwt({ token, user }:{
+      token:any,
+      user:any
+    }) {
+      if (user) {
+        token.id = user.id; // attach id to token
+      }
+      return token;
+    },
+  
+    async session({ session, token }:{session:any, token:any}) {
+      if (session?.user) {
+        session.user.id = token.id as string; // attach id to session
+      }
+      return session;
+    },
   },
-  jwt:{
-    maxAge:60 * 60
-  },
+
+
+  secret:process.env.JWT_SECTET,
+  
   pages: {
     signIn: "/signin",
   },

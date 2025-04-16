@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 
@@ -19,8 +19,11 @@ const LoginPage = () => {
     <div className="min-h-screen bg-gray-100 text-gray-900">
       <header className="text-center py-6">
         <h1 className="text-2xl font-semibold">Welcome to HDFC Bank NetBanking</h1>
-        <p className="text-sm text-gray-600 mt-1">MADE DIGITAL BY <span className="font-bold text-blue-700">HDFC BANK</span></p>
-        <p className="text-red-500 mt-1 font-semibold">This is Fake HDFC bank netbanking page <span className="text-blue-500 font-normal underline hover:cursor-pointer hover:text-blue-700">Click here to get Customer ID and password</span> </p>
+        <p className="text-sm text-gray-600 mt-1">MADE DIGITAL BY <span className="font-bold text-blue-700" >HDFC BANK</span></p>
+        <p className="text-red-500 mt-1 font-semibold">This is Fake HDFC bank netbanking page <span className="text-blue-500 font-normal underline hover:cursor-pointer hover:text-blue-700"
+        onClick={()=>{
+           
+        }}>Click here to get Customer ID and password</span> </p>
       </header>
 
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row bg-white shadow p-6 rounded-md">
@@ -29,6 +32,7 @@ const LoginPage = () => {
           <h2 className="text-xl font-semibold mb-4">Login to NetBanking</h2>
           <label className="block mb-2">Customer ID/ User ID</label>
           <input
+        
             type="text"
             className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-blue-500 mb-1"
           />
@@ -36,7 +40,9 @@ const LoginPage = () => {
 
           <label className="block mb-2">Enter password</label>
           <input
-            type="text"
+            
+            
+            type="password"
             className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-blue-500 mb-6"
           />
 
