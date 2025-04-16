@@ -92,6 +92,7 @@ export const authOptions = {
     },
     }),
   ],
+  secret:process.env.JWT_SECTET,
   session:{
     strategy:"jwt",
     maxAge:60*60,
