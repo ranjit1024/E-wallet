@@ -1,12 +1,14 @@
 "use client";
-import Logo from "@repo/ui/logo";
 import { Poppins } from "next/font/google";
-import { useRouter, useServerInsertedHTML } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
 import Error from "@repo/ui/toast"
+import Loader from "@repo/ui/loader"
+import { tr } from "framer-motion/client";
+import { resolve } from "path";
 
 const poppins = Poppins({
   subsets: ["latin"], // Supports Latin characters
@@ -25,6 +27,7 @@ export default function () {
   const error = serachParams.get("error");
   const [credentialsError, setShowCredentailError] = useState(false);
   const [credentialsBlank, setCredentailBlank] = useState(false);
+  const [loading,setLoading] = useState(false);
   // const email = useState("");
   const res = async () => {
     const res = await signIn("credentials",{
@@ -41,6 +44,7 @@ export default function () {
   
     else if(res?.error == "password mismatch"){
       setShowCredentailError(true);
+    
       return;
       
     }
@@ -51,7 +55,12 @@ export default function () {
   
 
   return (
-    <div className={`grid grid-cols-[50%,50%] h-[100vh] ${poppins.className}`}>
+    <div className={`grid grid-cols-[50%,50%] h-[100vh] relative ${poppins.className}`}>
+      
+        {
+          loading ? <Loader/>:null
+        }
+      
       {/* {error && <p className="text-red-500 mb-4">{getErrorMessage()}</p>} */}
       <div className="bg-[url('/safe.jpg')] bg-cover bg-center"></div>
       {
@@ -128,9 +137,20 @@ export default function () {
             <button
               type="button"
               className="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 transition-colors duration-200 text-white font-semibold py-2 rounded-lg w-full"
-              onClick={res}
+              
+              onClick={async()=>{
+                setLoading(true)
+                const response = await res()
+                setLoading(false);
+
+                setTimeout(()=>{
+                  setShowCredentailError(false)
+                },3000)
+              
+              }
+              }
             >
-              Sign up
+              Sign in
             </button>
           </div>
 

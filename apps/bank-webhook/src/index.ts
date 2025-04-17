@@ -1,5 +1,5 @@
 import express from "express"
-import db from "@repo/prisma/clinet";
+import db from "@repo/prisma/nodeclient";
 const App = express();
 
 App.get("/", (req,res)=>{
@@ -7,6 +7,7 @@ App.get("/", (req,res)=>{
         msg:'Healthy Server'
     })
 });
+App.use(express.json())
 
 App.post("/hdfcWebhook", async (req,res)=>{
     
@@ -14,9 +15,9 @@ App.post("/hdfcWebhook", async (req,res)=>{
         token:req.body.token,
         userId:req.body.user_indentifier,
         amount:req.body.amount  
-    };
+    }
 
-
+    console.log(req.body.token)
     try{
 
         await db.$transaction([
@@ -56,6 +57,6 @@ catch(e){
  
 })
 
-App.listen(3001, ()=>{
+App.listen(3004, ()=>{
     console.log('listing on port 3000')
 })

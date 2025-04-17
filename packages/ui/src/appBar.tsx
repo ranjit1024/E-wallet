@@ -25,7 +25,7 @@ export default function () {
     return () =>{
       document.removeEventListener("click", hide)
     }
-  },[])
+  },)
 
 
   return (
@@ -45,7 +45,7 @@ export default function () {
       </div>
         <div className="size-8 hover:scale-105 hover:cursor-pointer " onClick={()=>{
           
-          setIsProfile(true);
+          setIsProfile(!isProfile);
 
           
 

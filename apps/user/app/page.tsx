@@ -1,10 +1,11 @@
 "use client";
 import bank from "./Hdfc.png";
-import { Poppins } from "next/font/google";
+import { Play, Poppins } from "next/font/google";
 import { animate, motion } from "framer-motion";
-
+import { Player } from "@lottiefiles/react-lottie-player";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
+
 
 const poppins = Poppins({
   subsets: ["latin"], // Supports Latin characters
@@ -18,7 +19,7 @@ export default function Home() {
   return (
     <div className={poppins.className}>
       <div className="flex bg-gradient-to-t  from-gray-100 to-blue-100 rounded-b-2xl flex-col">
-        
+       
         <motion.div
           initial={{
             y: 10,
