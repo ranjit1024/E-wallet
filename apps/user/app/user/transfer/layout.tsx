@@ -4,7 +4,7 @@ import AppBar from "@repo/ui/appBar";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import {Skeleton} from "@repo/ui/sceleton"
+import DashboardSkeleton from "@repo/ui/sceleton"
 import { Poppins } from "next/font/google";
 
 const poppins = Poppins({
@@ -39,7 +39,7 @@ export default function RootLayout({
 
 
   if (status === "loading") {
-    return <div><Skeleton/></div>;
+    return <div><DashboardSkeleton/></div>;
   }
 
 
