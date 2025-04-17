@@ -3,6 +3,8 @@ import db from "@repo/prisma/clinet"
 import { getServerSession } from "next-auth"
 import { authOptions } from "../../../lib/auth"
 import { Ruthie } from "next/font/google";
+import Record from "@repo/ui/record"
+import { time } from "console";
 async function getData(){
   const session = await getServerSession(authOptions);
     const userid = session?.user?.id;
@@ -103,73 +105,14 @@ export default async function(){
       </thead>
       <tbody>
         
-        <tr>
-          <td className="p-4 border-b border-blue-gray-50">
-            {
-              data.map((item,index)=>{
-                return<div className="flex items-center " key={index}>
-             
-                <p className="block font-sans text-sm antialiased font-bold leading-normal text-blue-gray-900">
-                  {
-                     "PayTm"
-                  }
-                </p>
-              </div>
-              })
-            }
-            
-          </td>
-          <td className="p-4 border-b border-blue-gray-50">
-            {
-              data.map((item,index)=>{
-                return  <p key={index} className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                {
-                  `${item.amount/100}.${item.amount%100}`
-                }
-              </p>
-              })
-            }
-           
-          </td>
-          <td className="p-4 border-b border-blue-gray-50">
-          {
-              data.map((item,index)=>{
-                return  <p key={index} className="block font-sans  text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                {`${item.startTime.toDateString()}`
-                
-                }
-               
+        
 
-              </p>
-              })
-            }
+        {
+          data.map((item,index)=>{
+            return <Record key={index} transaction={item.provider.toUpperCase()} amount={item.amount} date={item.startTime.toDateString()} time={item.startTime.toLocaleTimeString()}/>
             
-          </td>
-          <td className="p-4 border-b border-blue-gray-50">
-            <div className="w-max">
-              <div
-                className="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-green-900 uppercase rounded-md select-none whitespace-nowrap bg-green-500/20">
-                <span className="">paid</span>
-              </div>
-            </div>
-          </td>
-          <td className="p-4 border-b border-blue-gray-50">
-            <div className="flex items-center gap-3">
-             
-              <div className="flex flex-col">
-                <p
-                  className="block font-sans text-sm antialiased font-normal leading-normal capitalize text-blue-gray-900">
-                  master card 1234
-                </p>
-                <p
-                  className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
-                  06/2026
-                </p>
-              </div>
-            </div>
-          </td>
-         
-        </tr>
+          })
+        }
 
 
        

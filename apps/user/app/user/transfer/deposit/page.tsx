@@ -1,11 +1,14 @@
 "use client";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { createOnRampTransaction } from "../../../../lib/actions/createOnRamp";
+import { Providers } from "../../../../lib/providers";
 export default function () {
   const selectRef = useRef<HTMLSelectElement>(null);
-  const router = useRouter()
+  const router = useRouter();
+  const [amount,setAmount] = useState<number>(0);
+  const [provider, setProvoder] = useState<string>("")
   return (
     <div className="h-[80vh] flex justify-center items-center">
       <motion.div
@@ -32,6 +35,9 @@ export default function () {
                 type="text"
                 className="w-full pl-3 pr-3 py-2 bg-transparent placeholder:text-slate-400 text-slate-600 text-sm border border-slate-200 rounded-md transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
                 placeholder="Enter Amount"
+                onChange={(e)=>{
+                  setAmount(Number(e.target.value))
+                }}
               />
             </div>
           </div>
@@ -40,8 +46,8 @@ export default function () {
             <p>Select Bank</p>
             <div className="relative ">
               <select ref={selectRef} className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded pl-3 pr-8 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md appearance-none cursor-pointer">
-                <option value="brazil">Hdfc Bank</option>
-                <option value="bucharest">kotak bank</option>
+                <option value="HDFc">Hdfc Bank</option>
+                <option value="KOTAK">kotak bank</option>
               </select>
             </div>
           </div>
@@ -51,12 +57,18 @@ export default function () {
             type="button"
             onClick={()=>{
 
-              createOnRampTransaction(1223,"hdfc");
               if(selectRef.current?.options?.selectedIndex === 0){
+                const provider = "hdfc"
+                createOnRampTransaction(amount,provider);
                 window.open("http://localhost:3000/hdfc/netbanking", "traget_")
+                return;
               }
               else if(selectRef.current?.options?.selectedIndex === 1){
+                const provider = "kotak"
+                createOnRampTransaction(amount,provider)
                 window.open("http://localhost:3000/kotak/netbanking", "traget_")
+
+                return;
               }
 
             }}
