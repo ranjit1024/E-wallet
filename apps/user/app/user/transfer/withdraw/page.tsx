@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useRef } from "react";
+import { createOnRampTransaction } from "../../../../lib/actions/createOnRamp";
 export default function () {
   const selectRef = useRef<HTMLSelectElement>(null);
   const router = useRouter()
@@ -47,6 +48,7 @@ export default function () {
 
           <button
             onClick={()=>{
+            
               if(selectRef.current?.options?.selectedIndex === 0){
                 window.open("http://localhost:3000/hdfc/netbanking", "traget_")
               }

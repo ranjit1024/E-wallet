@@ -1,4 +1,23 @@
-export default function(){
+// "use server"
+import db from "@repo/prisma/clinet"
+import { getServerSession } from "next-auth"
+import { authOptions } from "../../../lib/auth"
+import { Ruthie } from "next/font/google";
+async function getData(){
+  const session = await getServerSession(authOptions);
+    const userid = session?.user?.id;
+  const data = await db.onRampTransaction.findMany({
+    where:{
+      userId:userid
+    }
+  })
+  return data
+}
+
+export default async function(){
+  const data = await getData();
+  console.log(data)
+
     return <div className="my-10 mx-5">
         <div className="relative p-1 flex flex-col  w-full h-full text-gray-700 bg-white shadow-md rounded-xl bg-clip-border">
   <div className="relative mx-4 mt-4 text-gray-700 bg-white rounded-none bg-clip-border">
@@ -8,10 +27,13 @@ export default function(){
           className="block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
           Recent Transactions
         </h5>
+     
         <p className="block mt-1 font-sans text-base antialiased font-normal leading-relaxed text-gray-700">
           These are details about the last transactions
         </p>
       </div>
+
+     
       <div className="flex w-full gap-2 shrink-0 md:w-max">
         <div className="w-full md:w-72">
           <div className="relative h-10 w-full min-w-[200px]">
@@ -80,241 +102,64 @@ export default function(){
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td className="p-4 border-b border-blue-gray-50">
-            <div className="flex items-center gap-3">
-              <img src="https://docs.material-tailwind.com/img/logos/logo-spotify.svg" alt="Spotify"
-                className="relative inline-block h-12 w-12 !rounded-full border border-blue-gray-50 bg-blue-gray-50/50 object-contain object-center p-1" />
-              <p className="block font-sans text-sm antialiased font-bold leading-normal text-blue-gray-900">
-                Spotify
-              </p>
-            </div>
-          </td>
-          <td className="p-4 border-b border-blue-gray-50">
-            <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-              $2,500
-            </p>
-          </td>
-          <td className="p-4 border-b border-blue-gray-50">
-            <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-              Wed 3:00pm
-            </p>
-          </td>
-          <td className="p-4 border-b border-blue-gray-50">
-            <div className="w-max">
-              <div
-                className="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-green-900 uppercase rounded-md select-none whitespace-nowrap bg-green-500/20">
-                <span className="">paid</span>
-              </div>
-            </div>
-          </td>
-          <td className="p-4 border-b border-blue-gray-50">
-            <div className="flex items-center gap-3">
-              <div className="w-12 p-1 border rounded-md h-9 border-blue-gray-50">
-                <img src="https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/logos/visa.png"
-                  alt="visa"
-                  className="relative inline-block h-full w-full !rounded-none  object-contain object-center p-1" />
-              </div>
-              <div className="flex flex-col">
-                <p
-                  className="block font-sans text-sm antialiased font-normal leading-normal capitalize text-blue-gray-900">
-                  visa 1234
-                </p>
-                <p
-                  className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
-                  06/2026
-                </p>
-              </div>
-            </div>
-          </td>
-       
-        </tr>
-        <tr>
-          <td className="p-4 border-b border-blue-gray-50">
-            <div className="flex items-center gap-3">
-              <img src="https://docs.material-tailwind.com/img/logos/logo-amazon.svg" alt="Amazon"
-                className="relative inline-block h-12 w-12 !rounded-full  border border-blue-gray-50 bg-blue-gray-50/50 object-contain object-center p-1" />
-              <p className="block font-sans text-sm antialiased font-bold leading-normal text-blue-gray-900">
-                Amazon
-              </p>
-            </div>
-          </td>
-          <td className="p-4 border-b border-blue-gray-50">
-            <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-              $5,000
-            </p>
-          </td>
-          <td className="p-4 border-b border-blue-gray-50">
-            <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-              Wed 1:00pm
-            </p>
-          </td>
-          <td className="p-4 border-b border-blue-gray-50">
-            <div className="w-max">
-              <div
-                className="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-green-900 uppercase rounded-md select-none whitespace-nowrap bg-green-500/20">
-                <span className="">paid</span>
-              </div>
-            </div>
-          </td>
-          <td className="p-4 border-b border-blue-gray-50">
-            <div className="flex items-center gap-3">
-              <div className="w-12 p-1 border rounded-md h-9 border-blue-gray-50">
-                <img src="https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/logos/mastercard.png"
-                  alt="master-card"
-                  className="relative inline-block h-full w-full !rounded-none  object-contain object-center p-1" />
-              </div>
-              <div className="flex flex-col">
-                <p
-                  className="block font-sans text-sm antialiased font-normal leading-normal capitalize text-blue-gray-900">
-                  master card 1234
-                </p>
-                <p
-                  className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
-                  06/2026
-                </p>
-              </div>
-            </div>
-          </td>
-         
-        </tr>
-        <tr>
-          <td className="p-4 border-b border-blue-gray-50">
-            <div className="flex items-center gap-3">
-              <img src="https://docs.material-tailwind.com/img/logos/logo-pinterest.svg" alt="Pinterest"
-                className="relative inline-block h-12 w-12 !rounded-full  border border-blue-gray-50 bg-blue-gray-50/50 object-contain object-center p-1" />
-              <p className="block font-sans text-sm antialiased font-bold leading-normal text-blue-gray-900">
-                Pinterest
-              </p>
-            </div>
-          </td>
-          <td className="p-4 border-b border-blue-gray-50">
-            <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-              $3,400
-            </p>
-          </td>
-          <td className="p-4 border-b border-blue-gray-50">
-            <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-              Mon 7:40pm
-            </p>
-          </td>
-          <td className="p-4 border-b border-blue-gray-50">
-            <div className="w-max">
-              <div
-                className="relative grid items-center px-2 py-1 font-sans text-xs font-bold uppercase rounded-md select-none whitespace-nowrap bg-amber-500/20 text-amber-900">
-                <span className="">pending</span>
-              </div>
-            </div>
-          </td>
-          <td className="p-4 border-b border-blue-gray-50">
-            <div className="flex items-center gap-3">
-              <div className="w-12 p-1 border rounded-md h-9 border-blue-gray-50">
-                <img src="https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/logos/mastercard.png"
-                  alt="master-card"
-                  className="relative inline-block h-full w-full !rounded-none object-contain object-center p-1" />
-              </div>
-              <div className="flex flex-col">
-                <p
-                  className="block font-sans text-sm antialiased font-normal leading-normal capitalize text-blue-gray-900">
-                  master card 1234
-                </p>
-                <p
-                  className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
-                  06/2026
-                </p>
-              </div>
-            </div>
-          </td>
-         
-        </tr>
-        <tr>
-          <td className="p-4 border-b border-blue-gray-50">
-            <div className="flex items-center gap-3">
-              <img src="https://docs.material-tailwind.com/img/logos/logo-google.svg" alt="Google"
-                className="relative inline-block h-12 w-12 !rounded-full  border border-blue-gray-50 bg-blue-gray-50/50 object-contain object-center p-1" />
-              <p className="block font-sans text-sm antialiased font-bold leading-normal text-blue-gray-900">
-                Google
-              </p>
-            </div>
-          </td>
-          <td className="p-4 border-b border-blue-gray-50">
-            <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-              $1,000
-            </p>
-          </td>
-          <td className="p-4 border-b border-blue-gray-50">
-            <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-              Wed 5:00pm
-            </p>
-          </td>
-          <td className="p-4 border-b border-blue-gray-50">
-            <div className="w-max">
-              <div
-                className="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-green-900 uppercase rounded-md select-none whitespace-nowrap bg-green-500/20">
-                <span className="">paid</span>
-              </div>
-            </div>
-          </td>
-          <td className="p-4 border-b border-blue-gray-50">
-            <div className="flex items-center gap-3">
-              <div className="w-12 p-1 border rounded-md h-9 border-blue-gray-50">
-                <img src="https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/logos/visa.png"
-                  alt="visa"
-                  className="relative inline-block h-full w-full !rounded-none  object-contain object-center p-1" />
-              </div>
-              <div className="flex flex-col">
-                <p
-                  className="block font-sans text-sm antialiased font-normal leading-normal capitalize text-blue-gray-900">
-                  visa 1234
-                </p>
-                <p
-                  className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
-                  06/2026
-                </p>
-              </div>
-            </div>
-          </td>
         
-        </tr>
         <tr>
-          <td className="p-4">
-            <div className="flex items-center gap-3">
-              <img src="https://docs.material-tailwind.com/img/logos/logo-netflix.svg" alt="netflix"
-                className="relative inline-block h-12 w-12 !rounded-full  border border-blue-gray-50 bg-blue-gray-50/50 object-contain object-center p-1" />
-              <p className="block font-sans text-sm antialiased font-bold leading-normal text-blue-gray-900">
-                netflix
+          <td className="p-4 border-b border-blue-gray-50">
+            {
+              data.map((item,index)=>{
+                return<div className="flex items-center " key={index}>
+             
+                <p className="block font-sans text-sm antialiased font-bold leading-normal text-blue-gray-900">
+                  {
+                     "PayTm"
+                  }
+                </p>
+              </div>
+              })
+            }
+            
+          </td>
+          <td className="p-4 border-b border-blue-gray-50">
+            {
+              data.map((item,index)=>{
+                return  <p key={index} className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                {
+                  `${item.amount/100}.${item.amount%100}`
+                }
               </p>
-            </div>
+              })
+            }
+           
           </td>
-          <td className="p-4">
-            <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-              $14,000
-            </p>
+          <td className="p-4 border-b border-blue-gray-50">
+          {
+              data.map((item,index)=>{
+                return  <p key={index} className="block font-sans  text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                {`${item.startTime.toDateString()}`
+                
+                }
+               
+
+              </p>
+              })
+            }
+            
           </td>
-          <td className="p-4">
-            <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-              Wed 3:30am
-            </p>
-          </td>
-          <td className="p-4">
+          <td className="p-4 border-b border-blue-gray-50">
             <div className="w-max">
               <div
-                className="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-red-900 uppercase rounded-md select-none whitespace-nowrap bg-red-500/20">
-                <span className="">cancelled</span>
+                className="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-green-900 uppercase rounded-md select-none whitespace-nowrap bg-green-500/20">
+                <span className="">paid</span>
               </div>
             </div>
           </td>
-          <td className="p-4">
+          <td className="p-4 border-b border-blue-gray-50">
             <div className="flex items-center gap-3">
-              <div className="w-12 p-1 border rounded-md h-9 border-blue-gray-50">
-                <img src="https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/logos/visa.png"
-                  alt="visa"
-                  className="relative inline-block h-full w-full !rounded-none  object-contain object-center p-1" />
-              </div>
+             
               <div className="flex flex-col">
                 <p
                   className="block font-sans text-sm antialiased font-normal leading-normal capitalize text-blue-gray-900">
-                  visa 1234
+                  master card 1234
                 </p>
                 <p
                   className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
@@ -325,6 +170,10 @@ export default function(){
           </td>
          
         </tr>
+
+
+       
+       
       </tbody>
     </table>
   </div>

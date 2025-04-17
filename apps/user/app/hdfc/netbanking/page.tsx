@@ -1,11 +1,14 @@
 "use client"
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-
+import { createOnRampTransaction } from "../../../lib/actions/createOnRamp";
 const LoginPage = () => {
+     
     const router = useRouter();
-    const {data:session, status} = useSession()
+    const {data:session, status} = useSession();
+    const [id,setId] = useState<number>()
+    const [password,setPassword] = useState<number>()
 
     useEffect(()=>{
         if(status == "loading"){
@@ -22,7 +25,8 @@ const LoginPage = () => {
         <p className="text-sm text-gray-600 mt-1">MADE DIGITAL BY <span className="font-bold text-blue-700" >HDFC BANK</span></p>
         <p className="text-red-500 mt-1 font-semibold">This is Fake HDFC bank netbanking page <span className="text-blue-500 font-normal underline hover:cursor-pointer hover:text-blue-700"
         onClick={()=>{
-           
+           setId(123890);
+           setPassword(123456789)
         }}>Click here to get Customer ID and password</span> </p>
       </header>
 
@@ -32,7 +36,8 @@ const LoginPage = () => {
           <h2 className="text-xl font-semibold mb-4">Login to NetBanking</h2>
           <label className="block mb-2">Customer ID/ User ID</label>
           <input
-        
+            defaultValue={id}
+            readOnly
             type="text"
             className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-blue-500 mb-1"
           />
@@ -40,13 +45,16 @@ const LoginPage = () => {
 
           <label className="block mb-2">Enter password</label>
           <input
-            
-            
+            defaultValue={password}
+            readOnly
             type="password"
             className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-blue-500 mb-6"
           />
 
-          <button className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+          <button className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+          onClick={()=>{
+            
+          }} >
             CONTINUE
           </button>
 

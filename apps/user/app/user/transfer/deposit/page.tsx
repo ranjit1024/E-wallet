@@ -50,7 +50,8 @@ export default function () {
             className="rounded-md mt-3 w-[100%] bg-blue-600 py-2 px-4 border border-transparent text-center text-md text-white transition-all shadow-md hover:shadow-lg focus:bg-blue-700 focus:shadow-none active:bg-blue-700 hover:bg-blue-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none hover:border-blue-800 "
             type="button"
             onClick={()=>{
-              // createOnRampTransaction(1223,"hdfc");
+
+              createOnRampTransaction(1223,"hdfc");
               if(selectRef.current?.options?.selectedIndex === 0){
                 window.open("http://localhost:3000/hdfc/netbanking", "traget_")
               }

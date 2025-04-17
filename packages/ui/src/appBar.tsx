@@ -14,9 +14,9 @@ export default function () {
   const [isProfile,setIsProfile] = useState(false)
   return (
     <div className={`${poppins.className} `}>
-          {
-            isProfile?<Profile/>:null
-          }
+        {
+          isProfile?<Profile/>:null
+        }
          
         <div className="px-5 pt-3 flex items-center justify-between">
       
@@ -24,9 +24,7 @@ export default function () {
         <img width="30" height="40" src="https://img.icons8.com/pulsar-gradient/48/circled.png" alt="circled" />
           
         <p className="font-normal  text-[1.2rem] bg-gradient-to-r from-blue-500  to-cyan-900 inline-block text-transparent bg-clip-text  ">PayTm</p>
-          {
-            JSON.stringify(session?.data?.user)
-          }
+          
       </div>
         <div className="size-8 hover:scale-105 hover:cursor-pointer " onClick={()=>{
           setIsProfile(!isProfile)
