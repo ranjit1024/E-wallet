@@ -1,18 +1,18 @@
 // pages/protected-page.js
 "use client";
 import AppBar from "@repo/ui/appBar";
-import { signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import {Skeleton} from "@repo/ui/sceleton"
 import { Poppins } from "next/font/google";
-import  Profile  from "@repo/ui/profile"
+import { usePathname } from "next/navigation";
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["200", "400", "500", "600", "700"],
   variable: "--font-poppins",
 });
-const date = new Date()
+
 
 export default function RootLayout({
     children,
@@ -22,17 +22,20 @@ export default function RootLayout({
   const { data: session, status } = useSession();
   const router = useRouter();
   const [isActive, setIsActive] = useState<number | null>();
+  const date = new Date()
+  const pathname = usePathname()
 
   // const itmes = ["DashBoard","Accounts","Trancaction", "Payee"];
-
+    console.log(pathname)
   const images = [
+    
     <li 
       
       id="dashboard"
       onClick={()=>{
         router.push('/user/dashboard')
       }}
-      className={`flex  items-center gap-3 p-[0.4rem] mb-2 hover:cursor-pointer transition-all duration-100  rounded-lg m-2 `}
+      className={`flex  items-center gap-3 p-[0.4rem] mb-2 hover:cursor-pointer transition-all duration-100  rounded-lg m-2 ${pathname == "/user/dashboard" ? "bg-white opacity-100 shadow-sm rounded-lg":null}`}
     >
       <img
         width="48"
@@ -48,7 +51,7 @@ export default function RootLayout({
         router.push('/user/transfer/inittransfer')
       }}
       id="transfer"
-      className={`flex items-center gap-3 p-[0.4rem] mb-2 hover:cursor-pointer transition-all duration-100  rounded-lg m-2 `}
+      className={`flex items-center gap-3 p-[0.4rem] mb-2 hover:cursor-pointer transition-all duration-100  rounded-lg m-2 ${pathname == "/user/transfer/inittransfer" ? "bg-white opacity-100 shadow-sm rounded-lg":null} `}
     >
      <img className="size-[1.3rem]" width="48" height="48" src="https://img.icons8.com/pulsar-line/48/online-money-transfer.png" alt="online-money-transfer"/>
       <p>Transfer</p>
@@ -103,6 +106,7 @@ export default function RootLayout({
                     onClick={() => {
                       setIsActive(index);
                     }}
+                    
                     className={`${isActive === index ? "bg-white opacity-100 shadow-sm rounded-lg" : 'opacity-90'}`}
                   >
                     {item}

@@ -25,7 +25,7 @@ export default function () {
     return () =>{
       document.removeEventListener("click", hide)
     }
-  },)
+  },[])
 
 
   return (
