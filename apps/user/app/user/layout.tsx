@@ -12,6 +12,7 @@ const poppins = Poppins({
   weight: ["200", "400", "500", "600", "700"],
   variable: "--font-poppins",
 });
+const date = new Date()
 
 export default function RootLayout({
     children,
@@ -115,9 +116,11 @@ export default function RootLayout({
         </div>
 
       <div>
-      <div className="pt-1 ml-2  text-gray-950">
-        <p>Hey,ranjit</p>
-        <p className="text-gray-600 text-sm">Mondat, 29 march 2025</p>
+      <div className="pt-2 ml-2  text-gray-950">
+        <p>Hey, {session?.user?.name}</p>
+        <p className="text-gray-600 text-sm">{
+          date.toDateString()
+          }</p>
       </div>
       {children}
 

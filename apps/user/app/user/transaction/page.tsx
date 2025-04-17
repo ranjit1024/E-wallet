@@ -4,7 +4,7 @@ import { getServerSession } from "next-auth"
 import { authOptions } from "../../../lib/auth"
 import { Ruthie } from "next/font/google";
 import Record from "@repo/ui/record"
-import { time } from "console";
+
 async function getData(){
   const session = await getServerSession(authOptions);
     const userid = session?.user?.id;
@@ -17,6 +17,7 @@ async function getData(){
 }
 
 export default async function(){
+
   const data = await getData();
   console.log(data)
 

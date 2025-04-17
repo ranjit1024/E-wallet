@@ -1,11 +1,12 @@
+"use client"
 import { signOut } from "next-auth/react"
+import { useSession } from "next-auth/react"
 export default function(){
-
+  const session = useSession()
 return <div className="absolute top-12 right-1 p-4 bg-white rounded-lg  shadow-2xl z-10">
-      
         <div className="flex items-center justify-center gap-2">
          <img width="40" height="50" src="https://img.icons8.com/pulsar-gradient/96/nft-user.png" alt="nft-user"/>
-        <p>ranjitdas@gmail.com</p>
+        <p>{session.data?.user?.email}</p>
         </div>
         <hr className=" my-2" />
          

@@ -2,7 +2,9 @@ import { Poppins } from "next/font/google";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import Profile from "@repo/ui/profile"
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { tr } from "framer-motion/client";
+
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
@@ -12,11 +14,26 @@ export default function () {
   const router = useRouter();
   const session = useSession();
   const [isProfile,setIsProfile] = useState(false)
+
+  useEffect(()=>{
+    function hide(){
+      console.log("data")
+      setIsProfile(false)
+    }
+    document.addEventListener("click", hide)
+
+    return () =>{
+      document.removeEventListener("click", hide)
+    }
+  },)
+
+
   return (
     <div className={`${poppins.className} `}>
         {
           isProfile?<Profile/>:null
         }
+       
          
         <div className="px-5 pt-3 flex items-center justify-between">
       
@@ -27,7 +44,11 @@ export default function () {
           
       </div>
         <div className="size-8 hover:scale-105 hover:cursor-pointer " onClick={()=>{
-          setIsProfile(!isProfile)
+          
+          setIsProfile(true);
+
+          
+
         }} >
         <img width="48" height="48" src="https://img.icons8.com/pulsar-gradient/48/nft-user.png" alt="nft-user"/>
         </div>
