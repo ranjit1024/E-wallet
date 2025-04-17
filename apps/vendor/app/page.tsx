@@ -26,7 +26,7 @@ export default  function Home() {
           <button onClick={async ()=>{
             console.log("id",process.env.Clinet_ID)
             const res = await signIn("google",{redirect:false,
-              callbackUrl:"/dashboard"
+              callbackUrl:"/vendor/dashboard"
             });
             if(res?.error){
               router.push("/")

@@ -61,7 +61,7 @@ export default function DashBoard() {
 
   return (
     <div
-      className={`h-[100vh]  bg-gradient-to-tr to-gray-50 from-gray-50 ${poppins.className}`}
+      className={`  bg-gradient-to-tr to-gray-50 from-gray-50 ${poppins.className}`}
     >
       
     

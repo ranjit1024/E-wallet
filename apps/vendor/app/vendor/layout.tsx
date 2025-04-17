@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import {Skeleton} from "@repo/ui/sceleton"
 import { Poppins } from "next/font/google";
-import  Profile  from "@repo/ui/profile"
+import Logo from "@repo/ui/logo";
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["200", "400", "500", "600", "700"],
@@ -29,7 +29,7 @@ export default function RootLayout({
       
       id="dashboard"
       onClick={()=>{
-        router.push('/user/dashboard')
+        router.push('/vendor/dashboard')
       }}
       className={`flex  items-center gap-3 p-[0.4rem] mb-2 hover:cursor-pointer transition-all duration-100  rounded-lg m-2 `}
     >
@@ -42,20 +42,11 @@ export default function RootLayout({
       />
       <p>DashBoard</p>
     </li>,
-    <li
-      onClick={()=>{
-        router.push('/user/transfer/inittransfer')
-      }}
-      id="transfer"
-      className={`flex items-center gap-3 p-[0.4rem] mb-2 hover:cursor-pointer transition-all duration-100  rounded-lg m-2 `}
-    >
-     <img className="size-[1.3rem]" width="48" height="48" src="https://img.icons8.com/pulsar-line/48/online-money-transfer.png" alt="online-money-transfer"/>
-      <p>Transfer</p>
-    </li>,
+
     
 
     <li onClick={()=>{
-      router.push("/user/transaction")
+      router.push("/vendor/transaction")
     }} className="flex items-center gap-3 p-[0.4rem] mb-2 hover:cursor-pointer transition-all duration-100  rounded-lg m-2  ">
       <img
         className="size-5"
@@ -71,7 +62,7 @@ export default function RootLayout({
   useEffect(() => {
     if (status === "loading") return; // Wait for session to load
     if (!session) {
-      router.push("/signin"); // Redirect to login page
+      router.push("/"); // Redirect to login page
     }
   }, [session, status, router]);
 
@@ -83,9 +74,14 @@ export default function RootLayout({
     <div
       className={`h-[100vh]  bg-gradient-to-tr to-gray-50 from-gray-50 ${poppins.className}`}
     >
-      <div className="grid grid-cols-[20%,80%]    ">
-        <div className="relative mr-1">
-          <AppBar />
+      <div className="grid grid-cols-[20%_80%]">
+        <div className="relative mt-3 ml-5">
+
+        <div className={`flex gap-1 items-center ${poppins.className} `}>
+    <img width="30" height="40" src="https://img.icons8.com/pulsar-gradient/48/circled.png" alt="circled"/>
+      
+    <p className="font-normal  text-[1.2rem] bg-gradient-to-r from-blue-500  to-cyan-900 inline-block text-transparent bg-clip-text  ">PayTm</p>
+  </div> 
           {/* <Profile/> */}
 
           
@@ -115,7 +111,7 @@ export default function RootLayout({
         </div>
 
       <div>
-      <div className="pt-1 ml-2  text-gray-950">
+      <div className="pt-1 ml-2 mt-2  text-gray-950">
         <p>Hey,ranjit</p>
         <p className="text-gray-600 text-sm">Mondat, 29 march 2025</p>
       </div>
