@@ -107,6 +107,7 @@ const KotakLogin = () => {
                 amount:data?.amount,
                 user_indentifier:data?.userId
               });
+              console.log(data)
               setIsloading(false);
               router.push("/user/dashboard")
             }}

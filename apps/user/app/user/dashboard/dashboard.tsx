@@ -17,7 +17,7 @@ import {
   Legend,
 } from "recharts";
 import { Poppins } from "next/font/google";
-import { div, p } from "framer-motion/client";
+import { a, div, p } from "framer-motion/client";
 import Success from "@repo/ui/success";
 
 
@@ -57,7 +57,7 @@ export default function DashBoard() {
     { date: "Oct 1", spend: 900, revenue: 870 },
     { date: "Oct 3", spend: 870, revenue: 880 },
   ];
-  const [Amount,setAmout] = useState<number | undefined>(0)
+  const [Amount,setAmout] = useState<number | undefined>()
   useEffect(()=>{
     getBalance().then(data=>setAmout(data?.amount))
   },[])
@@ -73,7 +73,8 @@ export default function DashBoard() {
           <p className="font-medium  text-gray-500">Balance</p>
           <div className=" font-medium text-gray-900/90 text-3xl pb-3 ">{
             
-              Amount !== 0 ? `${Amount ? Amount / 100 : null} ` :<div className="bg-gray-200 p-3 w-20 rounded-lg"></div>
+              Amount !== null ? `${Amount ? Amount / 100 : 0} ` : Amount
+              
             }
            </div>
         </div>
