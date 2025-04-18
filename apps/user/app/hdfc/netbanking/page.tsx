@@ -3,6 +3,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { createOnRampTransaction } from "../../../lib/actions/createOnRamp";
+import axios from "axios";
+import { data } from "framer-motion/client";
+import { json } from "stream/consumers";
+
 const LoginPage = () => {
      
     const router = useRouter();
@@ -50,10 +54,14 @@ const LoginPage = () => {
             type="password"
             className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-blue-500 mb-6"
           />
-
+          
           <button className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
-          onClick={()=>{
+          onClick={async ()=>{
+           await axios.post("http://localhost:3004/hdfcWebhook", {
+            user_indentifier:session?.user.id,
+            amount:300,
             
+           })
           }} >
             CONTINUE
           </button>

@@ -1,8 +1,9 @@
-export default function({transaction,amount, date, time}:{
+export default function({transaction,amount, date, time,status}:{
   transaction:string,
   amount:number,
   date:string,
   time:string,
+  status:string
 }){
     return <tr>
     <td className="p-4 border-b border-blue-gray-50">
@@ -41,8 +42,9 @@ export default function({transaction,amount, date, time}:{
     <td className="p-4 border-b border-blue-gray-50">
       <div className="w-max">
         <div
-          className="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-yellow-900 uppercase rounded-md select-none whitespace-nowrap bg-yellow-500/20">
-          <span className="">Pending</span>
+        
+          className="relative grid items-center font-sans text-xs font-bold uppercase rounded-md select-none whitespace-nowrap ">
+          <span className={`${status === "Pending" ? "bg-yellow-500/20 text-yellow-900  px-2 py-1 rounded-md select-none whitespace-nowrap ":null}${status === "Success"? " bg-green-500/20 text-green-900  px-2 py-1 rounded-md ":null}`}> {status} </span>
         </div>
       </div>
     </td>

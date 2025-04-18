@@ -37,7 +37,7 @@ App.post("/hdfcWebhook", async (req,res)=>{
                     token:paymentInformation.token
                 },
                 data:{
-                    status:"Succes"
+                    status:"Success"
                 }
             })
     ])

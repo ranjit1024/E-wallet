@@ -4,6 +4,17 @@ import { useSession } from "next-auth/react";
 import Profile from "@repo/ui/profile"
 import { useEffect, useState } from "react";
 import { tr } from "framer-motion/client";
+declare module "next-auth" {
+  interface Session {
+    user: {
+      /** Your database’s user ID */
+      id: string;
+      name?: string | null;
+      email?: string | null;
+      image?: string | null;
+    };
+  }
+}
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -12,7 +23,7 @@ const poppins = Poppins({
 });
 export default function () {
   const router = useRouter();
-  const session = useSession();
+  const {data:session, status} = useSession();
   const [isProfile,setIsProfile] = useState(false)
 
   useEffect(()=>{
@@ -52,6 +63,7 @@ export default function () {
         }} >
         <img width="48" height="48" src="https://img.icons8.com/pulsar-gradient/48/nft-user.png" alt="nft-user"/>
         </div>
+       
 
 
       

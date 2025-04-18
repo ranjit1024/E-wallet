@@ -113,7 +113,7 @@ export default async function transaction(){
 
         {
           data.map((item,index)=>{
-            return <Record key={index} transaction={item.provider.toUpperCase()} amount={item.amount} date={item.startTime.toDateString()} time={item.startTime.toLocaleTimeString()}/>
+            return <Record key={index} transaction={item.provider.toUpperCase()} amount={item.amount} date={item.startTime.toDateString()} time={item.startTime.toLocaleTimeString()} status={item.status}/>
             
           })
         }
