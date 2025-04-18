@@ -1,5 +1,6 @@
 import express from "express"
 import db from "@repo/prisma/nodeclient";
+import cors from "cors"
 const App = express();
 
 App.get("/", (req,res)=>{
@@ -8,6 +9,7 @@ App.get("/", (req,res)=>{
     })
 });
 App.use(express.json())
+App.use(cors());
 
 App.post("/hdfcWebhook", async (req,res)=>{
     

@@ -20,7 +20,7 @@ export default function({transaction,amount, date, time,status}:{
     <td className="p-4 border-b border-blue-gray-50">
       
     
-           <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">{amount}</p>
+           <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">{`${amount / 100}.${amount% 100}`}</p>
   
         
       

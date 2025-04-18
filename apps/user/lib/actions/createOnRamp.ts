@@ -3,10 +3,11 @@ import db from '@repo/prisma/clinet'
 import { getServerSession } from "next-auth"
 import { authOptions } from "../auth"
 import { stringify } from 'querystring';
+import token from "@repo/token/repo"
 export async function  createOnRampTransaction(amount:number, provider:string){
     const session = await getServerSession(authOptions);
     const userId = session?.user?.id;
-    const token = String(Math.random()*10);
+
     if(!userId){
         return {
             message:"User not logged in"

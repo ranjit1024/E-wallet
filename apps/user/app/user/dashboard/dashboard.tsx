@@ -18,6 +18,7 @@ import {
 } from "recharts";
 import { Poppins } from "next/font/google";
 import { div, p } from "framer-motion/client";
+import Success from "@repo/ui/success";
 
 
 const poppins = Poppins({
@@ -66,12 +67,13 @@ export default function DashBoard() {
     <div
       className={`h-[100vh]  bg-gradient-to-tr to-gray-50 from-gray-50 ${poppins.className}`}
     >
+      {/* <Success/> */}
       <div className="mt-4 p-4 bg-white shadow-md rounded-xl m-3">
         <div className="flex justify-center gap-4 flex-col">
           <p className="font-medium  text-gray-500">Balance</p>
           <div className=" font-medium text-gray-900/90 text-3xl pb-3 ">{
             
-              Amount !== 0 ? Amount:<div className="bg-gray-200 p-3 w-20 rounded-lg"></div>
+              Amount !== 0 ? `${Amount ? Amount / 100 : null} ` :<div className="bg-gray-200 p-3 w-20 rounded-lg"></div>
             }
            </div>
         </div>

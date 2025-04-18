@@ -14,10 +14,12 @@
   "dependencies": {
     "@repo/prisma": "*",
     "@types/express": "^5.0.1",
+    "cors": "^2.8.5",
     "esbuild": "^0.25.2",
     "express": "^5.1.0"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   }
