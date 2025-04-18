@@ -55,19 +55,19 @@ export default function () {
           <button
             className="rounded-md mt-3 w-[100%] bg-blue-600 py-2 px-4 border border-transparent text-center text-md text-white transition-all shadow-md hover:shadow-lg focus:bg-blue-700 focus:shadow-none active:bg-blue-700 hover:bg-blue-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none hover:border-blue-800 "
             type="button"
-            onClick={()=>{
+            onClick={async ()=>{
 
               if(selectRef.current?.options?.selectedIndex === 0){
+                
                 const provider = "hdfc"
-                createOnRampTransaction(amount,provider);
                 window.open("http://localhost:3000/hdfc/netbanking", "traget_")
+                await createOnRampTransaction(amount,provider);
                 return;
               }
               else if(selectRef.current?.options?.selectedIndex === 1){
                 const provider = "kotak"
-                createOnRampTransaction(amount,provider)
                 window.open("http://localhost:3000/kotak/netbanking", "traget_")
-
+                await createOnRampTransaction(amount,provider)
                 return;
               }
 

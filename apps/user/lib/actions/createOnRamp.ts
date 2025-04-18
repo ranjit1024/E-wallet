@@ -12,18 +12,23 @@ export async function  createOnRampTransaction(amount:number, provider:string){
             message:"User not logged in"
         }
     }
-    await db.onRampTransaction.create({
-        data:{
-            status:'Pending',
-            amount:amount * 100,
-            provider:provider,
-            userId:userId,
-            startTime:new Date(),
-            token:token
-        }
-    })
-    return {
-        message:"On ramp transaction added"
+
+    try{
+
+        await db.onRampTransaction.create({
+            data:{
+                status:'Pending',
+                amount:amount * 100,
+                provider:provider,
+                userId:userId,
+                startTime:new Date(),
+                token:token
+            }
+        })
+        return token;
+    }
+    catch(e){
+        return "Failed"
     }
 
 }
