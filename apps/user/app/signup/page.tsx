@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
 import Error from "@repo/ui/toast"
+import Loader from "@repo/ui/loader";
 const poppins = Poppins({
   subsets: ["latin"], // Supports Latin characters
   weight: ["100", "400"], // Choose font weights
@@ -19,6 +20,7 @@ export default function () {
   const [password,setPassword] = useState("")
   const [error, setError] = useState(false);
   const [credentialsBlank, setCredentailBlank] = useState(false);
+  const [isLoading, setIsloading] = useState(false);
   // const email = useState("")
   const res = async () => {
 
@@ -50,6 +52,9 @@ export default function () {
     }
     {
       credentialsBlank ? <Error data="Enter details"/>:null
+    }
+    {
+      isLoading?<Loader/>:null
     }
       <div className="bg-[url('/safe.jpg')] h-[100%] w-[100%] bg-[#2cb2ed] bg-cover bg-no-repeat bg bg-center"></div>
       <div className=" flex pl-20 text-gray-900 bg-gradient-to-b from-gray-100 to-sky-100 w-[100%]  flex-col ">
@@ -124,7 +129,16 @@ export default function () {
             <button
               type="button"
               className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-              onClick={res}
+              onClick={ async()=>{
+                setIsloading(true)
+                const response = await res();
+                setIsloading(false);
+                setTimeout(()=>{
+                  setCredentailBlank(false);
+                  setError(false)
+                },3000)
+              }
+              }
             >
               Sign up
             </button>

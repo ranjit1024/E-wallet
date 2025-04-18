@@ -46,15 +46,30 @@ export const authOptions = {
                 throw new Error("email")
             }
             else{
-                const newUser = await db.user.create({
-                    data:{
-                        name:credentials.name,
-                        email:credentials.email,
-                        password:hashPassword
-                    }
+                try{
+                  const newUser = await db.user.create({
                     
-                });
-                
+                      data:{
+                          name:credentials.name,
+                          email:credentials.email,
+                          password:hashPassword
+                      }
+                      
+                      
+                  });
+                  const setBalance = await db.balance.create({
+                    data:{
+                      userId:newUser.id,
+                      amount:0,
+                      locked:0
+                    }
+                  })
+                  return newUser;
+                }
+                catch(e){
+                  return null;
+                }
+                  
             }
         }
 
@@ -76,6 +91,7 @@ export const authOptions = {
                   throw new Error("password mismatch")
                 }
                 else if(exixstUser && matchpassword){
+                  
                   console.log(exixstUser)
                   return exixstUser
                 }
