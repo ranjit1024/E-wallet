@@ -109,7 +109,8 @@ const KotakLogin = () => {
               });
               console.log(data)
               setIsloading(false);
-              router.push("/user/dashboard")
+              router.push("/user/dashboard");
+              
             }}
             className="w-full bg-green-300 text-white font-semibold py-2 rounded hover:bg-green-400 "
 
