@@ -6,8 +6,11 @@ export default async  function({amount,id}:{
     amount:number,
     id:number
 }){
+    const sendToken = String(Math.random())
+    const reciveToken = String(Math.random())
     const session = await getServerSession(authOptions);
     const userId = session?.user?.id;
+    const userName = session?.user?.name;
     const balceCheck = await db.balance.findFirst({
          where:{
             userId:userId
@@ -30,6 +33,17 @@ export default async  function({amount,id}:{
                 }
             }
         }),
+         db.onRampTransaction.create({
+            data:{
+                status:'Success',
+                token:sendToken,
+                provider:userName,
+                amount:amount,
+                userId:userId,
+                startTime: new Date(),
+                transfer:"send"
+            }
+        }),
 
         db.balance.update({
            where:{
@@ -40,7 +54,18 @@ export default async  function({amount,id}:{
                 increment:amount
             }
            }
-        })
+        }),
+        db.onRampTransaction.create({
+            data:{
+                status:'Success',
+                token:reciveToken,
+                provider:userName,
+                amount:amount,
+                userId:id,
+                startTime: new Date(),
+                transfer:'receive'
+            }
+        }),
 
        ])
        console.log("done")

@@ -22,11 +22,16 @@ export default function ({
       </td>
       <td className="p-4 border-b border-blue-gray-50">
         <p className={`${status === "Pending"? " text-yellow-900":null }
-        ${status === "Success" ? "text-green-900":null}
          ${transfer === "receive"?"text-green-900":null}
-          ${transfer === "send" ? "text-red-400":null}block font-sans text-sm antialiased font-medium leading-no text-green-gray-900`}>
+        ${status === "Success" ? "text-green-900":null}
+          ${transfer === "send" ? "text-red-900":null}
+          block font-sans text-sm antialiased font-medium leading-no text-green-gray-900`}>
+          {/* {transfer === "send"? `-${amount / 100}.${amount % 100}`  : null} */}
+          
+          {status === "Success" && transfer =="deposite"  ? `+ ${amount / 100}.${amount % 100}`  : null  }
 
-          {status === "Success" ? `+ ${amount / 100}.${amount % 100}`  : null  }
+          {status === "Success" && transfer == "recieve" ? `+ ${amount / 100}.${amount % 100}`  : null  }
+          {status === "Success" && transfer == "send" ? `- ${amount / 100}.${amount % 100}`  : null  }
           {status === "Pending" ? `${amount / 100}.${amount % 100}`  : null  }
 
           </p>
