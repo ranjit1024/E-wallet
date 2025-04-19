@@ -5,15 +5,21 @@ import { useRef, useState } from "react";
 import { createOnRampTransaction } from "../../../../lib/actions/createOnRamp";
 import { Providers } from "../../../../lib/providers";
 import { response } from "express";
+import Loader from "@repo/ui/insideLoader"
+import InsideLoader from "@repo/ui/loader";
 
 
 export default function () {
   const selectRef = useRef<HTMLSelectElement>(null);
   const router = useRouter();
   const [amount,setAmount] = useState<number>(0);
-  const [provider, setProvoder] = useState<string>("")
+  const [provider, setProvoder] = useState<string>("");
+  const [loading,setLoading]= useState(false)
   return (
     <div className="h-[80vh] flex justify-center items-center">
+      {
+        loading ? <InsideLoader/>:null
+      }
       <motion.div
         initial={{
           y: 20,

@@ -4,12 +4,14 @@ export default function ({
   date,
   time,
   status,
+  transfer
 }: {
   transaction: string;
   amount: number;
   date: string;
   time: string;
   status: string;
+  transfer:string
 }) {
   return (
     <tr>
@@ -19,7 +21,15 @@ export default function ({
         </p>
       </td>
       <td className="p-4 border-b border-blue-gray-50">
-        <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 ">{`${amount / 100}.${amount % 100}`}</p>
+        <p className={`${status === "Pending"? " text-yellow-900":null }
+        ${status === "Success" ? "text-green-900":null}
+         ${transfer === "receive"?"text-green-900":null}
+          ${transfer === "send" ? "text-red-400":null}block font-sans text-sm antialiased font-medium leading-no text-green-gray-900`}>
+
+          {status === "Success" ? `+ ${amount / 100}.${amount % 100}`  : null  }
+          {status === "Pending" ? `${amount / 100}.${amount % 100}`  : null  }
+
+          </p>
       </td>
       <td className="p-4 border-b border-blue-gray-50">
         <p className="block font-sans  text-sm antialiased font-normal leading-normal text-blue-gray-900">

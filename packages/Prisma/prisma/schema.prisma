@@ -45,6 +45,7 @@ model OnRampTransaction {
   amount  Int
   startTime DateTime
   userId  Int
+  transfer Method
   user User @relation(fields: [userId], references: [id])
 }
 
@@ -58,3 +59,9 @@ enum OnRampStatus{
   Pending
   failed
 } 
+
+enum Method{
+  send
+  receive
+  deposite
+}

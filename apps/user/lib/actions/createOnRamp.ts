@@ -3,6 +3,7 @@ import db from '@repo/prisma/clinet'
 import { getServerSession } from "next-auth"
 import { authOptions } from "../auth"
 import { stringify } from 'querystring';
+import { send } from 'process';
 
 export async function  createOnRampTransaction(amount:number, provider:string){
     const session = await getServerSession(authOptions);
@@ -23,7 +24,8 @@ export async function  createOnRampTransaction(amount:number, provider:string){
                 provider:provider,
                 userId:userId,
                 startTime:new Date(),
-                token:token
+                token:token,
+                transfer:"deposite"
             }
         })
         return token;

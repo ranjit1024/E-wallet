@@ -4,6 +4,9 @@ CREATE TYPE "Authtype" AS ENUM ('Google', 'Github');
 -- CreateEnum
 CREATE TYPE "OnRampStatus" AS ENUM ('Success', 'Pending', 'failed');
 
+-- CreateEnum
+CREATE TYPE "Method" AS ENUM ('send', 'receive');
+
 -- CreateTable
 CREATE TABLE "User" (
     "id" SERIAL NOT NULL,
@@ -43,6 +46,7 @@ CREATE TABLE "OnRampTransaction" (
     "amount" INTEGER NOT NULL,
     "startTime" TIMESTAMP(3) NOT NULL,
     "userId" INTEGER NOT NULL,
+    "transfer" "Method" NOT NULL,
 
     CONSTRAINT "OnRampTransaction_pkey" PRIMARY KEY ("id")
 );
