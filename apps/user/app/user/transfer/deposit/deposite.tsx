@@ -67,21 +67,22 @@ export default function () {
             onClick={ async()=>{
 
               if(selectRef.current?.options?.selectedIndex === 0){
-                console.log("dafda")
-          
-                createOnRampTransaction(amount,"hdfc").then(response => {
+                console.log("data2")
                 
-                  router.push("/hdfc/netbanking");
-                })
+                setLoading(true)
+                await createOnRampTransaction(amount,"hdfc");
+                setLoading(false);
+                router.push('/hdfc/netbanking')
                 
                 
               }
               else{
                 console.log("data")
                 
-                createOnRampTransaction(amount,"kotak").then(response => {
-                  router.push("/hdfc/netbanking")
-                })
+                setLoading(true)
+                await createOnRampTransaction(amount,"kotak");
+                setLoading(false);
+                router.push('/kotak/netbanking')
               }
 
              

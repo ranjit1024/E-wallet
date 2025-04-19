@@ -102,14 +102,17 @@ const KotakLogin = () => {
             onClick={async()=>{
               setIsloading(true)
               const data = await lastRamp();
-              await axios.post("http://localhost:3004/hdfcWebhook", {
-                token:data?.token,
-                amount:data?.amount,
-                user_indentifier:data?.userId
-              });
-              console.log(data)
-              setIsloading(false);
-              router.push("/user/dashboard");
+              if(data?.status === "Pending"){
+                await axios.post("http://localhost:3004/hdfcWebhook", {
+                  token:data?.token,
+                  amount:data?.amount,
+                  user_indentifier:data?.userId
+                });
+                setIsloading(false);
+                router.push("/user/dashboard")
+                return
+              }
+              router.push('/user/dashboard')
               
             }}
             className="w-full bg-green-300 text-white font-semibold py-2 rounded hover:bg-green-400 "
