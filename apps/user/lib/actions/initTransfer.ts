@@ -2,10 +2,23 @@
 import db from "@repo/prisma/clinet"
 import { authOptions } from "../auth"
 import { getServerSession } from "next-auth"
+import zod from "zod"
+
+const schma = zod.object({
+    amount:zod.number().gt(0),
+
+})
 export default async  function({amount,id}:{
     amount:number,
-    id:number
+    id:number,
+  
 }){
+    const {success} = schma.safeParse({
+        amount:amount
+    })
+    if(!success){
+        return "not valid"
+    }
     const sendToken = String(Math.random())
     const reciveToken = String(Math.random())
     const session = await getServerSession(authOptions);
@@ -20,6 +33,10 @@ export default async  function({amount,id}:{
     const balnace = balceCheck?.amount ?? 0;
     const userBalce  = balnace ;
     console.log(userBalce)
+    if(userId === id ){
+        console.log("same user ")
+        return "same user"
+    }
     if(userBalce >= amount){
         console.log("valid")
        await db.$transaction([

@@ -7,7 +7,7 @@ import { Providers } from "../../../../lib/providers";
 import ErrorCopmpo from "@repo/ui/Error"
 import Loader from "@repo/ui/insideLoader"
 import InsideLoader from "@repo/ui/loader";
-
+import Success from "@repo/ui/success";
 
 export default function () {
   const selectRef = useRef<HTMLSelectElement>(null);
@@ -24,6 +24,7 @@ export default function () {
       {
         isValid ? <ErrorCopmpo des="Kindy enter Valid Amount"/> : null
       }
+     
       <motion.div
         initial={{
           y: 20,
