@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import DashboardSkeleton from "@repo/ui/sceleton"
 import { Poppins } from "next/font/google";
+import { usePathname } from "next/navigation";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -21,7 +22,8 @@ export default function RootLayout({
   const { data: session, status } = useSession();
   const router = useRouter();
   const [isActive, setIsActive] = useState<number | null>();
-    const click = useRef<HTMLButtonElement>(null)
+    const click = useRef<HTMLButtonElement>(null);
+    const path = usePathname()
   // const itmes = ["DashBoard","Accounts","Trancaction", "Payee"];
 
   
@@ -30,10 +32,7 @@ export default function RootLayout({
     if (!session) {
       router.push("/signin"); // Redirect to login page
     }
-    else{
-
-      click.current?.focus();
-    }
+ 
    
   }, [session, status, router]);
 
@@ -59,17 +58,17 @@ export default function RootLayout({
         onClick={()=>{
           router.push('/user/transfer/inittransfer')
         }}
-        className="px-2 py-2  focus:bg-gray-50 transition-all ease-in-out duration-100 w-[33%] focus:rounded-xl focus:shadow-inner text-gray-800 focus:text-black">Transfer</button>
+        className={`px-2 py-2 ${path === "/user/transfer/inittransfer" ? "bg-gray-50 rounded-xl shadow-inner transition-all ease-in-out duration-100   ":null  } transition-all ease-in-out duration-100 w-[33%] focus:rounded-xl focus:shadow-inner text-gray-800 focus:text-black`}>Transfer</button>
         <button
         onClick={()=>{
           router.push("/user/transfer/withdraw")
         }}
-         className="px-2 py-2  focus:bg-gray-50 w-[33%] focus:rounded-xl focus:shadow-inner text-gray-800 focus:text-black">Withdrawal</button>
+         className={`px-2 py-2 ${path === "/user/transfer/withdraw" ? "bg-gray-50 rounded-xl shadow-inner transition-all ease-in-out duration-100" : null}  focus:bg-gray-50 w-[33%] focus:rounded-xl focus:shadow-inner text-gray-800 focus:text-black`}>Withdrawal</button>
         <button
         onClick={()=>{
           router.push("/user/transfer/deposit")
         }}
-        className="px-2 py-2  focus:bg-gray-50 focus:rounded-xl w-[33%] focus:shadow-inner text-gray-800 focus:text-black">Deposit</button>
+        className={`px-2 py-2 ${path === "/user/transfer/deposit" ? "bg-gray-50 rounded-xl shadow-inner transition-all ease-in-out duration-100" : null}  focus:bg-gray-50 focus:rounded-xl w-[33%] focus:shadow-inner text-gray-800 focus:text-black`}>Deposit</button>
         </div>
         
       </div>

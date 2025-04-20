@@ -17,12 +17,12 @@ export default function () {
   const [loading,setLoading]= useState(false)
   const [isValid,setIsValid]= useState(false)
   return (
-    <div className="h-[80vh] flex justify-center items-center">
+    <div className="h-[80vh] flex justify-center items-center ">
       {
         loading ? <InsideLoader/>:null
       }
       {
-        isValid ? <ErrorCopmpo/> : null
+        isValid ? <ErrorCopmpo des="Kindy enter Valid Amount"/> : null
       }
       <motion.div
         initial={{
@@ -78,7 +78,10 @@ export default function () {
                 console.log("response",response)
                 setLoading(false);
                 if(response === "not valid"){
-                  setIsValid(true)
+                  setIsValid(true);
+                  setTimeout(() => {
+                    setIsValid(false)
+                  }, 3000);
                   return
                 }
                 router.push('/hdfc/netbanking')

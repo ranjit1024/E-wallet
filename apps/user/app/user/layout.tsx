@@ -60,7 +60,7 @@ export default function RootLayout({
 
     <li onClick={()=>{
       router.push("/user/transaction")
-    }} className="flex items-center gap-3 p-[0.4rem] mb-2 hover:cursor-pointer transition-all duration-100  rounded-lg m-2  ">
+    }} className={`flex items-center gap-3 p-[0.4rem] mb-2 hover:cursor-pointer transition-all duration-100  rounded-lg m-2  ${pathname === '/user/transaction' ? "bg-white opacity-100 shadow-sm rounded-lg":null } `}>
       <img
         className="size-5"
         width="48"
