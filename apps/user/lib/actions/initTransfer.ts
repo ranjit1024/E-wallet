@@ -19,6 +19,7 @@ export default async  function({amount,id}:{
     if(!success){
         return "not valid"
     }
+
     const sendToken = String(Math.random())
     const reciveToken = String(Math.random())
     const session = await getServerSession(authOptions);
@@ -39,7 +40,10 @@ export default async  function({amount,id}:{
     }
     if(userBalce >= amount){
         console.log("valid")
-       await db.$transaction([
+    await db.$queryRaw `SELECT * FROM  "Balance" WHERE "userId" = ${Number(userId)} FOR UPDATE `;
+       await db.$transaction(
+        
+           [
         db.balance.update({
             where:{
                 userId:userId

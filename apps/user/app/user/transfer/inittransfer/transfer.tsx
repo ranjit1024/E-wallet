@@ -6,6 +6,7 @@ import { use, useState } from "react";
 import ErroCopm from "@repo/ui/Error"
 import { useSession } from "next-auth/react";
 import Loading from '@repo/ui/loader';
+import { useRouter } from "next/navigation";
 
 export default function () {
   const [userEmail, setUserEmail] = useState<string>("");
@@ -18,6 +19,7 @@ export default function () {
   const [insufficientBalance , setinsufficientBalace] =  useState(false);
   const [loading, setLoading] = useState(false)
   const session = useSession()
+  const router = useRouter()
   return (
     <div className="h-[80vh] relative flex justify-center items-center">
       {
@@ -158,9 +160,9 @@ export default function () {
                 return
               }
            
-              setTimeout(()=>{
-                setError(false)
-              },3000);
+              setLoading(false);
+              router.push("/user/dashboard")
+
 
               console.log(userId)
               console.log(amount)

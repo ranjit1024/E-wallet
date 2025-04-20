@@ -121,17 +121,18 @@ export const authOptions = {
       user:any
     }) {
       if (user) {
-        token.id = user.id; // attach id to token
+        token.id = user.id;
       }
       return token;
     },
   
     async session({ session, token }:{session:any, token:any}) {
       if (session?.user) {
-        session.user.id = token.id as string; // attach id to session
+        session.user.id = token.id as string;
       }
       return session;
     },
+
   },
 
 
