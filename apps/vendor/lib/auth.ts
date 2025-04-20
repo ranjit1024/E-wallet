@@ -8,11 +8,20 @@ export const authOptions = ({
         GoogleProvider({
             clientId:process.env.Clinet_ID!,
             clientSecret:process.env.GOOGLE_CLIENT_SECRET!,
-        })
+        }),
+       
     ],
+    calssback: {
+        async session({session,user}:any){
+            session.user.id = user.id;
+            return session;
+        }
+    },
+    
     pages:{
         signIn:"/"
     },
+
     
     secret:process.env.NEXTAUTH_SECRET
 })

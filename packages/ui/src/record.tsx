@@ -27,12 +27,22 @@ export default function ({
           ${transfer === "send" ? "text-red-900":null}
           block font-sans text-sm antialiased font-medium leading-no text-green-gray-900`}>
           {/* {transfer === "send"? `-${amount / 100}.${amount % 100}`  : null} */}
-          
-          {status === "Success" && transfer =="deposite"  ? `+ ${amount / 100}.${amount % 100}`  : null  }
+          {
+            status === "Success" ? transfer === "deposite" ? `+${amount / 100}.${amount % 100}`:null :null
+          }
+          {
+            status === "Success" ? transfer === "receive" ? `+${amount / 100}.${amount % 100}`:null :null
+          }
+          {
+            status === "Success" ? transfer === "send" ? `-${amount / 100}.${amount % 100}`:null :null
+          }
+          {
+            status === "Pending" ? transfer === "deposite" ? `${amount / 100}.${amount % 100}`:null :null
+          }
 
-          {status === "Success" && transfer == "recieve" ? `+ ${amount / 100}.${amount % 100}`  : null  }
-          {status === "Success" && transfer == "send" ? `- ${amount / 100}.${amount % 100}`  : null  }
-          {status === "Pending" ? `${amount / 100}.${amount % 100}`  : null  }
+       
+
+         
 
           </p>
       </td>

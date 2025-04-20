@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import { createOnRampTransaction } from "../../../../lib/actions/createOnRamp";
 import { Providers } from "../../../../lib/providers";
-import { response } from "express";
+import ErrorCopmpo from "@repo/ui/Error"
 import Loader from "@repo/ui/insideLoader"
 import InsideLoader from "@repo/ui/loader";
 
@@ -15,10 +15,14 @@ export default function () {
   const [amount,setAmount] = useState<number>(0);
   const [provider, setProvoder] = useState<string>("");
   const [loading,setLoading]= useState(false)
+  const [isValid,setIsValid]= useState(false)
   return (
     <div className="h-[80vh] flex justify-center items-center">
       {
         loading ? <InsideLoader/>:null
+      }
+      {
+        isValid ? <ErrorCopmpo/> : null
       }
       <motion.div
         initial={{
@@ -70,19 +74,30 @@ export default function () {
                 console.log("data2")
                 
                 setLoading(true)
-                await createOnRampTransaction(amount,"hdfc");
+                const response = await createOnRampTransaction(amount,"hdfc");
+                console.log("response",response)
                 setLoading(false);
+                if(response === "not valid"){
+                  setIsValid(true)
+                  return
+                }
                 router.push('/hdfc/netbanking')
                 
                 
               }
               else{
-                console.log("data")
+                console.log("data2")
                 
                 setLoading(true)
-                await createOnRampTransaction(amount,"kotak");
+                const response = await createOnRampTransaction(amount,"hdfc");
+                console.log("response",response)
                 setLoading(false);
+                if(response === "not valid"){
+                  setIsValid(true)
+                  return
+                }
                 router.push('/kotak/netbanking')
+                
               }
 
              

@@ -4,8 +4,25 @@ import { getServerSession } from "next-auth"
 import { authOptions } from "../auth"
 import { stringify } from 'querystring';
 import { send } from 'process';
+import zod from "zod"
+import { NextResponse } from 'next/server';
+import { error } from 'console';
+import { STATUS_CODES } from 'http';
 
-export async function  createOnRampTransaction(amount:number, provider:string){
+const zodSchma  = zod.object({
+    amount:zod.number().gt(0)
+})
+
+
+export async function  createOnRampTransaction(amount:number, provider:string, ){
+    const {success} = zodSchma.safeParse({
+        amount:amount
+    })
+    if(!success){
+        console.log("not valid");
+        return 'not valid'
+        
+    }
     const session = await getServerSession(authOptions);
     const userId = session?.user?.id;
     const token = String(Math.random())

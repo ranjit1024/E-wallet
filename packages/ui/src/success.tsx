@@ -2,7 +2,7 @@ import { div } from "framer-motion/client"
 
 export default function(){
 
-    return <div className="absolute top-4 z-10 right-3">
+    return <div className="absolute bottom-4 z-20 right-3">
     <li className=" flex flex-col gap-2 h-28   w-[50vh]">
     <div
       className="relative flex items-center gap-4 py-3 pl-4 pr-8 bg-white border shadow-2xl rounded-xl border-blue-gray-50 shadow-blue-gray-900/5">

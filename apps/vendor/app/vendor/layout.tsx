@@ -4,7 +4,7 @@ import AppBar from "@repo/ui/appBar";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import {Skeleton} from "@repo/ui/sceleton"
+import Skeleton from "@repo/ui/sceleton"
 import { Poppins } from "next/font/google";
 import Logo from "@repo/ui/logo";
 const poppins = Poppins({
