@@ -6,6 +6,7 @@ import { use, useState } from "react";
 import ErroCopm from "@repo/ui/Error"
 import { useSession } from "next-auth/react";
 import Loading from '@repo/ui/loader';
+
 export default function () {
   const [userEmail, setUserEmail] = useState<string>("");
   const [verify, setVerify] = useState<boolean>(false);
@@ -14,12 +15,16 @@ export default function () {
   const [userId, setUserid] = useState<number>(0);
   const [amount,setAmout] = useState<number>(0)
   const [error , setError] =  useState(false);
+  const [insufficientBalance , setinsufficientBalace] =  useState(false);
   const [loading, setLoading] = useState(false)
   const session = useSession()
   return (
     <div className="h-[80vh] relative flex justify-center items-center">
       {
         error ? <ErroCopm des="Enter Valid email or amount"/> : null
+      }
+      {
+        insufficientBalance ? <ErroCopm des="insufficient balance"/> : null
       }
       {
         loading ? <Loading/> : null
@@ -129,19 +134,33 @@ export default function () {
               console.log(session?.data?.user)
               if(respons === "not valid" || getUser === null){
                 setLoading(false)
-                setError(true)
-              }
-              if(respons === "same user"){
-                setLoading(false)
                 setError(true);
-              }
-              else{
                 setTimeout(()=>{
                   setError(false)
                 },3000);
-                
-
+                return
               }
+
+              if(respons === "same user"){
+                setLoading(false)
+                setError(true);
+                setTimeout(()=>{
+                  setError(false)
+                },3000);
+                return
+              }
+              if(respons === "insufficient balance"){
+                setLoading(false)
+                setinsufficientBalace(true);
+                setTimeout(()=>{
+                  setError(false)
+                },3000);
+                return
+              }
+           
+              setTimeout(()=>{
+                setError(false)
+              },3000);
 
               console.log(userId)
               console.log(amount)

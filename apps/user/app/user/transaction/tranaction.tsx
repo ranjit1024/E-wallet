@@ -10,7 +10,10 @@ async function getData(){
     const userid = session?.user?.id;
   const data = await db.onRampTransaction.findMany({
     where:{
-      userId:userid
+      userId:userid,
+    },
+    orderBy:{
+      startTime:"desc"
     }
   })
   return data

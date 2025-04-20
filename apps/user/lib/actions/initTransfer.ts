@@ -82,9 +82,13 @@ export default async  function({amount,id}:{
                 startTime: new Date(),
                 transfer:'receive'
             }
-        }),
+        }), 
 
        ])
        console.log("done")
+    }
+    else{
+        console.log("insufficent banalce");
+        return "insufficient balance"
     }
 }
