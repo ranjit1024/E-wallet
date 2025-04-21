@@ -76,6 +76,9 @@ export default function () {
           setUserName(getUser?.name);
           setUserid(getUser?.id);
         }
+        else{
+          setVerify(false)
+        }
 
    
          
