@@ -5,9 +5,7 @@ import { useRef, useState } from "react";
 import { createOnRampTransaction } from "../../../../lib/actions/createOnRamp";
 import { Providers } from "../../../../lib/providers";
 import ErrorCopmpo from "@repo/ui/Error"
-import Loader from "@repo/ui/insideLoader"
 import InsideLoader from "@repo/ui/loader";
-import Success from "@repo/ui/success";
 
 export default function () {
   const selectRef = useRef<HTMLSelectElement>(null);
@@ -73,7 +71,7 @@ export default function () {
 
               if(selectRef.current?.options?.selectedIndex === 0){
                 console.log("data2")
-                
+            
                 setLoading(true)
                 const response = await createOnRampTransaction(amount,"hdfc");
                 console.log("response",response)
@@ -85,6 +83,7 @@ export default function () {
                   }, 3000);
                   return
                 }
+
                 router.push('/hdfc/netbanking')
                 
                 

@@ -2,7 +2,7 @@ import express from "express"
 import db from "@repo/prisma/nodeclient";
 import cors from "cors"
 const App = express();
-
+const  port : number  = 3004;
 App.get("/", (req,res)=>{
     res.status(200).json({
         msg:'Healthy Server'
@@ -59,6 +59,6 @@ catch(e){
  
 })
 
-App.listen(3004, ()=>{
-    console.log('listing on port 3000')
+App.listen(port, ()=>{
+    console.log(`deposite sever listing on  ${port}`)
 })

@@ -25,6 +25,7 @@ export default function ({
          ${transfer === "receive"?"text-green-900":null}
         ${status === "Success" ? "text-green-900":null}
           ${transfer === "send" ? "text-red-900":null}
+          ${transfer === "withdraw" ? "text-red-900":null}
           block font-sans text-sm antialiased font-medium leading-no text-green-gray-900`}>
           {/* {transfer === "send"? `-${amount / 100}.${amount % 100}`  : null} */}
           {
@@ -35,6 +36,9 @@ export default function ({
           }
           {
             status === "Success" ? transfer === "send" ? `-${amount / 100}.${amount % 100}`:null :null
+          }
+          {
+            status === "Success" ? transfer === "withdraw" ? `-${amount / 100}.${amount % 100}`:null :null
           }
           {
             status === "Pending" ? transfer === "deposite" ? `${amount / 100}.${amount % 100}`:null :null

@@ -8,6 +8,8 @@ import { useSession } from "next-auth/react";
 import Loading from "@repo/ui/loader"
 import Error from "@repo/ui/Error"
 
+import depositeValidation from "../../../../lib/actions/depositeValidation";
+
 export default function () {
   const selectRef = useRef<HTMLSelectElement>(null);
   const router = useRouter();
@@ -16,6 +18,8 @@ export default function () {
   const [amount,setAmount] = useState<number>(0);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [insuffeicentBalace, setInsuffectbalacne] = useState(false);
+
   return (
     <div className="h-[80vh] flex justify-center items-center">
       {
@@ -23,6 +27,9 @@ export default function () {
       }
       {
         isError ? <Error des="Enter Correct Input"/> : null
+      }
+      {
+        insuffeicentBalace ? <Error des="insufficient balance"/> : null
       }
       <motion.div
         initial={{
@@ -67,9 +74,23 @@ export default function () {
 
           <button
             onClick={async ()=>{
+              const id = Number(session.data?.user.id);
               console.log(selectRef.current?.value);
               setIsLoading(true);
               const provider = selectRef.current?.value;
+              const validation = await depositeValidation({
+                 
+                  senderAmout:amount
+              })
+              if(validation === "insufficent balance"){
+                setInsuffectbalacne(true);
+                setIsLoading(false);
+                setTimeout(() => {
+                      setInsuffectbalacne(false)
+                    }, 3000);
+                return
+              }
+              console.log(validation)
               const response = await WithdrawMoney({
                 provider:String(provider),
                 amount:amount
@@ -86,7 +107,8 @@ export default function () {
               router.push("/withdraw/netbanking");
              
               setIsLoading(false)
-            }}
+            }
+          }
             className="rounded-md mt-3 w-[100%] bg-blue-600 py-2 px-4 border border-transparent text-center text-md text-white transition-all shadow-md hover:shadow-lg focus:bg-blue-700 focus:shadow-none active:bg-blue-700 hover:bg-blue-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none "
             type="button"
           >

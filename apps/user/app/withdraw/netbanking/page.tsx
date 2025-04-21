@@ -24,6 +24,9 @@ const KotakLogin = () => {
     <div className="min-h-screen flex flex-col md:flex-row items-center justify-center bg-white px-4 py-10">
       {isloding?<Loader/>:null}
       {/* Left Illustration */}
+      {
+        JSON.stringify(session?.user.id)
+      }
       <div className="flex-1 flex items-center justify-center mb-8 md:mb-0">
         <div className="text-center">
           <img
@@ -100,7 +103,23 @@ const KotakLogin = () => {
 
           <button
             onClick={async()=>{
-              
+              setIsloading(true)
+              const data = await lastRamp();
+              console.log("dfasdf",data)
+              if(data?.status === "Pending" && data?.transfer==="withdraw"){
+
+                const response = await axios.post("http://localhost:3005/depositewebhook", {
+                  token:data?.token,
+                  amount:data?.amount,
+                  user_indentifier:data?.userId
+                });
+                console.log(response)
+
+                setIsloading(false);
+                router.push("/user/dashboard")
+                return
+              }
+              router.push('/user/dashboard')
             }}
             className="w-full bg-red-300 text-white font-semibold py-2 rounded hover:bg-red-400 "
 

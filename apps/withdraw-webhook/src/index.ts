@@ -3,6 +3,7 @@ import db from "@repo/prisma/nodeclient";
 import cors from "cors"
 import session from "express-session";
 const App = express();
+const port : number = 3005;
 import { getServerSession } from "next-auth";
 App.get("/", (req,res)=>{
     res.status(200).json({
@@ -13,7 +14,7 @@ App.use(express.json())
 App.use(cors());
 
 App.post("/depositewebhook", async (req,res)=>{
-
+  
     const paymentInformation = {
         token:req.body.token,
         userId:req.body.user_indentifier,
@@ -23,16 +24,16 @@ App.post("/depositewebhook", async (req,res)=>{
     console.log(req.body.token)
     try{
       
-        await db.$transaction(async (tx) =>{
+        await db.$transaction([
 
-          
+                     
              db.balance.update({
                 where:{
                     userId:paymentInformation.userId
                 },
                 data:{
                     amount:{
-                        increment:paymentInformation.amount
+                        decrement:paymentInformation.amount
                     }
                 }
             }),
@@ -45,7 +46,7 @@ App.post("/depositewebhook", async (req,res)=>{
                     status:"Success"
                 }
             })
-    })
+    ])
     
    
 
@@ -62,6 +63,6 @@ catch(e){
  
 })
 
-App.listen(3004, ()=>{
-    console.log('listing on port 3000')
+App.listen(port, ()=>{
+    console.log(`Withdraw sever listing on ${port}`)
 })
