@@ -64,4 +64,5 @@ enum Method{
   send
   receive
   deposite
+  withdraw
 }

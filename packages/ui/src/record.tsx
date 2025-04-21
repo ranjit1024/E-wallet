@@ -14,7 +14,7 @@ export default function ({
   transfer:string
 }) {
   return (
-    <tr>
+    <tr className="hover:bg-gray-300/10 hover:cursor-pointer transition-all duration-105 hover:shadow-sm hover:rounded-lg hover:scale-[101%]">
       <td className="p-4 border-b border-blue-gray-50">
         <p className="block font-sans text-sm antialiased font-bold leading-normal text-blue-gray-900">
           {transaction}
@@ -39,6 +39,9 @@ export default function ({
           {
             status === "Pending" ? transfer === "deposite" ? `${amount / 100}.${amount % 100}`:null :null
           }
+          {
+            status === "Pending" ? transfer === "withdraw" ? `-${amount / 100}.${amount % 100}`:null :null
+          }
 
        
 
@@ -47,7 +50,7 @@ export default function ({
           </p>
       </td>
       <td className="p-4 border-b border-blue-gray-50">
-        <p className="block font-sans  text-sm antialiased font-normal leading-normal text-blue-gray-900">
+        <p className="block font-sans  text-sm antialiased fhttps://jsfiddle.net/ont-normal leading-normal text-blue-gray-900">
           {date}
         </p>
       </td>
@@ -63,11 +66,12 @@ export default function ({
           </div>
         </div>
       </td>
+     
       <td className="p-4 border-b border-blue-gray-50">
         <div className="flex items-center gap-3">
           <div className="flex flex-col">
             <p className="block font-sans text-sm antialiased font-normal leading-normal capitalize text-blue-gray-900">
-              payTM
+              {transfer}
             </p>
             <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
               {time}

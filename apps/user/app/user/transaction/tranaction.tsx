@@ -79,7 +79,7 @@ export default async function transaction(){
   </div>
 
   <div className="p-6 px-0 overflow-hidden">
-    <table className="w-full text-left table-auto min-w-max">
+    <table className="w-full text-left table-auto min-w-max ">
       <thead>
         <tr>
           <th className="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
@@ -102,9 +102,10 @@ export default async function transaction(){
               Status
             </p>
           </th>
+         
           <th className="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
             <p className="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
-              Account
+              Transaction Type
             </p>
           </th>
           

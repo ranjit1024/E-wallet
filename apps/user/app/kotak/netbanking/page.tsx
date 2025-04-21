@@ -21,17 +21,18 @@ const KotakLogin = () => {
         }
     },[session,status,router])
   return (
-    <div className="min-h-screen flex flex-col md:flex-row items-center justify-center bg-gray-50 px-4 py-10">
+    <div className="min-h-screen flex flex-col md:flex-row items-center justify-center bg-white px-4 py-10">
       {isloding?<Loader/>:null}
       {/* Left Illustration */}
       <div className="flex-1 flex items-center justify-center mb-8 md:mb-0">
         <div className="text-center">
           <img
-            src="https://cdn-icons-png.flaticon.com/512/2020/2020936.png"
+            src="https://img.freepik.com/premium-vector/donation-charity-flat-illustrations_9206-24104.jpg?w=740"
             alt="Illustration"
-            className="w-64 mx-auto mb-4"
+            
+            className="w-[60vh] mx-auto mb-4"
           />
-          <p className="text-lg font-semibold text-blue-800">Transfer,Desposit,Withdraw</p>
+          <p className="text-lg font-semibold text-blue-800">Transfer,Deposit,Withdrawal</p>
           <p className="text-sm text-gray-600">
             Make everyday effortless and uninterrupted
           </p>
@@ -92,7 +93,7 @@ const KotakLogin = () => {
           </div>
 
           <p className="text-xs text-gray-500 mb-4">
-            By clicking on ‘Secure login’, you accept that you have read our{" "}
+            By clicking on ‘Deposite’, you accept that you have read our{" "}
             <a href="#" className="underline text-blue-600">Terms & conditions</a>,{" "}
             <a href="#" className="underline text-blue-600">Privacy Policy</a> and the{" "}
             <a href="#" className="underline text-blue-600">Tips for Safe Banking</a>
@@ -117,7 +118,7 @@ const KotakLogin = () => {
             className="w-full bg-green-300 text-white font-semibold py-2 rounded hover:bg-green-400 "
 
           >
-            Secure login
+            Deposit
           </button>
         </div>
       </div>
