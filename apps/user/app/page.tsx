@@ -10,7 +10,7 @@ import side from "./side.png"
 
 const monaSans = Mona_Sans({
   subsets: ["latin"], // Supports Latin characters
-  weight: ["400", "700", "900"], // Choose font weights
+  weight: ["400", "600", "700", "900"], // Choose font weights
   style: ["normal", "italic"], // Choose styles
   variable: "--font-poppins", // Optional: Use CSS variable
 });
@@ -48,11 +48,11 @@ export default function Home() {
     </div>
 
 
-    <div className="z-190 text-center flex items-center justify-center w-[100%] -mt-3">
-      <p className="w-[60%]">
+    <div className="z-190 text-center flex items-center justify-center w-[100%] -mt-">
+      <p className="w-[75%] text-lg text-gray-700">
       Paytm is a secure and reliable platform for transferring money between banks, ensuring every transaction is protected by advanced encryption.</p> </div>
 
-    <div className="z-190 relative text-center flex items-center justify-center w-[100%] mt-8 gap-5">
+    <div className="z-190 relative text-center flex items-center justify-center w-[100%] mt-10 gap-5">
  
  <div>
 <button
@@ -81,11 +81,11 @@ Get started
 
   <div className=" mt-10 flex justify-center w-[100%] items-center gap-12 px-[12%] pt-20">
 
-    <div className="size-[90%]  p-2 bg-[#fff5e4]  rounded-md">
+    <div className="size-[90%]  px-2 bg-[#fff5e4]  rounded-xl">
 
     <img src="./test.png" alt="" className="h-[50%]" />
     </div>
-    <div className="size-[90%]  p-5 bg-gray-50  rounded-md">
+    <div className="size-[90%]  p-5 bg-gray-50  rounded-xl">
 
     <img src="./second_side.png" alt="" className="h-[50%]" />
     </div>
@@ -94,8 +94,111 @@ Get started
 
   
   </div>
-   </div> 
 
+
+  <div className="mt-[10%] relative flex items-center justify-center flex-col">
+  <p className="text-[7vh] w-[70%] text-center font-semibold leading-tight">
+
+    Meet our most popular feature  to eastablist smooth transaction
+  </p>
+ 
+  <div className="absolute left-[15%] opacity-50 rotate-45 top-[65%]">
+  <img width="48" height="80" src="https://img.icons8.com/officel/80/kite-shape.png" alt="kite-shape"/>
+  </div>
+  <div className="absolute right-[15%] opacity-50 rotate-90 -top-[8%]">
+  <img width="48" height="48" src="https://img.icons8.com/emoji/48/eight-spoked-asterisk-emoji.png" alt="eight-spoked-asterisk-emoji"/>
+  </div>
+   </div> 
+   <div>
+
+  <p className="mt-4 text-center text-gray-700 text-lg">Paytm is a secure and trusted platform to save money </p>
+   </div>
+
+   <div className="all cards grid grid-cols-3 px-40 mt-12 gap-10 ">
+
+    <div className=" border-2 border-gray-200 p-5 rounded-xl hover:shadow-2xl duration-500 hover:cursor-pointer ">
+    <div className="p-5 flex flex-col">
+      <div className="bg-[#ffe9ca] p-2 rounded-2xl w-[20%]">
+
+    <img width="48" height="48" src="https://img.icons8.com/fluency-systems-regular/48/FAB005/privacy--v1.png" alt="privacy--v1"/>
+      </div>
+
+      <div className="mt-5 font-semibold text-[1.2rem] ">
+      Safe Account
+      </div>
+      <div className="mt-5 font-normal text-[1rem] text-gray-800 w-[90%] ">
+      Paytm is a reliable and secure platform for managing your deposits and withdrawals, ensuring peace of mind for your financial transactions.
+      </div>
+
+    </div>
+    </div>
+
+    <div className=" border-2 border-gray-200 p-5 rounded-xl hover:shadow-2xl duration-500 hover:cursor-pointer ">
+    <div className="p-5 flex flex-col">
+      <div className="bg-blue-500/50 p-2 rounded-2xl w-[20%]">
+
+      <img width="48" height="48" src="https://img.icons8.com/carbon-copy/100/228BE6/data-in-both-directions--v1.png" alt="data-in-both-directions--v1"/>
+      </div>
+
+      <div className="mt-5 font-semibold text-[1.2rem] ">
+        Easy Transaction
+      </div>
+      <div className="mt-5 font-normal text-[1rem] text-gray-800 w-[90%] ">
+      Paytm is one of the easy and hassle-free ways to transfer money across the banks or send it to other users
+      </div>
+
+    </div>
+    </div>
+
+    <div className=" border-2 border-gray-200 p-5 rounded-xl hover:shadow-2xl duration-500 hover:cursor-pointer">
+    <div className="p-5 flex flex-col">
+      <div className="bg-purple-500/50 p-2 rounded-2xl w-[20%]">
+
+      <img width="58" height="58" src="https://img.icons8.com/carbon-copy/100/7950F2/payment-history.png" alt="payment-history"/>
+      </div>
+
+      <div className="mt-5 font-semibold text-[1.2rem] ">
+        Smooth Payment
+      </div>
+      <div className="mt-5 font-normal text-[1rem] text-gray-800 w-[90%] ">
+      With Paytm, you can rest assured that your funds will be credited to your account within just 48 hours of your withdrawal reques
+      </div>
+
+    </div>
+    </div>
+
+   </div>
+
+   <div className="mt-24">
+    <div className="px-[11%] flex gap-10">
+      <div className="w-[50%] p-1 bg-[#fce8cc] rounded-lg">
+        <img src="./thirdSection.png" alt="" />
+      </div>
+
+      <div className="w-[50%] flex flex-col items-center gap-5 relative">
+      <div className="text-[2.3rem] font-semibold w-[100%] ">
+      Boost your withdrawal and deposit tracking for better money management
+      </div>
+      <p className="mt-4 text-[1.2rem] font-medium text-gray-800">Paytm comes with full transaction history for better understanding of your spending.</p>
+      <div className="absolute bottom-0 left-0 flex gap-10 items-center justify-center">
+        <div className="bg-blue-500/50 p-5 shadow-2xl rounded-xl ">
+          <p className="font-semibold text-xl text-center">7+</p>
+          <p className="text-lg">Experience</p>
+        </div>
+        <div className="bg-green-500/50 p-5 shadow-2xl rounded-xl px-10 ">
+          <p className="font-semibold text-xl text-center">7+</p>
+          <p className="text-lg">Awards</p>
+        </div>
+        <div className="bg-indigo-500/50 p-5 px-10 shadow-2xl rounded-xl  ">
+          <p className="font-semibold text-xl text-center">30k+</p>
+          <p className="text-lg">Clients</p>
+        </div>
+      </div>
+      </div>
+
+    </div>
+   </div>
+</div>
 
   );
 }
