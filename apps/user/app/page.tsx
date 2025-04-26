@@ -6,7 +6,7 @@ import { Player } from "@lottiefiles/react-lottie-player";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import Logo from "@repo/ui/logo";
-
+import side from "./side.png"
 
 const monaSans = Mona_Sans({
   subsets: ["latin"], // Supports Latin characters
@@ -48,8 +48,54 @@ export default function Home() {
     </div>
 
 
-    <div className="z-190">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, consequatur asperiores? Quod eveniet ullam ipsa atque, quos inventore veniam exercitationem laboriosam architecto corrupti animi, quasi nesciunt tempora dolor unde. Dolor debitis, quis voluptatem perferendis aliquam dicta voluptates tempore dolores libero expedita atque officiis dolore doloribus aliquid at omnis deleniti adipisci.</div>
+    <div className="z-190 text-center flex items-center justify-center w-[100%] -mt-3">
+      <p className="w-[60%]">
+      Paytm is a secure and reliable platform for transferring money between banks, ensuring every transaction is protected by advanced encryption.</p> </div>
 
+    <div className="z-190 relative text-center flex items-center justify-center w-[100%] mt-8 gap-5">
+ 
+ <div>
+<button
+onClick={()=>{
+  signIn()
+}}
+className="rounded-xl bg-slate-950 py-2 px-8 border border-transparent text-center text-md text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-800 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none font-medium " type="button">
+  
+Get started
+</button>
+
+</div>
+
+<div className="">
+  <img className="h-10" src="./side.png" alt="" />
+</div>
+<div className="absolute opacity-50 right-[20%] -top-4">
+  <img className="h-10" src="./side2.png" alt="" />
+</div>
+<div className="absolute opacity-40 left-[20%] top-3">
+<img width="40" height="50" src="https://img.icons8.com/ios-filled/50/FA5252/play--v1.png" alt="play--v1"/>
+</div>
+
+    </div>
+
+
+  <div className=" mt-10 flex justify-center w-[100%] items-center gap-12 px-[12%] pt-20">
+
+    <div className="size-[90%]  p-2 bg-[#fff5e4]  rounded-md">
+
+    <img src="./test.png" alt="" className="h-[50%]" />
+    </div>
+    <div className="size-[90%]  p-5 bg-gray-50  rounded-md">
+
+    <img src="./second_side.png" alt="" className="h-[50%]" />
+    </div>
+   
+
+
+  
+  </div>
    </div> 
+
+
   );
 }

@@ -62,7 +62,7 @@ export default function () {
         }
       
       {/* {error && <p className="text-red-500 mb-4">{getErrorMessage()}</p>} */}
-      <div className="bg-[url('/safe.jpg')] bg-cover bg-center"></div>
+      <div className="bg-[url('/safe.jpg')]  bg-cover bg-center bg-transparent bg-no-repeat bg-[#99a4c4]"></div>
       {
         credentialsError ? <Error data="Email or password is invalid"/>:null
       }
@@ -70,7 +70,7 @@ export default function () {
         credentialsBlank?<Error data="Enter details"></Error>:null
       }
 
-      <div className=" flex pl-20 text-gray-900 bg-gradient-to-b from-gray-50 to-blue-50  w-[100%]  flex-col shadow-lg bg-whi rounded-xl p-10 ">
+      <div className=" flex pl-20 text-gray-900 bg-gradient-to-b from-[#e4fff9] to-blue-50  w-[100%]  flex-col shadow-sm p-10 ">
         <div className="text-[7vh] mb-5">
           <div className="text-center w-[50%] m-auto pt-5 pb-12">
             <div className={`flex items-center justify-center  w-[20vh] `}>
