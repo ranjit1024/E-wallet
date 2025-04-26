@@ -194,11 +194,23 @@ whileTap={{ scale: 0.95 }}
 
       <div className="all cards grid grid-cols-3 px-40 mt-12 gap-10 ">
         <motion.div 
-   initial={{ opacity: 0, x:-100, scale:0.6 }}
-   whileInView={{ opacity: 1, x:0, scale:1}}
-   transition={{ duration: 0.1, ease:"easeInOut",  }}
-   viewport={{once:true, amount:1}}
-        className=" border-2 border-gray-200 p-5 rounded-xl hover:shadow-2xl duration-500 hover:cursor-pointer ">
+      initial={{ opacity: 0, y: 50, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, amount: 0.5 }}
+      transition={{
+        duration: 0.8,
+        ease: [0.22, 1, 0.36, 1], // Professional bounce-out curve (easeOutExpo)
+      }}
+      whileHover={{
+        scale: 1.03,
+        transition: { duration: 0.3 },
+        boxShadow: "0 12px 30px rgba(0,0,0,0.1)",
+      }}
+      
+  
+     
+      
+        className=" border-2 border-gray-200 p-5 rounded-xl  hover:cursor-pointer ">
           <div className="p-5 flex flex-col">
             <div className="bg-[#ffe9ca] p-2 rounded-2xl w-[20%]">
               <img
@@ -221,11 +233,20 @@ whileTap={{ scale: 0.95 }}
         </motion.div>
 
         <motion.div
-           initial={{ opacity: 0, x:-100, scale:0.6 }}
-           whileInView={{ opacity: 1, x:0, scale:1}}
-           transition={{ duration: 0.1, ease:"easeInOut", delay:0.1 }}
-           viewport={{once:true, amount:1}}
-        className=" border-2 border-gray-200 p-5 rounded-xl hover:shadow-2xl duration-500 hover:cursor-pointer ">
+          initial={{ opacity: 0, y: 50, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{
+            duration: 0.8,
+            ease: [0.22, 1, 0.36, 1], // Professional bounce-out curve (easeOutExpo)
+            delay:0.1
+          }}
+          whileHover={{
+            scale: 1.03,
+            transition: { duration: 0.3 },
+            boxShadow: "0 12px 30px rgba(0,0,0,0.1)",
+          }}
+        className=" border-2 border-gray-200 p-5 rounded-xl  hover:cursor-pointer ">
           <div className="p-5 flex flex-col">
             <div className="bg-blue-500/50 p-2 rounded-2xl w-[20%]">
               <img
@@ -247,11 +268,20 @@ whileTap={{ scale: 0.95 }}
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x:-100, scale:0.6 }}
-          whileInView={{ opacity: 1, x:0, scale:1}}
-          transition={{ duration: 0.1, ease:"easeInOut", delay:0.2}}
-          viewport={{once:true, amount:1}}
-        className=" border-2 border-gray-200 p-5 rounded-xl hover:shadow-2xl duration-500 hover:cursor-pointer">
+         initial={{ opacity: 0, y: 50, scale: 0.95 }}
+         whileInView={{ opacity: 1, y: 0, scale: 1 }}
+         viewport={{ once: true, amount: 0.5 }}
+         transition={{
+           duration: 0.8,
+           ease: [0.22, 1, 0.36, 1],
+           delay:0.2 // Professional bounce-out curve (easeOutExpo)
+         }}
+         whileHover={{
+           scale: 1.03,
+           transition: { duration: 0.3 },
+           boxShadow: "0 12px 30px rgba(0,0,0,0.1)",
+         }}
+        className=" border-2 border-gray-200 p-5 rounded-xl  hover:cursor-pointer">
           <div className="p-5 flex flex-col">
             <div className="bg-purple-500/50 p-2 rounded-2xl w-[20%]">
               <img
@@ -278,8 +308,11 @@ whileTap={{ scale: 0.95 }}
           <motion.div 
            initial={{ opacity: 0, x:-20, }}
            whileInView={{ opacity: 1, x:0,  }}
-           transition={{ duration: 1, ease:"easeInOut", delay:0.6}}
-           viewport={{once:true, amount:.5}} className="w-[50%] p-1 bg-[#fce8cc] rounded-lg">
+           transition={{ duration: 0.6, ease:"easeInOut",}}
+           viewport={{once:true, amount:.2}} className="w-[50%] p-1 bg-[#fce8cc] rounded-lg"
+        
+           >
+          
             <img src="./thirdSection.png" alt="" />
           </motion.div>
 
@@ -287,7 +320,7 @@ whileTap={{ scale: 0.95 }}
       
           initial={{ opacity: 0, x:20, }}
           whileInView={{ opacity: 1, x:0,  }}
-          transition={{ duration: 1, ease:"easeInOut"}}
+          transition={{ duration: 0.6, ease:"easeInOut"}}
           viewport={{once:true, amount:.2}} 
         
           className="w-[50%] flex flex-col items-center gap-5 relative">
