@@ -22,7 +22,20 @@ export default function Home() {
       <div className="mt-2 ml-2">
         <Logo />
       </div>
-      <div className="flex flex-col justify-center relative  items-center mx-20 mt-20 p-4 text-[5.4vw] font-semibold text-center">
+      <motion.div 
+      initial={{
+        y:10,
+        opacity:0
+      }}
+      animate={{
+        y:0,
+        opacity:1
+      }}
+      transition={{
+        duration:0.5,
+        ease:"easeIn"
+      }}
+      className="flex flex-col justify-center relative  items-center mx-20 mt-20 p-4 text-[5.4vw] font-semibold text-center">
         <div className="text-center w-[80vw]">
           Safeguard your{" "}
           <span className="relative w-[100%]">
@@ -52,18 +65,49 @@ export default function Home() {
           />
         </div>
         <div className="absolute bottom-14  left-[40vh] -rotate-90 opacity-80  transition-all bg-yellow-400 p-1 rounded-full"></div>
-      </div>
+      </motion.div>
 
-      <div className="z-190 text-center flex items-center justify-center w-[100%] -mt-">
+      <motion.div 
+      initial={{
+        y:20,
+        opacity:0,
+      }}
+      animate={{
+        y:0,
+        opacity:1
+      }}
+      transition={{
+        duration:0.5,
+        delay:0.2
+
+      }}
+      className="z-190 text-center flex items-center justify-center w-[100%] -mt-">
         <p className="w-[75%] text-lg text-gray-700">
           Paytm is a secure and reliable platform for transferring money between
           banks, ensuring every transaction is protected by advanced encryption.
         </p>{" "}
-      </div>
+      </motion.div>
 
-      <div className="z-190 relative text-center flex items-center justify-center w-[100%] mt-10 gap-5">
+      <motion.div
+      initial={{
+        scale:0.6,
+        opacity:0
+      }} 
+      animate={{
+        scale:1,
+        opacity:1
+      }}
+      transition={{
+        duration:0.7,
+        ease:"easeOut",
+        delay:0.4
+      }}
+      className="z-190 relative text-center flex items-center justify-center w-[100%] mt-10 gap-5">
         <div>
-          <button
+          <motion.button
+
+whileHover={{ scale: 1.05 }}
+whileTap={{ scale: 0.95 }}
             onClick={() => {
               signIn();
             }}
@@ -71,7 +115,7 @@ export default function Home() {
             type="button"
           >
             Get started
-          </button>
+          </motion.button>
         </div>
 
         <div className="">
@@ -88,18 +132,38 @@ export default function Home() {
             alt="play--v1"
           />
         </div>
-      </div>
+      </motion.div>
 
-      <div className=" mt-10 flex justify-center w-[100%] items-center gap-12 px-[12%] pt-20">
+      <motion.div 
+       initial={{ y: -10, opacity: 0 }}
+       animate={{ y: 0, opacity: 1 }}
+       transition={{ duration: 1, delay: 1 }}
+      className=" mt-10 flex justify-center w-[100%] items-center gap-12 px-[12%] pt-20">
         <div className="size-[90%]  px-2 bg-[#fff5e4]  rounded-xl">
           <img src="./test.png" alt="" className="h-[50%]" />
         </div>
         <div className="size-[90%]  p-5 bg-gray-50  rounded-xl">
           <img src="./second_side.png" alt="" className="h-[50%]" />
         </div>
-      </div>
+      </motion.div>
 
-      <div className="mt-[10%] relative flex items-center justify-center flex-col">
+
+      <motion.div 
+      initial={{
+        opacity:0,
+        y:10
+      }}
+      
+      whileInView={{
+        opacity:1,
+        y:0
+      }}
+      transition={{
+        duration:0.7
+      }}
+      viewport={{ once: true,amount:0.5}}
+      
+      className="mt-[10%] relative flex items-center justify-center flex-col">
         <p className="text-[7vh] w-[70%] text-center font-semibold leading-tight">
           Meet our most popular feature to eastablist smooth transaction
         </p>
@@ -120,7 +184,7 @@ export default function Home() {
             alt="eight-spoked-asterisk-emoji"
           />
         </div>
-      </div>
+      </motion.div>
       <div>
         <p className="mt-4 text-center text-gray-700 text-lg">
           Paytm is a secure and trusted platform to save money{" "}
@@ -128,7 +192,12 @@ export default function Home() {
       </div>
 
       <div className="all cards grid grid-cols-3 px-40 mt-12 gap-10 ">
-        <div className=" border-2 border-gray-200 p-5 rounded-xl hover:shadow-2xl duration-500 hover:cursor-pointer ">
+        <motion.div 
+   initial={{ opacity: 0, x:-100, scale:0.6 }}
+   whileInView={{ opacity: 1, x:0, scale:1}}
+   transition={{ duration: 0.2, ease:"backInOut", delay:0.1 }}
+   viewport={{once:true, amount:1}}
+        className=" border-2 border-gray-200 p-5 rounded-xl hover:shadow-2xl duration-500 hover:cursor-pointer ">
           <div className="p-5 flex flex-col">
             <div className="bg-[#ffe9ca] p-2 rounded-2xl w-[20%]">
               <img
@@ -148,9 +217,14 @@ export default function Home() {
               transactions.
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        <div className=" border-2 border-gray-200 p-5 rounded-xl hover:shadow-2xl duration-500 hover:cursor-pointer ">
+        <motion.div
+           initial={{ opacity: 0, x:-100, scale:0.6 }}
+           whileInView={{ opacity: 1, x:0, scale:1}}
+           transition={{ duration: 0.2, ease:"backInOut", delay:0.2 }}
+           viewport={{once:true, amount:1}}
+        className=" border-2 border-gray-200 p-5 rounded-xl hover:shadow-2xl duration-500 hover:cursor-pointer ">
           <div className="p-5 flex flex-col">
             <div className="bg-blue-500/50 p-2 rounded-2xl w-[20%]">
               <img
@@ -169,9 +243,14 @@ export default function Home() {
               across the banks or send it to other users
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        <div className=" border-2 border-gray-200 p-5 rounded-xl hover:shadow-2xl duration-500 hover:cursor-pointer">
+        <motion.div
+          initial={{ opacity: 0, x:-100, scale:0.6 }}
+          whileInView={{ opacity: 1, x:0, scale:1}}
+          transition={{ duration: 0.2, ease:"backInOut", delay:0.4}}
+          viewport={{once:true, amount:1}}
+        className=" border-2 border-gray-200 p-5 rounded-xl hover:shadow-2xl duration-500 hover:cursor-pointer">
           <div className="p-5 flex flex-col">
             <div className="bg-purple-500/50 p-2 rounded-2xl w-[20%]">
               <img
@@ -190,16 +269,27 @@ export default function Home() {
               to your account within just 48 hours of your withdrawal reques
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <div className="mt-[10%]">
         <div className="px-[11%] flex gap-10">
-          <div className="w-[50%] p-1 bg-[#fce8cc] rounded-lg">
+          <motion.div 
+           initial={{ opacity: 0, x:-20, }}
+           whileInView={{ opacity: 1, x:0,  }}
+           transition={{ duration: 1, ease:"easeInOut", delay:0.6}}
+           viewport={{once:true, amount:.5}} className="w-[50%] p-1 bg-[#fce8cc] rounded-lg">
             <img src="./thirdSection.png" alt="" />
-          </div>
+          </motion.div>
 
-          <div className="w-[50%] flex flex-col items-center gap-5 relative">
+          <motion.div
+      
+          initial={{ opacity: 0, x:20, }}
+          whileInView={{ opacity: 1, x:0,  }}
+          transition={{ duration: 1, ease:"easeInOut"}}
+          viewport={{once:true, amount:.2}} 
+        
+          className="w-[50%] flex flex-col items-center gap-5 relative">
             <div className="text-[2.3rem] font-semibold w-[100%] ">
               Track your deposits and withdrawals for better money management
             </div>
@@ -221,20 +311,29 @@ export default function Home() {
                 <p className="text-lg">Clients</p>
               </div>
             </div>
-          </div>
+          </motion.div>
+
         </div>
       </div>
 
       <div className="mt-[10%] mx-[11%] flex gap-10">
-        <div className="w-[50%] relative">
-          <div className="opacity-50 absolute -left-12 -top-6 rotate-45">
+        <motion.div
+        initial={{ opacity: 0, x:-20, }}
+        whileInView={{ opacity: 1, x:0,  }}
+        transition={{ duration: 1, ease:"easeInOut"}}
+        viewport={{once:true, amount:.2}}
+        className="w-[50%] relative">
+          <motion.div
+            
+            className="opacity-50 absolute -left-12 -top-6 rotate-45">
             <img
               width="50"
               height="50"
               src="https://img.icons8.com/color/50/best_of_both_words.png"
               alt="best_of_both_words"
             />
-          </div>
+          </motion.div>
+
           <div className="text-[2.3rem] font-semibold w-[100%] mt-2 ">
             Deposit from several banks and withdraw or transfer funds as needed.
           </div>
@@ -268,10 +367,17 @@ export default function Home() {
             </svg>
           </button>
           
-        </div>
-        <div className="w-[50%] p-1 bg-gray-100 rounded-lg">
+        </motion.div>
+
+
+        <motion.div
+        initial={{ opacity: 0, x:20, }}
+        whileInView={{ opacity: 1, x:0,  }}
+        transition={{ duration: 1, ease:"easeInOut"}}
+        viewport={{once:true, amount:.2}}
+        className="w-[50%] p-1 bg-gray-100 rounded-lg">
           <img src="./fourth.png" alt="" />
-        </div>
+        </motion.div>
       </div>
 
       <div className="footer mt-[13%] mx-2">
