@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import Logo from "@repo/ui/logo";
 import side from "./side.png";
+import { div } from "framer-motion/client";
 
 const monaSans = Mona_Sans({
   subsets: ["latin"], // Supports Latin characters
@@ -195,8 +196,8 @@ whileTap={{ scale: 0.95 }}
         <motion.div 
    initial={{ opacity: 0, x:-100, scale:0.6 }}
    whileInView={{ opacity: 1, x:0, scale:1}}
-   transition={{ duration: 0.2, ease:"backInOut", delay:0.1 }}
-   viewport={{once:true, amount:1}}
+   transition={{ duration: 0.1, ease:"easeInOut",  }}
+   viewport={{once:true, amount:1, margin:"120px"}}
         className=" border-2 border-gray-200 p-5 rounded-xl hover:shadow-2xl duration-500 hover:cursor-pointer ">
           <div className="p-5 flex flex-col">
             <div className="bg-[#ffe9ca] p-2 rounded-2xl w-[20%]">
@@ -222,7 +223,7 @@ whileTap={{ scale: 0.95 }}
         <motion.div
            initial={{ opacity: 0, x:-100, scale:0.6 }}
            whileInView={{ opacity: 1, x:0, scale:1}}
-           transition={{ duration: 0.2, ease:"backInOut", delay:0.2 }}
+           transition={{ duration: 0.1, ease:"easeInOut", delay:0.1 }}
            viewport={{once:true, amount:1}}
         className=" border-2 border-gray-200 p-5 rounded-xl hover:shadow-2xl duration-500 hover:cursor-pointer ">
           <div className="p-5 flex flex-col">
@@ -248,7 +249,7 @@ whileTap={{ scale: 0.95 }}
         <motion.div
           initial={{ opacity: 0, x:-100, scale:0.6 }}
           whileInView={{ opacity: 1, x:0, scale:1}}
-          transition={{ duration: 0.2, ease:"backInOut", delay:0.4}}
+          transition={{ duration: 0.1, ease:"easeInOut", delay:0.2}}
           viewport={{once:true, amount:1}}
         className=" border-2 border-gray-200 p-5 rounded-xl hover:shadow-2xl duration-500 hover:cursor-pointer">
           <div className="p-5 flex flex-col">
