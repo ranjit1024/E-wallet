@@ -2,7 +2,7 @@
 import { Mona_Sans } from "next/font/google";
 import { PieChart } from "@mui/x-charts/PieChart"
 import { LineChart } from "@mui/x-charts/LineChart"
-
+import getBalance from "../../../lib/actions/getBalance";
 
 // import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
@@ -15,7 +15,7 @@ const monaSans = Mona_Sans({
   variable: "--font-poppins", // Optional: Use CSS variable
 });
 
-export default function(){
+export default async function(){
 
 
 const margin = { right: 24 };
@@ -39,6 +39,7 @@ const data = [
   { name: "Jun", sales: 7000 },
 ];
 
+
   return <div className={`${monaSans.className} p-10`}>
     <div className="flex w-[100%] gap-3 ">
       <div className="p-5 bg-white rounded-lg shadow-sm w-[100%] ">
@@ -52,7 +53,10 @@ const data = [
 
 
         </div>
-        <p className="pt-2 text-[3vw] text-slate-800 font-semibold">₹ 3000.00</p>
+        <p className="pt-2 text-[3vw] text-slate-800 font-semibold">₹ {
+            getBalance().then(data => data?.amount)
+              // `${Balance?.amount ? `${Balance.amount/ 100}.${Balance.amount % 100}` : <div className="p-2 bg-gray-100"></div>}`
+}</p>
       </div>
 
       <div className="p-5 bg-white rounded-lg shadow-sm w-[100%] ">
@@ -63,7 +67,9 @@ const data = [
           <p className="font-normal text-md ml-1 text-gray-400" >Deposits</p>
 
         </div>
-        <p className=" font-semibold pt-2 text-[3vw] text-slate-800">₹ 3000.00</p>
+        <p className=" font-semibold pt-2 text-[3vw] text-slate-800">₹ {
+      
+}</p>
       </div>
 
       <div className="p-5 bg-white rounded-lg shadow-sm w-[100%] ">
