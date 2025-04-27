@@ -10,6 +10,7 @@ import Loader from "@repo/ui/loader"
 import { tr } from "framer-motion/client";
 import { resolve } from "path";
 
+
 const poppins = Poppins({
   subsets: ["latin"], // Supports Latin characters
   weight: ["100", "400"], // Choose font weights
@@ -55,14 +56,16 @@ export default function () {
   
 
   return (
-    <div className={`grid grid-cols-[50%,50%] h-[100vh] relative ${poppins.className}`}>
-      
+    <div className={ `grid grid-cols-[50%,50%] w-[100vw] h-[100vh] grid-rows-1 ${poppins.className}`}>
+     
+        <div className="bg-[url('/safe.jpg')] bg-blend-darken h-[100%] w-[100%] bg-gray-200/50  bg-cover bg-no-repeat bg bg-center"></div>
+       
         {
           loading ? <Loader/>:null
         }
       
       {/* {error && <p className="text-red-500 mb-4">{getErrorMessage()}</p>} */}
-      <div className="bg-[url('/safe.jpg')]  bg-cover bg-center bg-transparent bg-no-repeat bg-[#99a4c4]"></div>
+   
       {
         credentialsError ? <Error data="Email or password is invalid"/>:null
       }
@@ -70,15 +73,15 @@ export default function () {
         credentialsBlank?<Error data="Enter details"></Error>:null
       }
 
-      <div className=" flex pl-20 text-gray-900 bg-gradient-to-b from-[#e4fff9] to-blue-50  w-[100%]  flex-col shadow-sm p-10 ">
+      <div className=" flex pl-20 text-gray-900  bg-gradient-l from-gray-50 to-white   flex-col p-10 ">
         <div className="text-[7vh] mb-5">
           <div className="text-center w-[50%] m-auto pt-5 pb-12">
             <div className={`flex items-center justify-center  w-[20vh] `}>
              
             <div className="flex gap-1 items-center">
-        <img width="30" height="40" src="https://img.icons8.com/pulsar-gradient/48/circled.png" alt="circled"/>
+        <img width="45" height="40" src="https://img.icons8.com/pulsar-gradient/48/circled.png" alt="circled"/>
           
-        <p className="font-normal  text-[1.5rem] bg-gradient-to-r from-blue-500  to-cyan-900 inline-block text-transparent bg-clip-text  ">PayTm</p>
+        <p className=" font-semibold  text-[2rem] bg-gradient-to-r from-gray-500  to-cyan-900 inline-block text-transparent bg-clip-text  ">PayTm</p>
       </div>
             </div>
           </div>

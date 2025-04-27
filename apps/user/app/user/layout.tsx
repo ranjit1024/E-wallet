@@ -5,9 +5,11 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import DashboardSkeleton from "@repo/ui/sceleton"
-import { Poppins } from "next/font/google";
+import { Mona_Sans, Poppins } from "next/font/google";
 import { usePathname } from "next/navigation";
-const poppins = Poppins({
+import {motion} from "framer-motion"
+import { Pointer } from "lucide-react";
+const monaSans = Mona_Sans({
   subsets: ["latin"],
   weight: ["200", "400", "500", "600", "700"],
   variable: "--font-poppins",
@@ -29,13 +31,13 @@ export default function RootLayout({
     console.log(pathname)
   const images = [
     
-    <li 
+    <li  
       
       id="dashboard"
       onClick={()=>{
         router.push('/user/dashboard')
       }}
-      className={`flex  items-center gap-3 p-[0.4rem] mb-2 hover:cursor-pointer transition-all duration-100  rounded-lg m-2 ${pathname == "/user/dashboard" ? "bg-white opacity-100 shadow-sm rounded-lg":null}`}
+      className={`flex hover:cursor-pointer  items-center gap-3 p-[0.4rem] mb-2  rounded-lg m-2 ${pathname == "/user/dashboard" ? "bg-white opacity-100 shadow-sm rounded-lg":null}`}
     >
       <img
         width="48"
@@ -85,7 +87,7 @@ export default function RootLayout({
 
   return (
     <div
-      className={`h-[100vh]  bg-gradient-to-tr to-gray-50 from-gray-50 ${poppins.className}`}
+      className={`h-[100%]  bg-gradient-to-tr to-gray-50 from-gray-50 ${monaSans.className}`}
     >
       <div className="grid grid-cols-[20%,80%]   ">
         <div className="relative mr-1">
@@ -121,7 +123,9 @@ export default function RootLayout({
 
       <div>
       <div className="pt-2 ml-2  text-gray-950">
-        <p>Hey, {session?.user?.name}</p>
+        <p className="flex items-center mb-1 gap-2 text-lg">Hey, {session?.user?.name} 
+        
+        </p>
         <p className="text-gray-600 text-sm">{
           date.toDateString()
           }</p>

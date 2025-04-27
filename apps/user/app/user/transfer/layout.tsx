@@ -5,10 +5,10 @@ import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import DashboardSkeleton from "@repo/ui/sceleton"
-import { Poppins } from "next/font/google";
+import { Mona_Sans, Poppins } from "next/font/google";
 import { usePathname } from "next/navigation";
 
-const poppins = Poppins({
+const poppins = Mona_Sans({
   subsets: ["latin"],
   weight: ["200", "400", "500", "600", "700"],
   variable: "--font-poppins",

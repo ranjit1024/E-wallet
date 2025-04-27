@@ -6,6 +6,8 @@ import { signIn } from "next-auth/react";
 import { useState } from "react";
 import Error from "@repo/ui/toast"
 import Loader from "@repo/ui/loader";
+
+
 const poppins = Poppins({
   subsets: ["latin"], // Supports Latin characters
   weight: ["100", "400"], // Choose font weights
@@ -47,6 +49,7 @@ export default function () {
 
   return (
     <div className={`grid grid-cols-[50%,50%] h-[100vh] ${poppins.className}`}>
+     
     {
       error?<Error data="Email is already taken"/>:null
     }
@@ -56,13 +59,25 @@ export default function () {
     {
       isLoading?<Loader/>:null
     }
-      <div className="bg-[url('/safe.jpg')] h-[100%] w-[100%] bg-[#2cb2ed] bg-cover bg-no-repeat bg bg-center"></div>
-      <div className=" flex pl-20 text-gray-900 bg-gradient-to-b from-gray-100 to-sky-100 w-[100%]  flex-col ">
+      <div className="bg-[url('/safe.jpg')] h-[100%] w-[100%]  bg-blend-darken  bg-gray-200/50  bg-cover "></div>
+
+      
+      <div className=" flex pl-20 text-gray-900 bg-gradient-to-b from-gray-50 to-white  w-[100%]   flex-col ">
+      
+      <div className={`flex items-center justify-center  w-[80%] mt-10 `}>
+             
+             <div className="flex gap-1 items-center">
+         <img width="45" height="40" src="https://img.icons8.com/pulsar-gradient/48/circled.png" alt="circled"/>
+           
+         <p className=" font-semibold  text-[2rem] bg-gradient-to-r from-gray-500  to-cyan-900 inline-block text-transparent bg-clip-text  ">PayTm</p>
+       </div>
+             </div>
+
         <div className="text-[1vh] mb-5">
-          <div className="text-center w-[50%] m-auto pt-5 pb-12">
+          <div className="text-center w-[50%] m-auto pt-5 mb-4">
             <div className={`flex items-center  w-[20vh] `}>
               
-            <Logo/>
+           
             </div>
           </div>
           <p className="text-[7vh] pb-2 text-slate-600 font-semibold">Create an Account </p>
