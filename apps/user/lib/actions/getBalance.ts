@@ -7,10 +7,10 @@ export default async function  getBalance(){
     const session = await getServerSession(authOptions);
     const userId = session?.user?.id;
 
-    // if(!userId){
-    //     console.error("No user Id");
-    //     throw new Error("Unauthrozxe");
-    // }
+    if(!userId){
+        console.error("No user Id");
+        throw new Error("Unauthrozxe");
+    }
 
     const balanceData = await db.balance.findFirst({
         where:{

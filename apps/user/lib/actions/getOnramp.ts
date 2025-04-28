@@ -17,5 +17,6 @@ export default async function(){
         },
         take:1
     })
+    
     return data;
 }

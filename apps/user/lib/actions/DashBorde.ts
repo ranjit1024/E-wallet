@@ -1,13 +1,60 @@
-"use server"
-import db from "@repo/prisma/clinet"
-export async function getDeposite({id}:{
-    id:number
-}){
-    const allDeposites = db.onRampTransaction.findMany({
-        where:{
-            userId:id
-        }
-    })
+"use server";
+import db from "@repo/prisma/clinet";
+import { getServerSession } from "next-auth";
 
-    console.log(allDeposites)
+import { authOptions } from "../auth";
+
+type transferType = "deposite" | "receive" | "send" | "withdraw"
+
+export async function getUserData({type}:{
+    type:transferType
+}) {
+  let userData = 0;
+  const session = await getServerSession(authOptions);
+  const id = Number(session?.user?.id);
+
+
+
+  const data = await db.onRampTransaction.findMany({
+    where: {
+      userId: id,
+    },
+  });
+  console.log("test");
+  data.forEach((item) => {
+    if (item.status === "Success" && item.transfer === type) {
+      return (userData += item.amount);
+    }
+  });
+
+  return userData;
+}
+
+
+
+
+
+
+export async function  monthlyTransactionCount(){
+    const session = await getServerSession(authOptions);
+    const id = Number(session?.user?.id);
+
+const monthlyTransactionCount : [] = await db.$queryRaw`
+  SELECT DATE_TRUNC('month', "startTime") AS month, count(id) AS total_counnt
+FROM "OnRampTransaction"
+WHERE "userId" = ${id}
+GROUP BY month
+ORDER BY month
+`;
+
+let monthData : {
+    month:string | null,
+    total_counnt:number | null
+} = {month:null,total_counnt:0}
+
+const data = monthlyTransactionCount.forEach((data:any)=>{
+   
+    monthData = data;
+});
+return(monthData)
 }
