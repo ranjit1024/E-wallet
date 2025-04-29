@@ -37,6 +37,7 @@
     "framer-motion": "^12.6.3",
     "lucide-react": "^0.501.0",
     "next-auth": "^4.24.11",
+    "nprogress": "^0.2.0",
     "recharts": "^2.15.3",
     "recoil": "^0.7.7",
     "zod": "^3.24.3"
