@@ -16,6 +16,7 @@ export async function userTimeDepositeData() {
     SUM("amount") AS "totalamount"
   FROM "OnRampTransaction"
   WHERE "transfer" = 'deposite'
+  AND "userId"=${id}
     AND "startTime" >= DATE_TRUNC('week', CURRENT_DATE)
   GROUP BY day
   ORDER BY day;
@@ -52,6 +53,7 @@ export async function userTimeWithdrawData() {
     SUM("amount") AS "totalamount"
   FROM "OnRampTransaction"
   WHERE "transfer" = 'withdraw'
+  AND "userId"=${id}
     AND "startTime" >= DATE_TRUNC('week', CURRENT_DATE)
   GROUP BY day
   ORDER BY day;

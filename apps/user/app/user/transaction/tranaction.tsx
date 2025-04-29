@@ -25,14 +25,15 @@ export default function tranaction (){
   const [page, setPage] = useState(1)
   const [transactions, setTransactions] = useState<Transaction[]>([])
   const [totalPages, setTotalPages] = useState(1)
-
+  
   // const[data,setData] = useState()
   useEffect(()=>{
+   
     getData(page).then((res)=>{
       setTransactions(res.data);
       setTotalPages(res.totalPage)
     })
-  
+   
   },[page])
 
 
@@ -101,7 +102,7 @@ export default function tranaction (){
         
 
         {
-          
+        
           transactions.map((item:any,index:any)=>{
             return <Record key={index} transaction={item.provider.toUpperCase()} amount={item.amount} date={item.startTime.toDateString()} time={item.startTime.toLocaleTimeString()} status={item.status} transfer={item.transfer}/>
             
