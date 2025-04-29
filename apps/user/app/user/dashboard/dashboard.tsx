@@ -4,10 +4,11 @@ import { PieChart } from "@mui/x-charts/PieChart";
 import { LineChart, } from "@mui/x-charts/LineChart";
 import getBalance from "../../../lib/actions/getBalance";
 import { useEffect, useState } from "react";
-import { getUserData, monthlyTransactionCount } from "../../../lib/actions/DashBorde";
-import { setMaxIdleHTTPParsers } from "http";
-import { string } from "zod";
-
+import { monthlyTransactionCount } from "../../../lib/actions/DashBorde";
+import { getUserData } from "../../../lib/actions/DashBorde";
+import { userTimeDepositeData, userTimeWithdrawData } from "../../../lib/actions/userData";
+import { number } from "zod";
+import { label } from "framer-motion/client";
 
 
 
@@ -32,12 +33,22 @@ export default function() {
   const [Withdraw,setWithDraw] = useState<number>(0);
   const [Send,setSend] = useState<number>(0)
   const [Recieve,setReceive] = useState<number>(0);
+
+  const [userDeposite, setUserDeposite] = useState<number[]>([])
+  const [userDepositeTimeLine, setUserDepositeTimeLine] = useState<string[]>([]);
+
+  const [userWithdra, setUserWithdraw] = useState<number[]>([])
+  const [userWithdrawTimeLine, setUserWithdrawTimeLine] = useState<string[]>([]);
+
   const [monthyTrancaction,setrMonthlyTanacaction] = useState<{
     month:string | null,
     total_counnt:number | null
   }>({month:null,total_counnt:null});
-  const [months, setMonthes] = useState<string>("")
+
+  const [months, setMonthes] = useState<string>("");
+
   const margin = { right: 24 };
+
   const uData = [4000, 3000, 2000, 2780, 1890, 2390, 3490];
   const pData = [2400, 1398, 9800, 3908, 4800, 3800, 4300];
   const xLabels = [
@@ -49,14 +60,7 @@ export default function() {
     "Page F",
     "Page G",
   ];
-  const data = [
-    { name: "Jan", sales: 4000 },
-    { name: "Feb", sales: 3000 },
-    { name: "Mar", sales: 5000 },
-    { name: "Apr", sales: 4000 },
-    { name: "May", sales: 6000 },
-    { name: "Jun", sales: 7000 },
-  ];
+
 
 
 
@@ -65,23 +69,35 @@ export default function() {
     getBalance().then(data=>{
       setBalance(data?.amount ? data.amount : 0)
     })
-    // getUserData({type:"deposite"}).then(data => {
-    //   setDeposite(data)
-    // })
-    // getUserData({type:"withdraw"}).then(data=>{
-    //   setWithDraw(data)
-    // })
-    // getUserData({type:"receive"}).then(data=>{
-    //   setReceive(data);
-    // })
-    // getUserData({type:"send"}).then(data=>{
-    //   setSend(data);
-    // })
+    getUserData({type:"deposite"}).then(data => {
+      setDeposite(data)
+    })
+    getUserData({type:"withdraw"}).then(data=>{
+      setWithDraw(data)
+    })
+    getUserData({type:"receive"}).then(data=>{
+      setReceive(data);
+    })
+    getUserData({type:"send"}).then(data=>{
+      setSend(data);
+    })
     monthlyTransactionCount().then(data => {
       setrMonthlyTanacaction(data)
     });
+    userTimeDepositeData().then(data=>{
+      console.log(data)
+      setUserDeposite(data.amount);
+      setUserDepositeTimeLine(data.Time);
+      
+    })
+    userTimeWithdrawData().then(data=>{
+      console.log(data)
+      setUserWithdraw(data.amount);
+      setUserWithdrawTimeLine(data.Time);
+      
+    })
   },[])
-
+  console.log(userDepositeTimeLine)
   useEffect(()=>{
     const monthStr = String(monthyTrancaction.month)
     const monthArray = monthStr?.split(" ")
@@ -90,8 +106,7 @@ export default function() {
   },[monthyTrancaction.month])
   
 
-  
-console.log(typeof monthyTrancaction.total_counnt)
+
 
   return (
     
@@ -210,24 +225,15 @@ console.log(typeof monthyTrancaction.total_counnt)
       <div className="p-5 bg-white relative rounded-lg mt-10 shadow-md">
         
 
-          <div className="w-20% absolute top-1 right-2">
-            
-            <div className=" ">
-              <select className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded pl-3 pr-4 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md appearance-none cursor-pointer">
-                <option value="month">Month</option>
-                <option value="week">Week</option>
-                <option value="day">Day</option>
-              </select>
-            </div>
-          </div>
 
         <LineChart
           height={300}
           series={[
-            { data: pData, label: "Deposit" },
-            { data: uData, label: "Withdraw", color: "red" },
+            { data: userDeposite, label: "Deposit",curve:"monotoneX" },
+            { data: userWithdra, label: "Withdraw", color: "red", curve:"monotoneX" },
+            
           ]}
-          xAxis={[{ scaleType: "point", data: xLabels }]}
+          xAxis={[{ scaleType: "point", data:userDepositeTimeLine}]}
           yAxis={[{ width: 50 }]}
           margin={margin}
         
