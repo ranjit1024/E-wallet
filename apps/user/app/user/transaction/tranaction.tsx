@@ -3,7 +3,9 @@
 import Record from "@repo/ui/record"
 
 import {getData} from "../../../lib/actions/getTransactions"
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
+import { tr } from "framer-motion/client";
+import TransactionSkeleton from "@repo/ui/tranactionScaletor"
 // 
 
 type Transaction = {
@@ -25,15 +27,15 @@ export default function tranaction (){
   const [page, setPage] = useState(1)
   const [transactions, setTransactions] = useState<Transaction[]>([])
   const [totalPages, setTotalPages] = useState(1)
-  
+  const[loading,setLoading] = useState(true)
   // const[data,setData] = useState()
   useEffect(()=>{
-   
+    setLoading(true)
     getData(page).then((res)=>{
       setTransactions(res.data);
       setTotalPages(res.totalPage)
     })
-   
+    setLoading(false)
   },[page])
 
 
@@ -62,7 +64,11 @@ export default function tranaction (){
     </div>
   </div>
 
-  <div className="p-6 px-0 overflow-hidden">
+  
+    
+    
+    <div className="p-6 px-0 overflow-hidden">
+
 
     
     <table className="w-full text-left table-auto min-w-max ">
@@ -116,6 +122,7 @@ export default function tranaction (){
     </table>
 
   </div>
+
   <div className="flex items-center justify-between p-4 border-t border-blue-gray-50">
     <button
       className="select-none rounded-lg border border-gray-900 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
