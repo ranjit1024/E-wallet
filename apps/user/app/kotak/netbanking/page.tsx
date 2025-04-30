@@ -34,6 +34,7 @@ const KotakLogin = () => {
           <Image
             src="https://img.freepik.com/premium-vector/donation-charity-flat-illustrations_9206-24104.jpg?w=740"
             alt="Illustration"
+            width={1000} height={1000}
             
             className="w-[60vh] mx-auto mb-4"
           />

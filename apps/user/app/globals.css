@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    /* NProgress bar custom styling */
+    #nprogress .bar {
+      @apply bg-red-600 h-[3px] fixed top-0 left-0 w-full z-[9999];
+    }
+  
+    #nprogress .peg {
+      box-shadow: 0 0 10px #dc2626, 0 0 5px #dc2626;
+    }
+  
+    #nprogress .spinner {
+      display: none !important;
+    }
+  }
+  

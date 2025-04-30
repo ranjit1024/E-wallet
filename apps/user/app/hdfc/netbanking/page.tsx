@@ -27,7 +27,8 @@ const KotakLogin = () => {
         <div className="text-center">
           <Image
             src="https://img.freepik.com/premium-vector/woman-saving-piggy-bank-trending-concept-flat-illustrator_720185-2072.jpg?w=826"
-            alt="Illustration"
+            alt="Illustration" 
+            width={1000} height={1000}
             
             className="w-[60vh] mx-auto mb-4"
           />
