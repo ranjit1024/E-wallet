@@ -1,14 +1,12 @@
 "use client";
-import bank from "./Hdfc.png";
+
 import { Mona_Sans } from "next/font/google";
-import { animate, motion } from "framer-motion";
-import { Player } from "@lottiefiles/react-lottie-player";
+import {  motion } from "framer-motion";
+
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import Logo from "@repo/ui/logo";
-import side from "./side.png";
-import { div } from "framer-motion/client";
-
+import Image from "next/image";
 
 
 
@@ -56,7 +54,7 @@ export default function Home() {
         <div className="text-center w-[60%] -mt-5">with top security</div>
 
         <div className="absolute top-10 -left-5 -rotate-90 opacity-40  transition-all">
-          <img
+          <Image
             width="40"
             height="40"
             src="https://img.icons8.com/office/40/sort-down.png"
@@ -65,7 +63,7 @@ export default function Home() {
         </div>
 
         <div className="absolute top-12 -right-1 -rotate-90 opacity-80  transition-all">
-          <img
+          <Image
             width="40"
             height="40"
             src="https://img.icons8.com/color/48/10-percents.png"
@@ -149,13 +147,13 @@ whileTap={{ scale: 0.95 }}
         </div>
 
         <div className="">
-          <img className="h-10" src="./side.png" alt="" />
+          <Image className="h-10" src="./side.png" alt="" />
         </div>
         <div className="absolute opacity-50 right-[20%] -top-4">
-          <img className="h-10" src="./side2.png" alt="" />
+          <Image className="h-10" src="./side2.png" alt="" />
         </div>
         <div className="absolute opacity-40 left-[20%] top-3">
-          <img
+          <Image
             width="40"
             height="50"
             src="https://img.icons8.com/ios-filled/50/FA5252/play--v1.png"
@@ -170,10 +168,10 @@ whileTap={{ scale: 0.95 }}
        transition={{ duration: 1, delay: 1 }}
       className=" mt-10 flex justify-center w-[100%] items-center gap-12 px-[12%] pt-20">
         <div className="size-[90%]  px-2 bg-[#fff5e4]  rounded-xl">
-          <img src="./test.png" alt="" className="h-[50%]" />
+          <Image src="./test.png" alt="" className="h-[50%]" />
         </div>
         <div className="size-[90%]  p-5 bg-gray-50  rounded-xl">
-          <img src="./second_side.png" alt="" className="h-[50%]" />
+          <Image src="./second_side.png" alt="" className="h-[50%]" />
         </div>
       </motion.div>
 
@@ -199,7 +197,7 @@ whileTap={{ scale: 0.95 }}
         </p>
 
         <div className="absolute left-[15%] opacity-50 rotate-45 top-[65%]">
-          <img
+          <Image
             width="48"
             height="80"
             src="https://img.icons8.com/officel/80/kite-shape.png"
@@ -207,7 +205,7 @@ whileTap={{ scale: 0.95 }}
           />
         </div>
         <div className="absolute right-[15%] opacity-50 rotate-90 -top-[8%]">
-          <img
+          <Image
             width="48"
             height="48"
             src="https://img.icons8.com/emoji/48/eight-spoked-asterisk-emoji.png"
@@ -242,7 +240,7 @@ whileTap={{ scale: 0.95 }}
         className=" border-2 border-gray-200 p-5 rounded-xl  hover:cursor-pointer ">
           <div className="p-5 flex flex-col">
             <div className="bg-[#ffe9ca] p-2 rounded-2xl w-[20%]">
-              <img
+              <Image
                 width="48"
                 height="48"
                 src="https://img.icons8.com/fluency-systems-regular/48/FAB005/privacy--v1.png"
@@ -278,7 +276,7 @@ whileTap={{ scale: 0.95 }}
         className=" border-2 border-gray-200 p-5 rounded-xl  hover:cursor-pointer ">
           <div className="p-5 flex flex-col">
             <div className="bg-blue-500/50 p-2 rounded-2xl w-[20%]">
-              <img
+              <Image
                 width="48"
                 height="48"
                 src="https://img.icons8.com/carbon-copy/100/228BE6/data-in-both-directions--v1.png"
@@ -313,7 +311,7 @@ whileTap={{ scale: 0.95 }}
         className=" border-2 border-gray-200 p-5 rounded-xl  hover:cursor-pointer">
           <div className="p-5 flex flex-col">
             <div className="bg-purple-500/50 p-2 rounded-2xl w-[20%]">
-              <img
+              <Image
                 width="58"
                 height="58"
                 src="https://img.icons8.com/carbon-copy/100/7950F2/payment-history.png"
@@ -342,7 +340,7 @@ whileTap={{ scale: 0.95 }}
         
            >
           
-            <img src="./thirdSection.png" alt="" />
+            <Image src="./thirdSection.png" alt="" />
           </motion.div>
 
           <motion.div
@@ -389,7 +387,7 @@ whileTap={{ scale: 0.95 }}
           <motion.div
             
             className="opacity-50 absolute -left-12 -top-6 rotate-45">
-            <img
+            <Image
               width="50"
               height="50"
               src="https://img.icons8.com/color/50/best_of_both_words.png"
@@ -439,7 +437,7 @@ whileTap={{ scale: 0.95 }}
         transition={{ duration: 1, ease:"easeInOut"}}
         viewport={{once:true, amount:.2}}
         className="w-[50%] p-1 bg-gray-100 rounded-lg">
-          <img src="./fourth.png" alt="" />
+          <Image src="./fourth.png" alt="" />
         </motion.div>
       </div>
 

@@ -1,0 +1,16 @@
+
+> build
+> turbo run build
+
+• Packages in scope: @repo/eslint-config, @repo/prisma, @repo/store, @repo/token, @repo/typescript-config, @repo/ui, bank-webhook, web, withdraw-webhook
+• Running build in 9 packages
+• Remote caching disabled
+web:build: cache miss, executing db015285c1638a96
+web:build: 
+web:build: > web@0.1.0 build
+web:build: > next build
+web:build: 
+web:build:    ▲ Next.js 15.2.4
+web:build:    - Environments: .env
+web:build: 
+web:build:    Creating an optimized production build ...

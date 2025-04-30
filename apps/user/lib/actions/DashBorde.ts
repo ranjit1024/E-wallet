@@ -17,7 +17,7 @@ export async function getUserData({ type }: { type: transferType }) {
     },
   });
   console.log("test");
-  data.forEach((item) => {
+  data.forEach((item:any) => {
     if (item.status === "Success" && item.transfer === type) {
       return (userData += item.amount);
     }

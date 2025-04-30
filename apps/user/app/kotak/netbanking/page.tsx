@@ -5,10 +5,7 @@ import { useRouter } from "next/navigation";
 import lastRamp from "../../../lib/actions/getOnramp";
 import axios from "axios";
 import Loader from "@repo/ui/loader"
-import { tr } from "framer-motion/client";
-
-
-
+import Image from "next/image";
 
 
 
@@ -34,7 +31,7 @@ const KotakLogin = () => {
       {/* Left Illustration */}
       <div className="flex-1 flex items-center justify-center mb-8 md:mb-0">
         <div className="text-center">
-          <img
+          <Image
             src="https://img.freepik.com/premium-vector/donation-charity-flat-illustrations_9206-24104.jpg?w=740"
             alt="Illustration"
             
