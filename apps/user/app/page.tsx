@@ -9,20 +9,19 @@ import Logo from "@repo/ui/logo";
 import side from "./side.png";
 import { div } from "framer-motion/client";
 
+
+
+
+
+
+
+
 const monaSans = Mona_Sans({
   subsets: ["latin"], // Supports Latin characters
   weight: ["400", "600", "700", "900"], // Choose font weights
   style: ["normal", "italic"], // Choose styles
   variable: "--font-poppins", // Optional: Use CSS variable
 });
-
-
-
-
-
-
-
-
 
 export default function Home() {
   const router = useRouter();
@@ -90,6 +89,13 @@ export default function Home() {
         delay:0.2
 
       }}
+
+
+
+
+
+
+      
       className="z-190 text-center flex items-center justify-center w-[100%] -mt-">
         <p className="w-[75%] text-lg text-gray-700">
           Paytm is a secure and reliable platform for transferring money between
