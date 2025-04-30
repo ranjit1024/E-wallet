@@ -6,7 +6,7 @@ import { authOptions } from "../auth";
 
 interface responseType {
   day:string,
- totalamount:number
+  totalamount:number
 }
 
 export async function userTimeDepositeData() {

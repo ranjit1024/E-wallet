@@ -4,6 +4,7 @@ import Record from "@repo/ui/record"
 
 import {getData} from "../../../lib/actions/getTransactions"
 import {  useEffect, useState } from "react";
+import TransactionSkeleton from "@repo/ui/tranactionScaletor";
 
 // 
 
@@ -25,22 +26,29 @@ interface TransactionResponse {
   totalPage: number;
 }
 export default function Tranaction (){
-
+  const[loading,setLoading] = useState(true)
   const [page, setPage] = useState<number>(1)
   const [transactions, setTransactions] = useState<Transaction[]>([])
-  const [totalPages, setTotalPages] = useState(1)
+  const [totalPages, setTotalPages] = useState(1);
+
  
   // const[data,setData] = useState()
   useEffect(()=>{
 
-    getData(page).then((res:TransactionResponse)=>{
-      setTransactions(res.data);
-      setTotalPages(res.totalPage)
-    })
+    async function fetchData() {
+      setLoading(true)
+      const response : TransactionResponse  = await getData(page);
+      setTransactions(response.data);
+      setTotalPages(response.totalPage)
+      setLoading(false)
+    }
+      fetchData()
    
   },[page])
 
-
+  if(loading){
+    return <TransactionSkeleton/>
+  }
     return <div className="my-10 mx-5">
         <div className="relative p-1 flex flex-col  w-full h-full text-gray-700 bg-white shadow-md rounded-xl bg-clip-border">
   <div className="relative mx-4 mt-4 text-gray-700 bg-white rounded-none bg-clip-border">
@@ -73,6 +81,7 @@ export default function Tranaction (){
 
     
     <table className="w-full text-left table-auto min-w-max ">
+     
       <thead>
         <tr>
           <th className="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
@@ -103,6 +112,7 @@ export default function Tranaction (){
           </th>
           
         </tr>
+          
       </thead>
       <tbody>
         

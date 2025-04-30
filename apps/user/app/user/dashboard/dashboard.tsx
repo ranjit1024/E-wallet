@@ -8,6 +8,8 @@ import { monthlyTransactionCount } from "../../../lib/actions/DashBorde";
 import { getUserData } from "../../../lib/actions/DashBorde";
 import { userTimeDepositeData, userTimeWithdrawData } from "../../../lib/actions/userData";
 import Image from "next/image";
+import DashboardSkeleton from '@repo/ui/sceleton'
+
 
 // import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
@@ -32,9 +34,13 @@ export default function Home() {
   const [Recieve,setReceive] = useState<number>(0);
 
   const [userDeposite, setUserDeposite] = useState<number[]>([])
-  const [userDepositeTimeLine, setUserDepositeTimeLine] = useState<string[]>([]);
+  const [userWithdraw, setUserWithdraw] = useState<number[]>([]);
 
-  const [userWithdra, setUserWithdraw] = useState<number[]>([])
+  const [userDepositeTimeLine, setUserDepositeTimeLine] = useState<string[]>([]);
+  const [userWithdrawTimeLine, setUserWithdrawTimeLine] = useState<string[]>([]);
+
+  const [loading, setLoading] = useState(true)
+
 
 
   const [monthyTrancaction,setrMonthlyTanacaction] = useState<{
@@ -52,38 +58,57 @@ export default function Home() {
 
 
   useEffect(()=>{
-    getBalance().then(data=>{
-      setBalance(data?.amount ? data.amount : 0)
-    })
-    getUserData({type:"deposite"}).then(data => {
-      setDeposite(data)
-    })
-    getUserData({type:"withdraw"}).then(data=>{
-      setWithDraw(data)
-    })
-    getUserData({type:"receive"}).then(data=>{
-      setReceive(data);
-    })
-    getUserData({type:"send"}).then(data=>{
-      setSend(data);
-    })
-    monthlyTransactionCount().then(data => {
-      setrMonthlyTanacaction(data)
-    });
-    userTimeDepositeData().then(data=>{
-      console.log(data)
-      setUserDeposite(data.amount);
-      setUserDepositeTimeLine(data.Time);
-      
-    })
-    userTimeWithdrawData().then(data=>{
-      console.log(data)
-      setUserWithdraw(data.amount);
+    async function fetchData() {
+      try{
+        setLoading(true)
+        const [
+          balanceData,
+          depositData,
+          withdrawData,
+          receiveData,
+          sendData,
+          monthlyTxnData,
+          withdrawTimelineData,
+          depositTimelineData
+        ] =  await Promise.all([
+          getBalance(),
+          getUserData({ type: "deposite" }),
+          getUserData({ type: "withdraw" }),
+          getUserData({ type: "receive" }),
+          getUserData({ type: "send" }),
+          monthlyTransactionCount(),
+          userTimeWithdrawData(),
+          userTimeDepositeData(),
+        ])
 
-      
-    })
+        setBalance(balanceData?.amount || 0);
+      setDeposite(depositData);
+      setWithDraw(withdrawData);
+      setReceive(receiveData);
+      setSend(sendData);
+      setrMonthlyTanacaction(monthlyTxnData);
+      setUserWithdraw(withdrawTimelineData.amount);
+      setUserWithdrawTimeLine(withdrawTimelineData.Time);
+      setUserDeposite(depositTimelineData.amount);
+      setUserDepositeTimeLine(depositTimelineData.Time);
+      setLoading(false)
+      }
+      catch (error) {
+        console.error("Error fetching dashboard data:", error);
+        // Optionally set error states here
+      }
+
+    }
+   
+   
+    fetchData();
+    
   },[])
-  console.log(userDepositeTimeLine)
+  
+ 
+
+
+
   useEffect(()=>{
     const monthStr = String(monthyTrancaction.month)
     const monthArray = monthStr?.split(" ")
@@ -92,11 +117,14 @@ export default function Home() {
   },[monthyTrancaction.month])
   
 
-
-
-  return (
-    
+  if(loading){
+    return <DashboardSkeleton/>
+  }
+ return (
     <div className={`${monaSans.className} p-10`}>
+      {
+        loading?<DashboardSkeleton/>:null
+      }
       <div className="flex w-[100%] gap-3 ">
         <div className="p-5 bg-white rounded-lg shadow-sm w-[100%] ">
           <div className="flex items-center gap-2">
@@ -216,10 +244,10 @@ export default function Home() {
           height={300}
           series={[
             { data: userDeposite, label: "Deposit",curve:"monotoneX" },
-            { data: userWithdra, label: "Withdraw", color: "red", curve:"monotoneX" },
+            { data: userWithdraw, label: "Withdraw", color: "red", curve:"monotoneX" },
             
           ]}
-          xAxis={[{ scaleType: "point", data:userDepositeTimeLine}]}
+          xAxis={[{ scaleType: "point", data: userDepositeTimeLine.length > userWithdrawTimeLine.length ? userDepositeTimeLine : userWithdrawTimeLine}]}
           yAxis={[{ width: 50 }]}
           margin={margin}
         

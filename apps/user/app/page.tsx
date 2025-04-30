@@ -88,27 +88,6 @@ export default function Home() {
 
       }}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
       className="z-190 text-center flex items-center justify-center w-[100%] -mt-">
         <p className="w-[75%] text-lg text-gray-700">
           Paytm is a secure and reliable platform for transferring money between
@@ -147,10 +126,10 @@ whileTap={{ scale: 0.95 }}
         </div>
 
         <div className="">
-          <Image className="h-10" src="./side.png" alt="" />
+          <Image className="" src="/side.png" alt="" width={130} height={20} />
         </div>
         <div className="absolute opacity-50 right-[20%] -top-4">
-          <Image className="h-10" src="./side2.png" alt="" />
+          <Image src="/side2.png" alt="" width={45} height={48} />
         </div>
         <div className="absolute opacity-40 left-[20%] top-3">
           <Image
@@ -168,10 +147,10 @@ whileTap={{ scale: 0.95 }}
        transition={{ duration: 1, delay: 1 }}
       className=" mt-10 flex justify-center w-[100%] items-center gap-12 px-[12%] pt-20">
         <div className="size-[90%]  px-2 bg-[#fff5e4]  rounded-xl">
-          <Image src="./test.png" alt="" className="h-[50%]" />
+          <Image src="/test.png" alt=""  height={500} width={500} />
         </div>
         <div className="size-[90%]  p-5 bg-gray-50  rounded-xl">
-          <Image src="./second_side.png" alt="" className="h-[50%]" />
+          <Image src="/second_side.png" width={500} alt="" className="h-[50%]" height={500}  />
         </div>
       </motion.div>
 
@@ -340,7 +319,7 @@ whileTap={{ scale: 0.95 }}
         
            >
           
-            <Image src="./thirdSection.png" alt="" />
+            <Image src="/thirdSection.png" alt="" height={500} width={500} />
           </motion.div>
 
           <motion.div
@@ -437,7 +416,7 @@ whileTap={{ scale: 0.95 }}
         transition={{ duration: 1, ease:"easeInOut"}}
         viewport={{once:true, amount:.2}}
         className="w-[50%] p-1 bg-gray-100 rounded-lg">
-          <Image src="./fourth.png" alt="" />
+          <Image src="/fourth.png" alt="" height={500} width={500}/>
         </motion.div>
       </div>
 
