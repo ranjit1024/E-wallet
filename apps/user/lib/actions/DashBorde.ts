@@ -42,7 +42,7 @@ export async function getUserData({ type }: { type: transferType }) {
       return (userData += item.amount);
     }
   });
-
+  console.log("call")
   return userData;
 }
 
@@ -66,6 +66,6 @@ ORDER BY month
   monthlyTransactionCount.forEach((data:monthData) => {
     monthData = data;
   });
-  
+  console.log("call")
   return monthData;
 }

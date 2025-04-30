@@ -18,7 +18,7 @@ export default async function  getBalance(){
         },
     });
 
-    console.log(userId)
-    console.log(balanceData)
+   
+    console.log("sddsa",balanceData)
     return balanceData;
 }

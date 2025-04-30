@@ -10,6 +10,9 @@ import { userTimeDepositeData, userTimeWithdrawData } from "../../../lib/actions
 import Image from "next/image";
 import DashboardSkeleton from '@repo/ui/sceleton'
 
+// components/PageWrapper.tsx
+
+
 
 // import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
@@ -51,6 +54,7 @@ export default function Home() {
   const [months, setMonthes] = useState<string>("");
 
   const margin = { right: 24 };
+
 
 
 

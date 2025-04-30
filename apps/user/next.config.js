@@ -2,7 +2,8 @@
 const nextConfig = {
     images:{
         domains: ['img.icons8.com']
-    }
+    },
+    // reactStrictMode:false
 };
 
 

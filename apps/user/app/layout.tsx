@@ -4,6 +4,7 @@ import "./globals.css";
 import { Providers } from "../lib/providers";
 
 
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -27,8 +28,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Providers>
-          {/* <AppBar></AppBar> */}
+       
+
         {children}
+     
+          {/* <AppBar></AppBar> */}
         </Providers>
       </body>
     </html>

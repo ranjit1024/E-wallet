@@ -37,8 +37,7 @@ export async function userTimeDepositeData() {
     Time.push(String(item.day));
 
   })
-console.log(amount);
-console.log(Time)
+
 console.log("anikt", depositeResponse);
 return {amount,Time};
 }
@@ -74,8 +73,7 @@ export async function userTimeWithdrawData() {
     Time.push(String(item.day));
 
   })
-console.log(amount);
-console.log(Time)
+
 console.log("anikt", withdrawResponse);
 return {amount,Time};
 }
