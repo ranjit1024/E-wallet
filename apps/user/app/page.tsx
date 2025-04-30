@@ -95,6 +95,21 @@ export default function Home() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       
       className="z-190 text-center flex items-center justify-center w-[100%] -mt-">
         <p className="w-[75%] text-lg text-gray-700">
