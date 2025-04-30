@@ -1,5 +1,6 @@
 "use server"
 import db from "@repo/prisma/clinet"
+
 import zod from "zod";
 const emailSchema = zod.string().email();
 export default async function ({email}:{
@@ -7,6 +8,9 @@ export default async function ({email}:{
 }){
     const {success} = emailSchema.safeParse(email);
 
+    if(!success){
+        return "not valid"
+    }
     const findUser = await db.user.findFirst({
         where:{
             email:email

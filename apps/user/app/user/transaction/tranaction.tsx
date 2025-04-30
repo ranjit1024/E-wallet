@@ -3,9 +3,8 @@
 import Record from "@repo/ui/record"
 
 import {getData} from "../../../lib/actions/getTransactions"
-import { use, useEffect, useState } from "react";
-import { tr } from "framer-motion/client";
-import TransactionSkeleton from "@repo/ui/tranactionScaletor"
+import {  useEffect, useState } from "react";
+
 // 
 
 type Transaction = {
@@ -21,21 +20,24 @@ type Transaction = {
   "deposite"|
   "withdraw";
 }
+interface TransactionResponse {
+  data: Transaction[];
+  totalPage: number;
+}
+export default function Tranaction (){
 
-export default function tranaction (){
-
-  const [page, setPage] = useState(1)
+  const [page, setPage] = useState<number>(1)
   const [transactions, setTransactions] = useState<Transaction[]>([])
   const [totalPages, setTotalPages] = useState(1)
-  const[loading,setLoading] = useState(true)
+ 
   // const[data,setData] = useState()
   useEffect(()=>{
-    setLoading(true)
-    getData(page).then((res)=>{
+
+    getData(page).then((res:TransactionResponse)=>{
       setTransactions(res.data);
       setTotalPages(res.totalPage)
     })
-    setLoading(false)
+   
   },[page])
 
 
@@ -108,7 +110,7 @@ export default function tranaction (){
 
         {
         
-          transactions.map((item:any,index:any)=>{
+          transactions.map((item:Transaction,index:number)=>{
             return <Record key={index} transaction={item.provider.toUpperCase()} amount={item.amount} date={item.startTime.toDateString()} time={item.startTime.toLocaleTimeString()} status={item.status} transfer={item.transfer}/>
             
           })

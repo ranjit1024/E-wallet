@@ -3,7 +3,7 @@
 import { Mona_Sans } from "next/font/google";
 import {  motion } from "framer-motion";
 
-import { useRouter } from "next/navigation";
+
 import { signIn } from "next-auth/react";
 import Logo from "@repo/ui/logo";
 import Image from "next/image";
@@ -22,7 +22,7 @@ const monaSans = Mona_Sans({
 });
 
 export default function Home() {
-  const router = useRouter();
+
   return (
     <div className={`${monaSans.className}`}>
       <div className="mt-2 ml-2">

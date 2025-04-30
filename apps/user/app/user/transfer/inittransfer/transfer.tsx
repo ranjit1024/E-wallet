@@ -2,18 +2,19 @@
 import { motion } from "framer-motion";
 import findUser from "../../../../lib/actions/checkuser"
 import transfer from  "../../../../lib/actions/initTransfer"
-import { use, useState } from "react";
+import {  useState } from "react";
 import ErroCopm from "@repo/ui/Error"
 import { useSession } from "next-auth/react";
 import Loading from '@repo/ui/loader';
 import { useRouter } from "next/navigation";
 
-export default function () {
+export default function Home() {
   const [userEmail, setUserEmail] = useState<string>("");
   const [verify, setVerify] = useState<boolean>(false);
   const [clicked, setClicked] = useState<boolean>(false);
   const [userName, setUserName] = useState<string>("");
   const [userId, setUserid] = useState<number>(0);
+
   const [amount,setAmout] = useState<number>(0)
   const [error , setError] =  useState(false);
   const [insufficientBalance , setinsufficientBalace] =  useState(false);
@@ -72,9 +73,12 @@ export default function () {
         setClicked(true)
         const getUser = await findUser({email:userEmail});
         if(getUser){
-          setVerify(false);
-          setUserName(getUser?.name);
-          setUserid(getUser?.id);
+          if(getUser != "not valid"){
+
+            setVerify(false);
+            setUserName(getUser.name);
+            setUserid(getUser.id);
+          }
         }
         else{
           setVerify(false)
@@ -130,7 +134,7 @@ export default function () {
           <button
             className="rounded-md mt-3 w-[100%] bg-blue-600 py-2 px-4 border border-transparent text-center text-md text-white transition-all shadow-md hover:shadow-lg focus:bg-blue-700 focus:shadow-none active:bg-blue-700 hover:bg-blue-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none "
             type="button"
-            onClick={async (e)=>{
+            onClick={async ()=>{
               setLoading(true);
 
               const respons = await transfer({amount:amount, id:userId})

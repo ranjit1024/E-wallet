@@ -1,5 +1,5 @@
 import {AnimatePresence, motion } from 'framer-motion';
-import { X } from 'lucide-react';
+
 
 export default function AlertToast({des}:{
     des:string

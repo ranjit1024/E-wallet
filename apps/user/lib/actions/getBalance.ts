@@ -14,7 +14,7 @@ export default async function  getBalance(){
 
     const balanceData = await db.balance.findFirst({
         where:{
-            userId:userId,
+            userId:Number(userId),
         },
     });
 

@@ -1,20 +1,20 @@
 "use client";
-import { isMotionComponent, motion } from "framer-motion";
+import {  motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
-import { createOnRampTransaction } from "../../../../lib/actions/createOnRamp";
+
 import WithdrawMoney from "../../../../lib/actions/withdraw"
-import { useSession } from "next-auth/react";
+
 import Loading from "@repo/ui/loader"
 import Error from "@repo/ui/Error"
 
 import depositeValidation from "../../../../lib/actions/depositeValidation";
 
-export default function () {
+export default function Home() {
   const selectRef = useRef<HTMLSelectElement>(null);
   const router = useRouter();
-  const session = useSession();
-  const id = session.data?.user.id
+ 
+
   const [amount,setAmount] = useState<number>(0);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -74,7 +74,7 @@ export default function () {
 
           <button
             onClick={async ()=>{
-              const id = Number(session.data?.user.id);
+
               console.log(selectRef.current?.value);
               setIsLoading(true);
               const provider = selectRef.current?.value;

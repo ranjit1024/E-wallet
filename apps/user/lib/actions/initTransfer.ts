@@ -23,8 +23,8 @@ export default async  function({amount,id}:{
     const sendToken = String(Math.random())
     const reciveToken = String(Math.random())
     const session = await getServerSession(authOptions);
-    const userId = session?.user?.id;
-    const userName = session?.user?.name;
+    const userId = Number(session?.user?.id);
+    const userName = String(session?.user?.name);
     const balceCheck = await db.balance.findFirst({
          where:{
             userId:userId

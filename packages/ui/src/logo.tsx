@@ -1,4 +1,4 @@
-import { Mona_Sans, Poppins } from "next/font/google"; 
+import {  Poppins } from "next/font/google"; 
 const monaSans = Poppins({
   subsets: ["latin"], // Supports Latin characters
   weight: ["400", "600", "700",  "900"], // Choose font weights

@@ -3,14 +3,17 @@ import db from "@repo/prisma/clinet";
 import { getServerSession } from "next-auth";
 
 import { authOptions } from "../auth";
-import { string } from "zod";
 
+interface responseType {
+  day:string,
+ totalamount:number
+}
 
 export async function userTimeDepositeData() {
   const session = await getServerSession(authOptions);
   const id = Number(session?.user?.id);
 
-  const depositeResponse : [] = await db.$queryRaw`
+  const depositeResponse: [] = await db.$queryRaw`
     SELECT 
     TO_CHAR(DATE_TRUNC('day', "startTime"), 'YYYY-MM-DD') AS day,
     SUM("amount") AS "totalamount"
@@ -22,14 +25,14 @@ export async function userTimeDepositeData() {
   ORDER BY day;
 `;
 
-  let amount:number [] = [];
-  let Time:string [] = [];
+  const amount:number [] = [];
+  const Time:string [] = [];
 
-  depositeResponse.forEach((item:any) => {
+  depositeResponse.forEach((item:responseType) => {
     amount.push(Number(item.totalamount)/100)
   })
 
-  depositeResponse.forEach((item:any) => {
+  depositeResponse.forEach((item:responseType) => {
     
     Time.push(String(item.day));
 
@@ -59,14 +62,14 @@ export async function userTimeWithdrawData() {
   ORDER BY day;
 `;
 
-  let amount:number [] = [];
-  let Time:string [] = [];
+  const amount:number [] = [];
+  const Time:string [] = [];
 
-  withdrawResponse.forEach((item:any) => {
+  withdrawResponse.forEach((item:responseType) => {
     amount.push(Number(item.totalamount)/100)
   })
 
-  withdrawResponse.forEach((item:any) => {
+  withdrawResponse.forEach((item:responseType) => {
     
     Time.push(String(item.day));
 

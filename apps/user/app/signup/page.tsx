@@ -1,11 +1,12 @@
 "use client";
-import Logo from "@repo/ui/logo";
+
 import { Poppins } from "next/font/google";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
 import Error from "@repo/ui/toast"
 import Loader from "@repo/ui/loader";
+import Image from "next/image";
 
 
 const poppins = Poppins({
@@ -15,7 +16,7 @@ const poppins = Poppins({
   variable: "--font-poppins", // Optional: Use CSS variable
 });
 
-export default function () {
+export default function Home () {
   const router = useRouter();
   const [email,setEmail] = useState("")
   const [name,setName] = useState("")
@@ -67,7 +68,7 @@ export default function () {
       <div className={`flex items-center justify-center  w-[80%] mt-10 `}>
              
              <div className="flex gap-1 items-center">
-         <img width="45" height="40" src="https://img.icons8.com/pulsar-gradient/48/circled.png" alt="circled"/>
+         <Image width="45" height="40" src="https://img.icons8.com/pulsar-gradient/48/circled.png" alt="circled"/>
            
          <p className=" font-semibold  text-[2rem] bg-gradient-to-r from-gray-500  to-cyan-900 inline-block text-transparent bg-clip-text  ">PayTm</p>
        </div>
@@ -146,7 +147,7 @@ export default function () {
               className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
               onClick={ async()=>{
                 setIsloading(true)
-                const response = await res();
+                 await res();
                 setIsloading(false);
                 setTimeout(()=>{
                   setCredentailBlank(false);

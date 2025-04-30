@@ -1,4 +1,4 @@
-import TransactionSkeleton from "@repo/ui/tranactionScaletor"
+
 export default function ({
   transaction,
   amount,

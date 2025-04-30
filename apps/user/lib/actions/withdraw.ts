@@ -2,7 +2,7 @@
 import { authOptions } from "../auth"
 import  { getServerSession } from "next-auth"
 import db from "@repo/prisma/clinet"
-import zod, { string, ZodNaN } from "zod"
+import zod from "zod"
 const schema = zod.number().gt(0);
 export default async function({provider,amount}:{
     provider:string,
@@ -10,7 +10,7 @@ export default async function({provider,amount}:{
 }){
     const token = String(Math.random());
     const session = await getServerSession(authOptions)
-    const id = session.user.id;
+    const id = Number(session?.user.id);
     const {success} = schema.safeParse(amount);
     if(success){
 

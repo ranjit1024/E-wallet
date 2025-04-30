@@ -1,7 +1,7 @@
 "use client"
 import { signOut } from "next-auth/react"
 import { useSession } from "next-auth/react"
-import { Mona_Sans, Poppins } from "next/font/google";
+import { Mona_Sans } from "next/font/google";
 import { useRouter } from "next/navigation";
 const monaSans = Mona_Sans({
   subsets: ["latin"],

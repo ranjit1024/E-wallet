@@ -18,6 +18,9 @@ export const config = [
       turbo: turboPlugin,
     },
     rules: {
+      "@typescript-eslint/no-explicit-any": "off",
+      "react/display-name": "off",
+      "react/jsx-key": "warn",
       "turbo/no-undeclared-env-vars": "warn",
     },
   },

@@ -9,12 +9,12 @@ export default async function({
     senderAmout:number
 }){
     const session = await getServerSession(authOptions)
-    const id = session.user.id;
+    const id = Number(session?.user?.id);
 
  
     const userAmount = await db.balance.findFirst({
         where:{
-            userId:id,
+            userId: id
         }
     })
     console.log(userAmount?.amount)

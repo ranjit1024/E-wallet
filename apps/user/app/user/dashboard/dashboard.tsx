@@ -7,10 +7,7 @@ import { useEffect, useState } from "react";
 import { monthlyTransactionCount } from "../../../lib/actions/DashBorde";
 import { getUserData } from "../../../lib/actions/DashBorde";
 import { userTimeDepositeData, userTimeWithdrawData } from "../../../lib/actions/userData";
-import { number } from "zod";
-import { label } from "framer-motion/client";
-
-
+import Image from "next/image";
 
 // import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
@@ -27,7 +24,7 @@ const monaSans = Mona_Sans({
 
  
 
-export default function() {
+export default function Home() {
   const [Deposit, setDeposite] = useState<number>(0);
   const [Balance,setBalance] = useState<number>(0);
   const [Withdraw,setWithDraw] = useState<number>(0);
@@ -38,7 +35,7 @@ export default function() {
   const [userDepositeTimeLine, setUserDepositeTimeLine] = useState<string[]>([]);
 
   const [userWithdra, setUserWithdraw] = useState<number[]>([])
-  const [userWithdrawTimeLine, setUserWithdrawTimeLine] = useState<string[]>([]);
+
 
   const [monthyTrancaction,setrMonthlyTanacaction] = useState<{
     month:string | null,
@@ -49,17 +46,6 @@ export default function() {
 
   const margin = { right: 24 };
 
-  const uData = [4000, 3000, 2000, 2780, 1890, 2390, 3490];
-  const pData = [2400, 1398, 9800, 3908, 4800, 3800, 4300];
-  const xLabels = [
-    "Page A",
-    "Page B",
-    "Page C",
-    "Page D",
-    "Page E",
-    "Page F",
-    "Page G",
-  ];
 
 
 
@@ -93,7 +79,7 @@ export default function() {
     userTimeWithdrawData().then(data=>{
       console.log(data)
       setUserWithdraw(data.amount);
-      setUserWithdrawTimeLine(data.Time);
+
       
     })
   },[])
@@ -116,7 +102,7 @@ export default function() {
           <div className="flex items-center gap-2">
             <div className="p-1 bg-yellow-300/50 rounded-xl">
               {/*  */}
-              <img
+              <Image
                 width="27"
                 height="48"
                 src="https://img.icons8.com/fluency-systems-filled/48/FAB005/safe-ok.png"
@@ -136,7 +122,7 @@ export default function() {
         <div className="p-5 bg-white rounded-lg shadow-sm w-[100%] ">
           <div className="flex items-center gap-2">
             <div className="p-1 bg-green-300/50 rounded-xl">
-              <img
+              <Image
                 width="27"
                 height="48"
                 src="https://img.icons8.com/pulsar-line/48/40C057/safe-in.png"
@@ -151,7 +137,7 @@ export default function() {
         <div className="p-5 bg-white rounded-lg shadow-sm w-[100%] ">
           <div className="flex items-center gap-2">
             <div className="p-1 bg-red-300/50 rounded-xl">
-              <img
+              <Image
                 width="27"
                 height="48"
                 src="https://img.icons8.com/pulsar-line/48/FA5252/safe-out.png"

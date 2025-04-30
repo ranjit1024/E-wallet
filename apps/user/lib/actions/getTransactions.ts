@@ -2,7 +2,7 @@
 import db from "@repo/prisma/clinet"
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth";
-import { skip } from "node:test";
+
 
 
 export async function getData(page:number=1,pageSize:number=5){
@@ -14,7 +14,7 @@ export async function getData(page:number=1,pageSize:number=5){
       skip:skip,
       take:pageSize,
       where:{
-        userId:userid,
+        userId:Number(userid),
       },
       orderBy:{
         startTime:"desc"

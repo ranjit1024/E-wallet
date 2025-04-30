@@ -3,15 +3,15 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import { createOnRampTransaction } from "../../../../lib/actions/createOnRamp";
-import { Providers } from "../../../../lib/providers";
+
 import ErrorCopmpo from "@repo/ui/Error"
 import InsideLoader from "@repo/ui/loader";
 
-export default function () {
+export default function Home () {
   const selectRef = useRef<HTMLSelectElement>(null);
   const router = useRouter();
   const [amount,setAmount] = useState<number>(0);
-  const [provider, setProvoder] = useState<string>("");
+
   const [loading,setLoading]= useState(false)
   const [isValid,setIsValid]= useState(false)
   return (

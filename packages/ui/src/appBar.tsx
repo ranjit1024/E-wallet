@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import Profile from "@repo/ui/profile";
 import { useEffect, useState } from "react";
-import Success from "@repo/ui/success"
+
 declare module "next-auth" {
   interface Session {
     user: {

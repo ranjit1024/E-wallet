@@ -5,19 +5,39 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../auth";
 
 type transferType = "deposite" | "receive" | "send" | "withdraw";
+type status =  "Success" |
+"Pending"|
+"failed"
+
+interface monthData{
+  month: string | null;
+  total_counnt: number | null;
+}
+
+interface OnRampTransaction {
+  id: number;
+  status:status
+  token: string;
+  provider: string;
+  amount: number;
+  startTime: Date;
+  userId: number;
+  transfer: transferType
+}
 
 export async function getUserData({ type }: { type: transferType }) {
   let userData = 0;
-  const session = await getServerSession(authOptions);
-  const id = Number(session?.user?.id);
+  const session  = await getServerSession(authOptions);
+  const id : number = Number(session?.user?.id);
 
   const data = await db.onRampTransaction.findMany({
     where: {
       userId: id,
     },
   });
+
   console.log("test");
-  data.forEach((item:any) => {
+  data.forEach((item:OnRampTransaction) => {
     if (item.status === "Success" && item.transfer === type) {
       return (userData += item.amount);
     }
@@ -43,7 +63,7 @@ ORDER BY month
     total_counnt: number | null;
   } = { month: null, total_counnt: 0 };
 
-  const data = monthlyTransactionCount.forEach((data: any) => {
+  monthlyTransactionCount.forEach((data:monthData) => {
     monthData = data;
   });
   

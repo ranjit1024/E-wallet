@@ -5,10 +5,9 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import DashboardSkeleton from "@repo/ui/sceleton"
-import { Mona_Sans, Poppins } from "next/font/google";
+import { Mona_Sans } from "next/font/google";
 import { usePathname } from "next/navigation";
-import {motion} from "framer-motion"
-import { Pointer } from "lucide-react";
+import Image from "next/image";
 const monaSans = Mona_Sans({
   subsets: ["latin"],
   weight: ["200", "400", "500", "600", "700"],
@@ -32,14 +31,14 @@ export default function RootLayout({
   const images = [
     
     <li  
-      
+      key={1}
       id="dashboard"
       onClick={()=>{
         router.push('/user/dashboard')
       }}
       className={`flex hover:cursor-pointer  items-center gap-3 p-[0.4rem] mb-2  rounded-lg m-2 ${pathname == "/user/dashboard" ? "bg-white opacity-100 shadow-sm rounded-lg":null}`}
     >
-      <img
+      <Image
         width="48"
         className="size-5"
         height="48"
@@ -49,21 +48,24 @@ export default function RootLayout({
       <p>DashBoard</p>
     </li>,
     <li
+    key={2}
       onClick={()=>{
         router.push('/user/transfer/inittransfer')
       }}
       id="transfer"
       className={`flex items-center gap-3 p-[0.4rem] mb-2 hover:cursor-pointer transition-all duration-100  rounded-lg m-2 ${pathname == "/user/transfer/inittransfer" ? "bg-white opacity-100 shadow-sm rounded-lg":null} `}
     >
-     <img className="size-[1.3rem]" width="48" height="48" src="https://img.icons8.com/pulsar-line/48/online-money-transfer.png" alt="online-money-transfer"/>
+     <Image className="size-[1.3rem]" width="48" height="48" src="https://img.icons8.com/pulsar-line/48/online-money-transfer.png" alt="online-money-transfer"/>
       <p>Transfer</p>
     </li>,
     
 
-    <li onClick={()=>{
+    <li
+    key={3}
+     onClick={()=>{
       router.push("/user/transaction")
     }} className={`flex items-center gap-3 p-[0.4rem] mb-2 hover:cursor-pointer transition-all duration-100  rounded-lg m-2  ${pathname === '/user/transaction' ? "bg-white opacity-100 shadow-sm rounded-lg":null } `}>
-      <img
+      <Image
         className="size-5"
         width="48"
         height="48"

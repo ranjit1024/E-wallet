@@ -3,12 +3,10 @@ import { Poppins } from "next/font/google";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
-import { useSession } from "next-auth/react";
-import { useSearchParams } from "next/navigation";
+import Image from "next/image";
 import Error from "@repo/ui/toast"
 import Loader from "@repo/ui/loader"
-import { tr } from "framer-motion/client";
-import { resolve } from "path";
+
 
 
 const poppins = Poppins({
@@ -18,16 +16,16 @@ const poppins = Poppins({
   variable: "--font-poppins", // Optional: Use CSS variable
 });
 
-export default function () {
-  const session = useSession();
+export default function Home () {
+  
   const router = useRouter();
-  const serachParams = useSearchParams();
+  
 
   const [email,setEmail] = useState("fsd");
   const [password,setPassword] = useState("fsdf");
-  const error = serachParams.get("error");
+
   const [credentialsError, setShowCredentailError] = useState(false);
-  const [credentialsBlank, setCredentailBlank] = useState(false);
+
   const [loading,setLoading] = useState(false);
   // const email = useState("");
   const res = async () => {
@@ -69,9 +67,7 @@ export default function () {
       {
         credentialsError ? <Error data="Email or password is invalid"/>:null
       }
-      {
-        credentialsBlank?<Error data="Enter details"></Error>:null
-      }
+  
 
       <div className=" flex pl-20 text-gray-900  bg-gradient-l from-gray-50 to-white   flex-col p-10 ">
         <div className="text-[7vh] mb-5">
@@ -79,7 +75,7 @@ export default function () {
             <div className={`flex items-center justify-center  w-[20vh] `}>
              
             <div className="flex gap-1 items-center">
-        <img width="45" height="40" src="https://img.icons8.com/pulsar-gradient/48/circled.png" alt="circled"/>
+        <Image width="45" height="40" src="https://img.icons8.com/pulsar-gradient/48/circled.png" alt="circled"/>
           
         <p className=" font-semibold  text-[2rem] bg-gradient-to-r from-gray-500  to-cyan-900 inline-block text-transparent bg-clip-text  ">PayTm</p>
       </div>
@@ -143,7 +139,7 @@ export default function () {
               
               onClick={async()=>{
                 setLoading(true)
-                const response = await res()
+                await res()
                 setLoading(false);
 
                 setTimeout(()=>{

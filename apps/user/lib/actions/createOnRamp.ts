@@ -2,12 +2,9 @@
 import db from '@repo/prisma/clinet'
 import { getServerSession } from "next-auth"
 import { authOptions } from "../auth"
-import { stringify } from 'querystring';
-import { send } from 'process';
+
 import zod from "zod"
-import { NextResponse } from 'next/server';
-import { error } from 'console';
-import { STATUS_CODES } from 'http';
+
 
 const zodSchma  = zod.object({
     amount:zod.number().gt(0)
@@ -39,7 +36,7 @@ export async function  createOnRampTransaction(amount:number, provider:string, )
                 status:'Pending',
                 amount:amount * 100,
                 provider:provider,
-                userId:userId,
+                userId:Number(userId),
                 startTime:new Date(),
                 token:token,
                 transfer:"deposite"
@@ -48,6 +45,7 @@ export async function  createOnRampTransaction(amount:number, provider:string, )
         return token;
     }
     catch(e){
+        console.log(e)
         return "Failed"
     }
 

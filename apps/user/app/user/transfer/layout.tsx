@@ -1,11 +1,11 @@
 // pages/protected-page.js
 "use client";
-import AppBar from "@repo/ui/appBar";
-import { signOut, useSession } from "next-auth/react";
+;
+import {  useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import DashboardSkeleton from "@repo/ui/sceleton"
-import { Mona_Sans, Poppins } from "next/font/google";
+import { Mona_Sans  } from "next/font/google";
 import { usePathname } from "next/navigation";
 
 const poppins = Mona_Sans({
@@ -21,7 +21,7 @@ export default function RootLayout({
   }>)  {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const [isActive, setIsActive] = useState<number | null>();
+
     const click = useRef<HTMLButtonElement>(null);
     const path = usePathname()
   // const itmes = ["DashBoard","Accounts","Trancaction", "Payee"];
