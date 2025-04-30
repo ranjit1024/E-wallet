@@ -69,7 +69,6 @@ export default function tranaction (){
     
     <div className="p-6 px-0 overflow-hidden">
 
-
     
     <table className="w-full text-left table-auto min-w-max ">
       <thead>
