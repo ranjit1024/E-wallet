@@ -1,5 +1,4 @@
-name:
-  Build on PR
+name: Build on PR
 
 on:
   pull_request:
@@ -8,18 +7,18 @@ on:
 
 jobs:
   build:
-    name: Build The project
+    name: Build the project
     runs-on: ubuntu-latest
-    steps: 
-      - uses: actions/checkout@v3      
-      - name: Use node js
-        uses: action/setup-node@v3
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Use Node.js
+        uses: actions/setup-node@v3  # 🔧 Fix: 'action' ➜ 'actions'
         with:
           node-version: '20'
-        
-      - name: Install Dependency
+          
+      - name: Install dependencies
         run: npm install
 
-      - name: Run Build  
-        run: npm run build 
-          
+      - name: Run build
+        run: npm run build
