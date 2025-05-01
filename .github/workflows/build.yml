@@ -1,0 +1,26 @@
+name: "Build On PR"
+
+on:
+  "pull_request":
+    branches:
+      - main
+
+job:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Uses Node.js
+        uses: actions/setup-node@v3
+      
+      - name: Install depnedency
+        run:  npm install
+      
+      - name: client Prisma
+        run: npm run prisma:generate
+      
+      - name: Run Build
+        run: npm run build 
