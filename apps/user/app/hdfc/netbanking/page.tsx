@@ -19,6 +19,10 @@ const KotakLogin = () => {
             router.push('/signin')
         }
     },[session,status,router])
+
+
+
+    
   return (
     <div className="min-h-screen flex flex-col md:flex-row items-center justify-center bg-white px-4 py-10">
       {isloding?<Loader/>:null}
