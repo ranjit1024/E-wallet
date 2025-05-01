@@ -273,6 +273,10 @@ whileTap={{ scale: 0.95 }}
           </div>
         </motion.div>
 
+
+
+
+
         <motion.div
          initial={{ opacity: 0, y: 50, scale: 0.95 }}
          whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -451,9 +455,4 @@ whileTap={{ scale: 0.95 }}
       </div>
     </div>
   );
-
-
-
-
-  
 }
