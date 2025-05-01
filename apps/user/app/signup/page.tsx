@@ -9,18 +9,21 @@ import Loader from "@repo/ui/loader";
 import Image from "next/image";
 
 
+
+
+
+
+
+
+
+
+
 const poppins = Poppins({
   subsets: ["latin"], // Supports Latin characters
   weight: ["100", "400"], // Choose font weights
   style: ["normal", "italic"], // Choose styles
   variable: "--font-poppins", // Optional: Use CSS variable
 });
-
-
-
-
-
-
 
 
 export default function Home () {
