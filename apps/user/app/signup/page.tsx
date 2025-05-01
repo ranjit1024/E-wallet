@@ -16,6 +16,13 @@ const poppins = Poppins({
   variable: "--font-poppins", // Optional: Use CSS variable
 });
 
+
+
+
+
+
+
+
 export default function Home () {
   const router = useRouter();
   const [email,setEmail] = useState("")
