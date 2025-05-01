@@ -420,11 +420,6 @@ whileTap={{ scale: 0.95 }}
         </motion.div>
       </div>
 
-
-
-
-
-
       <div className="footer mt-[13%] mx-2">
       <footer className="flex flex-row flex-wrap items-center justify-center w-full py-6 text-center border-t gap-y-6 gap-x-12 border-slate-200 md:justify-between">
   <div className="block text-slate-800 font-semibold text-sm px-10">
@@ -456,4 +451,9 @@ whileTap={{ scale: 0.95 }}
       </div>
     </div>
   );
+
+
+
+
+  
 }
