@@ -16,13 +16,6 @@ const poppins = Poppins({
   variable: "--font-poppins", // Optional: Use CSS variable
 });
 
-
-
-
-
-
-
-
 export default function Home () {
   const router = useRouter();
   const [email,setEmail] = useState("")
@@ -55,6 +48,15 @@ export default function Home () {
 
   }
 
+
+
+
+
+
+
+
+
+  
   return (
     <div className={`grid grid-cols-[50%,50%] h-[100vh] ${poppins.className}`}>
      
