@@ -13,7 +13,6 @@ import Image from "next/image";
 
 
 
-
 const monaSans = Mona_Sans({
   subsets: ["latin"], // Supports Latin characters
   weight: ["400", "600", "700", "900"], // Choose font weights
@@ -41,7 +40,7 @@ export default function Home() {
         duration:0.5,
         ease:"easeIn"
       }}
-      className="flex flex-col justify-center relative  items-center mx-20 mt-20 p-4 text-[5.5vw] font-semibold text-center tracking-normal mb-5">
+      className="flex flex-col justify-center relative  items-center mx-20 mt-[7%] p-4 text-[5.5vw] font-semibold text-center tracking-normal mb-5">
         <div className="text-center w-[90vw]">
           {/* Safeguard your{" "}
           <*/}
@@ -456,4 +455,3 @@ whileTap={{ scale: 0.95 }}
     </div>
   );
 }
-

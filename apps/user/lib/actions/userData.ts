@@ -15,7 +15,7 @@ export async function userTimeDepositeData() {
 
   const depositeResponse: [] = await db.$queryRaw`
     SELECT 
-    TO_CHAR(DATE_TRUNC('day', "startTime"), 'YYYY-MM-DD') AS day,
+    TO_CHAR(DATE_TRUNC('day', "startTime"), 'FMDD FMMonth YYYY') AS day,
         SUM("amount") AS "totalamount"
           FROM "OnRampTransaction"
             WHERE "status" = 'Success'
@@ -47,7 +47,7 @@ export async function userTimeWithdrawData() {
 
   const withdrawResponse: [] = await db.$queryRaw`
      SELECT 
-    TO_CHAR(DATE_TRUNC('day', "startTime"), 'YYYY-MM-DD') AS day,
+    TO_CHAR(DATE_TRUNC('day', "startTime"), 'FMDD FMMonth YYYY') AS day,
         SUM("amount") AS "totalamount"
           FROM "OnRampTransaction"
             WHERE "status" = 'Success'
