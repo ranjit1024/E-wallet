@@ -32,7 +32,9 @@ const KotakLogin = () => {
           <Image
             src="https://img.freepik.com/free-vector/flat-receiving-cashback-bonus-from-paying-online_88138-766.jpg?t=st=1745212773~exp=1745216373~hmac=9d1d07bb66e5369af827d0cb36a9527d28939b1d3bd120bb358719f5b38441bf&w=996"
             alt="Illustration"
-            className="w-[50vw] mx-auto mb-4"
+            width={1000}
+            height={1000}
+
           />
           <p className="text-lg font-semibold text-blue-800">Transfer,Desposit,Withdraw</p>
           <p className="text-sm text-gray-600">
