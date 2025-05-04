@@ -23,7 +23,7 @@ jobs:
       
         with:
           context: .
-          file: ./Docker/Dockerfile.use4
+          file: ./Docker/Dockerfile.user
           push: true
           tags: ranjitdas2048/ewallet:v1
       
