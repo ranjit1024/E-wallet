@@ -85,6 +85,9 @@ export default function Home() {
           userTimeDepositeData(),
         ])
 
+
+
+        
         setBalance(balanceData?.amount || 0);
       setDeposite(depositData);
       setWithDraw(withdrawData);
