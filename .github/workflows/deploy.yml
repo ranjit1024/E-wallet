@@ -29,4 +29,18 @@ jobs:
       
       - name: Verify push image
         run: docker pull ranjitdas2048/ewallet:v1
+
+      - name: Deploy to Ec2
+        uses: appleboy/ssh-action@master
+      
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            sudo docker pull ranjitdas2048/ewallet:v1
+            sudo docker stop web-app || true
+            sudo docker rm web-app || true
+            sudo docker run -d --name web-app -p 3000:3000 ranjitdas2048/ewallet:v1
+
       

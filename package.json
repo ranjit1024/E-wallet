@@ -9,7 +9,9 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
     "prisma:generate":"cd packages/Prisma && npx prisma generate cd../..",
-    "start-user-app":"cd ./apps/user && npm run start"
+    "start-user-app":"cd ./apps/user && npm run start",
+    "start-deposite-app": "cd ./apps/bank-webhook && npm run dev",
+    "start-withdraw-app": "cd ./apps/withdraw-webhook && npm run dev"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
