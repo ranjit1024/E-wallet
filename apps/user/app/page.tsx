@@ -41,19 +41,23 @@ export default function Home() {
         duration:0.5,
         ease:"easeIn"
       }}
-      className="flex flex-col justify-center relative  items-center mx-20 mt-20 p-4 text-[5.4vw] font-semibold text-center">
-        <div className="text-center w-[80vw]">
-          Safeguard your{" "}
+      className="flex flex-col justify-center relative  items-center mx-20 mt-20 p-4 text-[5.5vw] font-semibold text-center tracking-normal mb-5">
+        <div className="text-center w-[90vw]">
+          {/* Safeguard your{" "}
+          <*/}
+
+          Secure your money with{" "}
+          
           <span className="relative w-[100%]">
             <div className="p-4 absolute  bg-blue-400 opacity-20 left-0 bottom-4 w-[96%] -z-10"></div>
-            finances{" "}
-          </span>{" "}
-          with
+             trusted{" "} 
+          </span>{" "}  
+          
         </div>
 
-        <div className="text-center w-[60%] -mt-5">with top security</div>
+        <div className="text-center w-[80%] -mt-5">bank-level protection</div>
 
-        <div className="absolute top-10 -left-5 -rotate-90 opacity-40  transition-all">
+        <div className="absolute top-10 -left-10 -rotate-90 opacity-40  transition-all">
           <Image
             width="40"
             height="40"
@@ -62,7 +66,7 @@ export default function Home() {
           />
         </div>
 
-        <div className="absolute top-12 -right-1 -rotate-90 opacity-80  transition-all">
+        <div className="absolute top-12 -right-10 -rotate-90 opacity-80  transition-all">
           <Image
             width="40"
             height="40"
@@ -89,7 +93,7 @@ export default function Home() {
       }}
 
       className="z-190 text-center flex items-center justify-center w-[100%] -mt-">
-        <p className="w-[75%] text-lg text-gray-700">
+        <p className="w-[75%] text-lg text-gray-700 mb-5">
           Paytm is a secure and reliable platform for transferring money between
           banks, ensuring every transaction is protected by advanced encryption.
         </p>{" "}
@@ -172,7 +176,7 @@ whileTap={{ scale: 0.95 }}
       
       className="mt-[10%] relative flex items-center justify-center flex-col">
         <p className="text-[7vh] w-[70%] text-center font-semibold leading-tight">
-          Meet our most popular feature to eastablist smooth transaction
+          Meet our most popular feature to establish smooth transaction
         </p>
 
         <div className="absolute left-[15%] opacity-50 rotate-45 top-[65%]">
@@ -303,7 +307,7 @@ whileTap={{ scale: 0.95 }}
             </div>
             <div className="mt-5 font-normal text-[1rem] text-gray-800 w-[90%] ">
               With Paytm, you can rest assured that your funds will be credited
-              to your account within just 48 hours of your withdrawal reques
+              to your account within just 48 hours of your withdrawal request
             </div>
           </div>
         </motion.div>
@@ -389,7 +393,7 @@ whileTap={{ scale: 0.95 }}
               signIn()
             }}
           >
-            Explorer PayTm
+            Explore PayTm 
             <svg
               className="rtl:rotate-180 w-5 h-3.5 ms-2 mt-1"
               aria-hidden="true"

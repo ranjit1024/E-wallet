@@ -1,0 +1,16 @@
+name: Build and Deploy to docker Hub
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on:  ubuntu-latest
+    steps:
+      - name: Check Out Repo
+        uses: actions/chekout@v2
+      
+      - name: log in docker Hub
+      
