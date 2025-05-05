@@ -3,7 +3,8 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
 import { NextAuthOptions, User , Session } from "next-auth";
 import { JWT } from "next-auth/jwt";
-
+const dev = "http://localhost:3000";
+const prod = "http://ec2-3-82-205-200.compute-1.amazonaws.com:3000";
 export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
@@ -42,10 +43,10 @@ export const authOptions: NextAuthOptions = {
         const existing = await db.user.findFirst({ where: { email } });
 
         // 3. SIGNUP FLOW
-        if (basePath === "http://ec2-3-82-205-200.compute-1.amazonaws.com/signup") {
+        if (basePath === `${prod}/signup`) {
           if (!name || !email || !password) {
             throw new Error("blank"); // missing fields
-            
+
           }
           if (existing) {
             throw new Error("email"); // user already exists
@@ -69,7 +70,8 @@ export const authOptions: NextAuthOptions = {
         }
 
         // 4. SIGNIN FLOW
-        if (basePath === "http://ec2-3-82-205-200.compute-1.amazonaws.com/signin") {
+        if (basePath === `${prod}/signin`) {
+
           if (!existing) throw new Error("not match");
 
           const isMatch = await bcrypt.compare(password, existing.password);
