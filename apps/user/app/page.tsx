@@ -54,7 +54,11 @@ export default function Home() {
           
         </div>
 
-        <div className="text-center w-[80%] -mt-5">bank-level protection</div>
+        <div className="text-center w-[80%] relative -mt-5">
+          bank-level protection
+
+          <div className="h-1 w-1 absolute top-12 opacity-80  transition-all bg-yellow-400 p-1 rounded-full"></div>
+        </div>
 
         <div className="absolute top-10 -left-10 -rotate-90 opacity-40  transition-all">
           <Image
@@ -73,7 +77,6 @@ export default function Home() {
             alt="10-percents"
           />
         </div>
-        <div className="absolute bottom-14  left-[40vh] -rotate-90 opacity-80  transition-all bg-yellow-400 p-1 rounded-full"></div>
       </motion.div>
 
       <motion.div 

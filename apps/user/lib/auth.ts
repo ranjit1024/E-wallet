@@ -42,9 +42,10 @@ export const authOptions: NextAuthOptions = {
         const existing = await db.user.findFirst({ where: { email } });
 
         // 3. SIGNUP FLOW
-        if (basePath === "http://localhost:3000/signup") {
+        if (basePath === "http://ec2-3-82-205-200.compute-1.amazonaws.com/signup") {
           if (!name || !email || !password) {
             throw new Error("blank"); // missing fields
+            
           }
           if (existing) {
             throw new Error("email"); // user already exists
@@ -68,7 +69,7 @@ export const authOptions: NextAuthOptions = {
         }
 
         // 4. SIGNIN FLOW
-        if (basePath === "http://localhost:3000/signin") {
+        if (basePath === "http://ec2-3-82-205-200.compute-1.amazonaws.com/signin") {
           if (!existing) throw new Error("not match");
 
           const isMatch = await bcrypt.compare(password, existing.password);
