@@ -41,6 +41,6 @@ jobs:
             sudo docker pull ranjitdas2048/ewallet:v1
             sudo docker stop web-app || true
             sudo docker rm web-app || true
-            sudo docker run -d --name web-app -p 3000:3000 ranjitdas2048/ewallet:v1
+            sudo docker run -e JWT_SECRET ${{ SECRETS.JWT_SECRET }} DATABASE_URL {{ SECRETS.DATABASE_URL }} -d --name web-app -p 3000:3000 ranjitdas2048/ewallet:v1
 
-      
+       
