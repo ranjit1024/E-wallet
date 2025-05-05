@@ -38,6 +38,9 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
+            echo "Before Cleaning up"
+            
+             
             sudo docker pull ranjitdas2048/ewallet:v1
             sudo docker stop web-app || true
             sudo docker rm web-app || true
