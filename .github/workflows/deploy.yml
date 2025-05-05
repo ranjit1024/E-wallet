@@ -38,12 +38,14 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            echo "Before Cleaning up"
-            
-             
             sudo docker pull ranjitdas2048/ewallet:v1
             sudo docker stop web-app || true
             sudo docker rm web-app || true
-            sudo docker run -e JWT_SECRET ${{ SECRETS.JWT_SECRET }} DATABASE_URL {{ SECRETS.DATABASE_URL }} -d --name web-app -p 3000:3000 ranjitdas2048/ewallet:v1
+            sudo docker run -d \
+              --name web-app \
+              -p 3000:3000 \
+              -e JWT_SECRET=${{ secrets.JWT_SECRET }} \
+              -e DATABASE_URL=${{ secrets.DATABASE_URL }} \
+              ranjitdas2048/ewallet:v1
 
-       
+            
