@@ -57,7 +57,6 @@ const localData : {
   monthyTrancactionCount:number[]
 } = raw ? JSON.parse(raw) : "0";
 
-console.log(localData.depositData)
 
 useEffect( ()=> {
 
@@ -115,7 +114,7 @@ useEffect( ()=> {
   }
     setLoading(false)
     fetchData();
-    },[])
+    },[localData.depositData])
   
 
 

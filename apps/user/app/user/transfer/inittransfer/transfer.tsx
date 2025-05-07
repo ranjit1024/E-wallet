@@ -7,7 +7,7 @@ import ErroCopm from "@repo/ui/Error"
 import { useSession } from "next-auth/react";
 import Loading from '@repo/ui/loader';
 import { useRouter } from "next/navigation";
-import { getUserData } from "../../../../lib/actions/DashBorde";
+
 
 export default function Home() {
   const [userEmail, setUserEmail] = useState<string>("");
@@ -22,7 +22,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false)
   const session = useSession()
   const router = useRouter();
-  const user = null;
+
   return (
     <div className="h-[80vh] relative flex justify-center items-center">
       {
