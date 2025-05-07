@@ -3,8 +3,9 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
 import { NextAuthOptions, User , Session } from "next-auth";
 import { JWT } from "next-auth/jwt";
-const dev = "http://localhost:3000";
-const prod = "http://ec2-3-82-205-200.compute-1.amazonaws.com:3000";
+
+export const prod = "http://ec2-44-203-187-243.compute-1.amazonaws.com:3000"
+
 export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({

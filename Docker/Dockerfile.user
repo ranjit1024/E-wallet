@@ -14,4 +14,4 @@ RUN npm run prisma:generate
 
 RUN npm run build
 
-CMD ["npm", "run" , "start-user-app"]
+CMD ["npm" , "run" , "start-user-app"]
