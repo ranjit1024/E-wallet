@@ -3,12 +3,13 @@ import { Mona_Sans } from "next/font/google";
 import { PieChart } from "@mui/x-charts/PieChart";
 import { LineChart, } from "@mui/x-charts/LineChart";
 import getBalance from "../../../lib/actions/getBalance";
-import { useEffect, useState } from "react";
+import { useEffect,  useState } from "react";
 import { monthlyTransactionCount } from "../../../lib/actions/DashBorde";
 import { getUserData } from "../../../lib/actions/DashBorde";
 import { userTimeDepositeData, userTimeWithdrawData } from "../../../lib/actions/userData";
 import Image from "next/image";
 import DashboardSkeleton from '@repo/ui/sceleton'
+
 
 // components/PageWrapper.tsx
 
@@ -30,41 +31,43 @@ const monaSans = Mona_Sans({
  
 
 export default function Home() {
-  const [Deposit, setDeposite] = useState<number>(0);
-  const [Balance,setBalance] = useState<number>(0);
-  const [Withdraw,setWithDraw] = useState<number>(0);
-  const [Send,setSend] = useState<number>(0)
-  const [Recieve,setReceive] = useState<number>(0);
 
-  const [userDeposite, setUserDeposite] = useState<number[]>([])
-  const [userWithdraw, setUserWithdraw] = useState<number[]>([]);
 
-  const [userDepositeTimeLine, setUserDepositeTimeLine] = useState<string[]>([]);
-  const [userWithdrawTimeLine, setUserWithdrawTimeLine] = useState<string[]>([]);
-
+  
   const [loading, setLoading] = useState(true)
 
-
-
-  const [monthyTrancaction,setrMonthlyTanacaction] = useState<{
-    month:string | null,
-    total_counnt:number | null
-  }>({month:null,total_counnt:null});
-
-  const [months, setMonthes] = useState<string>("");
-
+  
   const margin = { right: 24 };
+  
 
 
 
+const raw = localStorage.getItem("data");
+const localData : {
+  depositData:number,
+  balanceData:number,
+  withdrawData:number,
+  sendData:number,
+  receiveData:number,
+  withdrawTimeLineAmount:number[],
+  withdrawTimeLineTime:string[],
+  depositeTimeLineAmount:number[],
+  depositeTimeLineTime:string[],
+  month:string[],
+  monthyTrancactionCount:number[]
+} = raw ? JSON.parse(raw) : "0";
 
+console.log(localData.depositData)
 
+useEffect( ()=> {
 
-
-  useEffect(()=>{
-    async function fetchData() {
-      try{
-        setLoading(true)
+  async function fetchData() {
+    if(!localData.depositData)
+    {
+    try{
+    
+      console.log("fads")
+      setLoading(true)
         const [
           balanceData,
           depositData,
@@ -84,54 +87,45 @@ export default function Home() {
           userTimeWithdrawData(),
           userTimeDepositeData(),
         ])
+        localStorage.setItem("data", JSON.stringify({
+          balanceData: balanceData?.amount,
+          depositData,
+          withdrawData,
+          receiveData,
+          sendData,
+          month: [String(monthlyTxnData.month)],
+          monthyTrancactionCount: [Number(monthlyTxnData.total_counnt)],
+          withdrawTimeLineAmount: withdrawTimelineData?.amount,
+          withdrawTimeLineTime: withdrawTimelineData?.Time,
+          depositeTimeLineAmount: depositTimelineData?.amount,
+          depositeTimeLineTime: depositTimelineData?.Time,
+          
+        }))
 
-
-
-        
-        setBalance(balanceData?.amount || 0);
-      setDeposite(depositData);
-      setWithDraw(withdrawData);
-      setReceive(receiveData);
-      setSend(sendData);
-      setrMonthlyTanacaction(monthlyTxnData);
-      setUserWithdraw(withdrawTimelineData.amount);
-      setUserWithdrawTimeLine(withdrawTimelineData.Time);
-      setUserDeposite(depositTimelineData.amount);
-      setUserDepositeTimeLine(depositTimelineData.Time);
-      setLoading(false)
-      }
+      setLoading(false);
+      
+    }
       catch (error) {
         console.error("Error fetching dashboard data:", error);
         // Optionally set error states here
       }
-
     }
-   
-   
-    fetchData();
     
-  },[])
-  
- 
-
-
-
-  useEffect(()=>{
-    const monthStr = String(monthyTrancaction.month)
-    const monthArray = monthStr?.split(" ")
-    const monthString =  monthArray.slice(1,3).concat().toString().replace(",", " ");
-    setMonthes(monthString)
-  },[monthyTrancaction.month])
-  
-
-  if(loading){
-    return <DashboardSkeleton/>
+    
   }
+    setLoading(false)
+    fetchData();
+    },[])
+  
+
+
+  
+  
+
+  if(loading) return <DashboardSkeleton/>
  return (
     <div className={`${monaSans.className} p-10`}>
-      {
-        loading?<DashboardSkeleton/>:null
-      }
+    
       <div className="flex w-[100%] gap-3 ">
         <div className="p-5 bg-white rounded-lg shadow-sm w-[100%] ">
           <div className="flex items-center gap-2">
@@ -149,7 +143,7 @@ export default function Home() {
           <p className="pt-2 text-[3vw] text-slate-800 font-semibold">
             ₹{" "}
             {
-             `${Balance / 100}.${Balance % 100}`
+             `${localData.balanceData / 100}.${localData.balanceData % 100}`
             }
           </p>
         </div>
@@ -166,7 +160,7 @@ export default function Home() {
             </div>
             <p className="font-normal text-md ml-1 text-gray-400">Deposits</p>
           </div>
-          <p className=" font-semibold pt-2 text-[3vw] text-slate-800">₹ {`${Deposit /  100}.${Deposit % 100}`}</p>
+          <p className=" font-semibold pt-2 text-[3vw] text-slate-800">₹ {`${localData.depositData /  100}.${localData.depositData % 100}`}</p>
         </div>
 
         <div className="p-5 bg-white rounded-lg shadow-sm w-[100%] ">
@@ -182,7 +176,7 @@ export default function Home() {
             <p className="font-normal text-md ml-1 text-gray-400">withdraw</p>
           </div>
           <p className=" font-semibold pt-2 text-[3vw] text-slate-800">
-            ₹ {`${Withdraw /  100}.${Withdraw % 100}`}
+            ₹ {`${ localData.withdrawData /  100}.${ localData.withdrawData % 100}`}
           </p>
         </div>
       </div>
@@ -195,7 +189,7 @@ export default function Home() {
           }
           <LineChart
             
-            xAxis={[{ data: [String(months)], scaleType: 'point' }]}
+            xAxis={[{ data: localData.month, scaleType: 'point' }]}
             yAxis={[{
               
             }]}
@@ -204,7 +198,7 @@ export default function Home() {
               {
                 color: "blue",
                 curve: "catmullRom",
-                data: [Number(monthyTrancaction.total_counnt)],
+                data: localData.monthyTrancactionCount,
               },
             ]}
             height={400}
@@ -230,10 +224,10 @@ export default function Home() {
                   color: "gray",
                 },
                 data: [
-                  { id: 0, value: Deposit/100, label: "Deposit" },
-                  { id: 1, value:Withdraw/ 100, label: "Withdraw" },
-                  { id: 2, value: Send/100, label: "Send" },
-                  { id: 3, value: Recieve / 100, label: "Recieve" },
+                  { id: 0, value: localData.depositData/100, label: "Deposit" },
+                  { id: 1, value:localData.withdrawData/ 100, label: "Withdraw" },
+                  { id: 2, value: localData.sendData/100, label: "Send" },
+                  { id: 3, value: localData.receiveData / 100, label: "Recieve" },
                 ],
               },
             ]}
@@ -250,11 +244,11 @@ export default function Home() {
         <LineChart
           height={300}
           series={[
-            { data: userDeposite, label: "Deposit",curve:"monotoneX" },
-            { data: userWithdraw, label: "Withdraw", color: "red", curve:"monotoneX" },
+            { data: localData.depositeTimeLineAmount, label: "Deposit",curve:"monotoneX" },
+            { data: localData.withdrawTimeLineAmount, label: "Withdraw", color: "red", curve:"monotoneX" },
             
           ]}
-          xAxis={[{ scaleType: "point", data: userDepositeTimeLine.length > userWithdrawTimeLine.length ? userDepositeTimeLine : userWithdrawTimeLine}]}
+          xAxis={[{ scaleType: "point", data: localData.depositeTimeLineTime.length > localData.withdrawTimeLineTime.length ? localData.depositeTimeLineTime : localData.withdrawTimeLineTime}]}
           yAxis={[{ width: 50 }]}
           margin={margin}
         

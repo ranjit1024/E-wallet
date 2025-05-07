@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Providers } from "../lib/providers";
+import ReactQueryProvider from "../lib/react-query-provider";
 import LoadingBar from "./loading-bar";
 
 const geistSans = localFont({
@@ -29,7 +30,10 @@ export default function RootLayout({
         <Providers>
        
         <LoadingBar/>
+        <ReactQueryProvider>
+
         {children}
+        </ReactQueryProvider>
      
           {/* <AppBar></AppBar> */}
         </Providers>

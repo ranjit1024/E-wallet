@@ -51,7 +51,8 @@ export async function monthlyTransactionCount() {
   const id = Number(session?.user?.id);
 
   const monthlyTransactionCount: [] = await db.$queryRaw`
-  SELECT DATE_TRUNC('month', "startTime") AS month, count(id) AS total_counnt
+  SELECT 
+  TO_CHAR(DATE_TRUNC('month', "startTime"),'FMDD FMMonth YYYY') AS month, count(id) AS total_counnt
 FROM "OnRampTransaction"
 WHERE "userId" = ${id}
 GROUP BY month
@@ -67,5 +68,6 @@ ORDER BY month
     monthData = data;
   });
   console.log("call")
+  console.log(monthData)
   return monthData;
 }

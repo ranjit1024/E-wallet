@@ -162,12 +162,14 @@ export default function Home() {
                 setLoading(false)
                 setinsufficientBalace(true);
                 setTimeout(()=>{
-                  setError(false)
+                  setError(false);
+                  setinsufficientBalace(true);
                 },3000);
                 return
               }
            
               setLoading(false);
+              localStorage.removeItem("data")
               router.push("/user/dashboard")
 
 

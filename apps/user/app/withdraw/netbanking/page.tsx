@@ -6,6 +6,7 @@ import lastRamp from "../../../lib/actions/getOnramp";
 import axios from "axios";
 import Loader from "@repo/ui/loader"
 import Image from "next/image";
+import { prod } from "../../../link";
 
 const KotakLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -110,7 +111,7 @@ const KotakLogin = () => {
               console.log("dfasdf",data)
               if(data?.status === "Pending" && data?.transfer==="withdraw"){
 
-                const response = await axios.post("http://ec2-44-203-187-243.compute-1.amazonaws.com:3005/depositewebhook", {
+                const response = await axios.post(`${prod}:3005/depositewebhook`, {
                   token:data?.token,
                   amount:data?.amount,
                   user_indentifier:data?.userId
@@ -121,6 +122,7 @@ const KotakLogin = () => {
                 router.push("/user/dashboard")
                 return
               }
+              localStorage.removeItem('data')
               router.push('/user/dashboard')
             }}
             className="w-full bg-red-300 text-white font-semibold py-2 rounded hover:bg-red-400 "

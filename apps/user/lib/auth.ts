@@ -3,8 +3,8 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
 import { NextAuthOptions, User , Session } from "next-auth";
 import { JWT } from "next-auth/jwt";
+import { prod } from "../link";
 
-export const prod = "http://ec2-44-203-187-243.compute-1.amazonaws.com:3000"
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -71,7 +71,7 @@ export const authOptions: NextAuthOptions = {
         }
 
         // 4. SIGNIN FLOW
-        if (basePath === `${prod}/signin`) {
+        if (basePath === `${prod}:3000/signin`) {
 
           if (!existing) throw new Error("not match");
 

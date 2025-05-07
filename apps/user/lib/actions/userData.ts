@@ -1,6 +1,7 @@
 "use server";
 import db from "@repo/prisma/clinet";
 import { getServerSession } from "next-auth";
+import {cache} from "react"
 
 import { authOptions } from "../auth";
 
@@ -9,7 +10,7 @@ interface responseType {
   totalamount: number;
 }
 
-export async function userTimeDepositeData() {
+export const userTimeDepositeData = cache(async ()=> {
   const session = await getServerSession(authOptions);
   const id = Number(session?.user?.id);
 
@@ -37,11 +38,12 @@ export async function userTimeDepositeData() {
     Time.push(String(item.day));
   });
 
-  console.log("anikt", depositeResponse);
+ 
   return { amount, Time };
-}
+})
 
-export async function userTimeWithdrawData() {
+
+export const userTimeWithdrawData = cache(async () => {
   const session = await getServerSession(authOptions);
   const id = Number(session?.user?.id);
 
@@ -69,6 +71,6 @@ export async function userTimeWithdrawData() {
     Time.push(String(item.day));
   });
 
-  console.log("anikt", withdrawResponse);
+  console.log("userWithdrawdata", withdrawResponse);
   return { amount, Time };
-}
+})

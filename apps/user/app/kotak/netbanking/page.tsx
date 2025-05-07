@@ -6,6 +6,7 @@ import lastRamp from "../../../lib/actions/getOnramp";
 import axios from "axios";
 import Loader from "@repo/ui/loader"
 import Image from "next/image";
+import { prod } from "../../../link";
 
 
 
@@ -110,15 +111,17 @@ const KotakLogin = () => {
               setIsloading(true)
               const data = await lastRamp();
               if(data?.status === "Pending"){
-                await axios.post("http://ec2-44-203-187-243.compute-1.amazonaws.com:3004/hdfcWebhook", {
+                await axios.post(`${prod}:3004/hdfcWebhook`, {
                   token:data?.token,
                   amount:data?.amount,
                   user_indentifier:data?.userId
                 });
                 setIsloading(false);
+                localStorage.removeItem('data')
                 router.push("/user/dashboard")
                 return
               }
+              localStorage.removeItem('data')
               router.push('/user/dashboard')
             }}
             className="w-full bg-green-300 text-white font-semibold py-2 rounded hover:bg-green-400 "

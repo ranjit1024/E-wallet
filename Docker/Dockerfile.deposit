@@ -12,5 +12,6 @@ RUN npm install
 
 RUN npm run prisma:generate
 
+EXPOSE 3004
 
 CMD ["npx", "turbo" , "run" , "dev"]

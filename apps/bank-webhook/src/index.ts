@@ -59,6 +59,9 @@ catch(e){
  
 })
 
-App.listen(port, ()=>{
+
+
+
+App.listen(port, '0.0.0.0', ()=>{
     console.log(`deposite sever listing on  ${port}`)
 })

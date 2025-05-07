@@ -8,13 +8,12 @@
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
-    "prisma:generate":"cd packages/Prisma && npx prisma generate cd../..",
-    "start-user-app":"cd ./apps/user && npm run start",
+    "prisma:generate": "cd packages/Prisma && npx prisma generate cd../..",
+    "start-user-app": "cd ./apps/user && next start -p 3000 -H 0.0.0.0",
     "start-deposite-app": "cd ./apps/bank-webhook && npm run dev",
     "start-withdraw-app": "cd ./apps/withdraw-webhook && npm run dev",
     "run-all": "cd ./apps/user && npm start && cd ./app/bank-webhook && npm run dev"
   },
-  
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
     "@types/nprogress": "^0.2.3",
@@ -40,17 +39,20 @@
     "@mui/material": "^7.0.2",
     "@mui/x-charts": "^8.0.0-beta.3",
     "@next/eslint-plugin-next": "^15.3.1",
+    "@tanstack/react-query": "^5.75.4",
     "@types/express": "^5.0.1",
     "axios": "^1.8.4",
     "bcrypt": "^5.1.1",
     "esbuild": "^0.25.2",
     "express": "^5.1.0",
     "framer-motion": "^12.6.3",
+    "idb": "^8.0.3",
     "lucide-react": "^0.501.0",
     "next-auth": "^4.24.11",
     "nprogress": "^0.2.0",
     "recharts": "^2.15.3",
     "recoil": "^0.7.7",
+    "swr": "^2.3.3",
     "zod": "^3.24.3"
   }
 }
