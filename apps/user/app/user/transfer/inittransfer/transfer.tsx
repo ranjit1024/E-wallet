@@ -7,6 +7,7 @@ import ErroCopm from "@repo/ui/Error"
 import { useSession } from "next-auth/react";
 import Loading from '@repo/ui/loader';
 import { useRouter } from "next/navigation";
+import { getUserData } from "../../../../lib/actions/DashBorde";
 
 export default function Home() {
   const [userEmail, setUserEmail] = useState<string>("");
@@ -20,7 +21,8 @@ export default function Home() {
   const [insufficientBalance , setinsufficientBalace] =  useState(false);
   const [loading, setLoading] = useState(false)
   const session = useSession()
-  const router = useRouter()
+  const router = useRouter();
+  const user = null;
   return (
     <div className="h-[80vh] relative flex justify-center items-center">
       {
@@ -79,6 +81,9 @@ export default function Home() {
             setUserName(getUser.name);
             setUserid(getUser.id);
           }
+          else{
+            setVerify(false)
+          }
         }
         else{
           setVerify(false)
@@ -132,8 +137,9 @@ export default function Home() {
          
 
           <button
-            className="rounded-md mt-3 w-[100%] bg-blue-600 py-2 px-4 border border-transparent text-center text-md text-white transition-all shadow-md hover:shadow-lg focus:bg-blue-700 focus:shadow-none active:bg-blue-700 hover:bg-blue-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none "
+            className={`rounded-md mt-3 w-[100%] bg-blue-600 py-2 px-4 border border-transparent text-center text-md text-white transition-all shadow-md hover:shadow-lg focus:bg-blue-700 focus:shadow-none active:bg-blue-700 hover:bg-blue-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none`}
             type="button"
+              disabled={!userName}
             onClick={async ()=>{
               setLoading(true);
 
