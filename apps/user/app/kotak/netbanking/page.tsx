@@ -111,7 +111,7 @@ const KotakLogin = () => {
               setIsloading(true)
               const data = await lastRamp();
               if(data?.status === "Pending"){
-                await axios.post(`http://ewallet.10xdev.shop:3004/hdfcWebhook`, {
+                await axios.post(`https://ewallet.10xdev.shop/hdfcWebhook`, {
                   token:data?.token,
                   amount:data?.amount,
                   user_indentifier:data?.userId

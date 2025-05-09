@@ -5,7 +5,7 @@ const App = express();
 const  port : number  = 3004;
 App.get("/", (req,res)=>{
     res.status(200).json({
-        msg:'Healthy Server'
+        msg:'Healthy Deposite Server'
     })
 });
 App.use(express.json())
