@@ -71,7 +71,7 @@ export const authOptions: NextAuthOptions = {
         }
 
         // 4. SIGNIN FLOW
-        if (basePath === `${prod}:3000/signin`) {
+        if (basePath === `${prod}/signin`) {
 
           if (!existing) throw new Error("not match");
 

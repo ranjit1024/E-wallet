@@ -1,1 +1,1 @@
-export const prod = "http://localhost"
+export const prod = "https://ewallet.10xdev.shop"

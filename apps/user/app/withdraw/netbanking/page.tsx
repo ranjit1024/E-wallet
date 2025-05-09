@@ -111,7 +111,7 @@ const KotakLogin = () => {
               console.log("dfasdf",data)
               if(data?.status === "Pending" && data?.transfer==="withdraw"){
 
-                const response = await axios.post(`${prod}:3005/depositewebhook`, {
+                const response = await axios.post(`http://ewallet.10xdev.shop:3005/depositewebhook`, {
                   token:data?.token,
                   amount:data?.amount,
                   user_indentifier:data?.userId
