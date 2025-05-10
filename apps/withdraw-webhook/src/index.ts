@@ -1,7 +1,7 @@
 import express from "express"
 import db from "@repo/prisma/nodeclient";
 import cors from "cors"
-import session from "express-session";
+
 const App = express();
 const port : number = 3005;
 let MAX_RETRIES  = 10;
@@ -68,7 +68,7 @@ async function startServer() {
   try {
     await db.$connect();
     App.listen(port, "0.0.0.0", () => {
-      console.log(`deposite sever listing on  ${port}`);
+      console.log(`deposite sever listing on lkjlkj ${port}`);
     });
   } catch (e) {
     console.log("database went wrog", e);
