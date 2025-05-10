@@ -6,7 +6,7 @@ import lastRamp from "../../../lib/actions/getOnramp";
 import axios from "axios";
 import Loader from "@repo/ui/loader"
 import Image from "next/image";
-import { prod } from "../../../link";
+
 
 
 

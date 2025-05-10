@@ -119,6 +119,7 @@ const KotakLogin = () => {
                 console.log(response)
 
                 setIsloading(false);
+                localStorage.getItem('data')
                 router.push("/user/dashboard")
                 return
               }
