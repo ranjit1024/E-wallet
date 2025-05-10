@@ -2,16 +2,17 @@ FROM node:20.12.0-alpine3.19
 
 WORKDIR /user/src/app
 
-COPY package.json package-lock.json turbo.json  ./
-RUN npm run
+# Copy everything first (important for monorepos)
+COPY . .
 
-COPY apps ./apps
-COPY packages  ./packages
+# Install dependencies
+RUN npm install
 
-RUN npm install 
-
+# Generate Prisma client
 RUN npm run prisma:generate
 
-EXPOSE 3004
+# Expose the port your app uses
+EXPOSE 3005
 
-CMD ["npm", "run" , "deposit"]
+# Start your withdraw app
+CMD ["npm", "run", "start-withdraw-app"]
