@@ -1,17 +1,12 @@
 "use client";
 
 import { Mona_Sans } from "next/font/google";
-import {  motion } from "framer-motion";
-
+import { motion } from "framer-motion";
 
 import { signIn } from "next-auth/react";
 import Logo from "@repo/ui/logo";
 import Image from "next/image";
-
-
-
-
-
+import { useRouter } from "next/navigation";
 
 const monaSans = Mona_Sans({
   subsets: ["latin"], // Supports Latin characters
@@ -21,42 +16,39 @@ const monaSans = Mona_Sans({
 });
 
 export default function Home() {
-
+  const router = useRouter()
   return (
     <div className={`${monaSans.className}`}>
       <div className="mt-2 ml-2">
         <Logo />
       </div>
-      <motion.div 
-      initial={{
-        y:10,
-        opacity:0
-      }}
-      animate={{
-        y:0,
-        opacity:1
-      }}
-      transition={{
-        duration:0.5,
-        ease:"easeIn"
-      }}
-      className="flex flex-col justify-center relative  items-center mx-20 mt-[7%] p-4 text-[5.5vw] font-semibold text-center tracking-normal mb-5">
+      <motion.div
+        initial={{
+          y: 10,
+          opacity: 0,
+        }}
+        animate={{
+          y: 0,
+          opacity: 1,
+        }}
+        transition={{
+          duration: 0.5,
+          ease: "easeIn",
+        }}
+        className="flex flex-col justify-center relative  items-center mx-20 mt-[7%] p-4 text-[5.5vw] font-semibold text-center tracking-normal mb-5"
+      >
         <div className="text-center w-[90vw]">
           {/* Safeguard your{" "}
           <*/}
-
           Secure your money with{" "}
-          
           <span className="relative w-[100%]">
             <div className="p-4 absolute  bg-blue-400 opacity-20 left-0 bottom-4 w-[96%] -z-10"></div>
-             trusted{" "} 
-          </span>{" "}  
-          
+            trusted{" "}
+          </span>{" "}
         </div>
 
         <div className="text-center w-[80%] relative -mt-5">
           bank-level protection
-
           <div className="h-1 w-1 absolute top-12 opacity-80  transition-all bg-yellow-400 p-1 rounded-full"></div>
         </div>
 
@@ -79,22 +71,21 @@ export default function Home() {
         </div>
       </motion.div>
 
-      <motion.div 
-      initial={{
-        y:20,
-        opacity:0,
-      }}
-      animate={{
-        y:0,
-        opacity:1
-      }}
-      transition={{
-        duration:0.5,
-        delay:0.2
-
-      }}
-
-      className="z-190 text-center flex items-center justify-center w-[100%] -mt-">
+      <motion.div
+        initial={{
+          y: 20,
+          opacity: 0,
+        }}
+        animate={{
+          y: 0,
+          opacity: 1,
+        }}
+        transition={{
+          duration: 0.5,
+          delay: 0.2,
+        }}
+        className="z-190 text-center flex items-center justify-center w-[100%] -mt-"
+      >
         <p className="w-[75%] text-lg text-gray-700 mb-5">
           Paytm is a secure and reliable platform for transferring money between
           banks, ensuring every transaction is protected by advanced encryption.
@@ -102,26 +93,30 @@ export default function Home() {
       </motion.div>
 
       <motion.div
-      initial={{
-        scale:0.6,
-        opacity:0
-      }} 
-      animate={{
-        scale:1,
-        opacity:1
-      }}
-      transition={{
-        duration:0.7,
-        ease:"easeOut",
-        delay:0.4
-      }}
-      className="z-190 relative text-center flex items-center justify-center w-[100%] mt-10 gap-5">
+        initial={{
+          scale: 0.6,
+          opacity: 0,
+        }}
+        animate={{
+          scale: 1,
+          opacity: 1,
+        }}
+        transition={{
+          duration: 0.7,
+          ease: "easeOut",
+          delay: 0.4,
+        }}
+        className="z-190 relative text-center flex items-center justify-center w-[100%] mt-10 gap-5"
+      >
         <div>
           <motion.button
-
-whileHover={{ scale: 1.05 }}
-whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => {
+              if (localStorage.getItem("data")) {
+                router.push('/user/dashboard');
+                return;
+              }
               signIn();
             }}
             className="rounded-xl bg-slate-950 py-2 px-8 border border-transparent text-center text-md text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-800 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none font-medium "
@@ -147,36 +142,41 @@ whileTap={{ scale: 0.95 }}
         </div>
       </motion.div>
 
-      <motion.div 
-       initial={{ y: -10, opacity: 0 }}
-       animate={{ y: 0, opacity: 1 }}
-       transition={{ duration: 1, delay: 1 }}
-      className=" mt-10 flex justify-center w-[100%] items-center gap-12 px-[12%] pt-20">
+      <motion.div
+        initial={{ y: -10, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 1, delay: 1 }}
+        className=" mt-10 flex justify-center w-[100%] items-center gap-12 px-[12%] pt-20"
+      >
         <div className="size-[90%]  px-2 bg-[#fff5e4]  rounded-xl">
-          <Image src="/test.png" alt=""  height={500} width={500} />
+          <Image src="/test.png" alt="" height={500} width={500} />
         </div>
         <div className="size-[90%]  p-5 bg-gray-50  rounded-xl">
-          <Image src="/second_side.png" width={500} alt="" className="h-[50%]" height={500}  />
+          <Image
+            src="/second_side.png"
+            width={500}
+            alt=""
+            className="h-[50%]"
+            height={500}
+          />
         </div>
       </motion.div>
 
-
-      <motion.div 
-      initial={{
-        opacity:0,
-        y:10
-      }}
-      
-      whileInView={{
-        opacity:1,
-        y:0
-      }}
-      transition={{
-        duration:0.7
-      }}
-      viewport={{ once: true,amount:0.5}}
-      
-      className="mt-[10%] relative flex items-center justify-center flex-col">
+      <motion.div
+        initial={{
+          opacity: 0,
+          y: 10,
+        }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          duration: 0.7,
+        }}
+        viewport={{ once: true, amount: 0.5 }}
+        className="mt-[10%] relative flex items-center justify-center flex-col"
+      >
         <p className="text-[7vh] w-[70%] text-center font-semibold leading-tight">
           Meet our most popular feature to establish smooth transaction
         </p>
@@ -205,24 +205,21 @@ whileTap={{ scale: 0.95 }}
       </div>
 
       <div className="all cards grid grid-cols-3 px-40 mt-12 gap-10 ">
-        <motion.div 
-      initial={{ opacity: 0, y: 50, scale: 0.95 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, amount: 0.5 }}
-      transition={{
-        duration: 0.8,
-        ease: [0.22, 1, 0.36, 1], // Professional bounce-out curve (easeOutExpo)
-      }}
-      whileHover={{
-        scale: 1.03,
-        transition: { duration: 0.3 },
-        boxShadow: "0 12px 30px rgba(0,0,0,0.1)",
-      }}
-      
-  
-     
-      
-        className=" border-2 border-gray-200 p-5 rounded-xl  hover:cursor-pointer ">
+        <motion.div
+          initial={{ opacity: 0, y: 50, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{
+            duration: 0.8,
+            ease: [0.22, 1, 0.36, 1], // Professional bounce-out curve (easeOutExpo)
+          }}
+          whileHover={{
+            scale: 1.03,
+            transition: { duration: 0.3 },
+            boxShadow: "0 12px 30px rgba(0,0,0,0.1)",
+          }}
+          className=" border-2 border-gray-200 p-5 rounded-xl  hover:cursor-pointer "
+        >
           <div className="p-5 flex flex-col">
             <div className="bg-[#ffe9ca] p-2 rounded-2xl w-[20%]">
               <Image
@@ -251,14 +248,15 @@ whileTap={{ scale: 0.95 }}
           transition={{
             duration: 0.8,
             ease: [0.22, 1, 0.36, 1], // Professional bounce-out curve (easeOutExpo)
-            delay:0.1
+            delay: 0.1,
           }}
           whileHover={{
             scale: 1.03,
             transition: { duration: 0.3 },
             boxShadow: "0 12px 30px rgba(0,0,0,0.1)",
           }}
-        className=" border-2 border-gray-200 p-5 rounded-xl  hover:cursor-pointer ">
+          className=" border-2 border-gray-200 p-5 rounded-xl  hover:cursor-pointer "
+        >
           <div className="p-5 flex flex-col">
             <div className="bg-blue-500/50 p-2 rounded-2xl w-[20%]">
               <Image
@@ -280,20 +278,21 @@ whileTap={{ scale: 0.95 }}
         </motion.div>
 
         <motion.div
-         initial={{ opacity: 0, y: 50, scale: 0.95 }}
-         whileInView={{ opacity: 1, y: 0, scale: 1 }}
-         viewport={{ once: true, amount: 0.5 }}
-         transition={{
-           duration: 0.8,
-           ease: [0.22, 1, 0.36, 1],
-           delay:0.2 // Professional bounce-out curve (easeOutExpo)
-         }}
-         whileHover={{
-           scale: 1.03,
-           transition: { duration: 0.3 },
-           boxShadow: "0 12px 30px rgba(0,0,0,0.1)",
-         }}
-        className=" border-2 border-gray-200 p-5 rounded-xl  hover:cursor-pointer">
+          initial={{ opacity: 0, y: 50, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{
+            duration: 0.8,
+            ease: [0.22, 1, 0.36, 1],
+            delay: 0.2, // Professional bounce-out curve (easeOutExpo)
+          }}
+          whileHover={{
+            scale: 1.03,
+            transition: { duration: 0.3 },
+            boxShadow: "0 12px 30px rgba(0,0,0,0.1)",
+          }}
+          className=" border-2 border-gray-200 p-5 rounded-xl  hover:cursor-pointer"
+        >
           <div className="p-5 flex flex-col">
             <div className="bg-purple-500/50 p-2 rounded-2xl w-[20%]">
               <Image
@@ -317,25 +316,23 @@ whileTap={{ scale: 0.95 }}
 
       <div className="mt-[10%]">
         <div className="px-[11%] flex gap-10">
-          <motion.div 
-           initial={{ opacity: 0, x:-20, }}
-           whileInView={{ opacity: 1, x:0,  }}
-           transition={{ duration: 0.6, ease:"easeInOut",}}
-           viewport={{once:true, amount:.2}} className="w-[50%] p-1 bg-[#fce8cc] rounded-lg"
-        
-           >
-          
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            viewport={{ once: true, amount: 0.2 }}
+            className="w-[50%] p-1 bg-[#fce8cc] rounded-lg"
+          >
             <Image src="/thirdSection.png" alt="" height={500} width={500} />
           </motion.div>
 
           <motion.div
-      
-          initial={{ opacity: 0, x:20, }}
-          whileInView={{ opacity: 1, x:0,  }}
-          transition={{ duration: 0.6, ease:"easeInOut"}}
-          viewport={{once:true, amount:.2}} 
-        
-          className="w-[50%] flex flex-col items-center gap-5 relative">
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            viewport={{ once: true, amount: 0.2 }}
+            className="w-[50%] flex flex-col items-center gap-5 relative"
+          >
             <div className="text-[2.3rem] font-semibold w-[100%] ">
               Track your deposits and withdrawals for better money management
             </div>
@@ -358,20 +355,18 @@ whileTap={{ scale: 0.95 }}
               </div>
             </div>
           </motion.div>
-
         </div>
       </div>
 
       <div className="mt-[10%] mx-[11%] flex gap-10">
         <motion.div
-        initial={{ opacity: 0, x:-20, }}
-        whileInView={{ opacity: 1, x:0,  }}
-        transition={{ duration: 1, ease:"easeInOut"}}
-        viewport={{once:true, amount:.2}}
-        className="w-[50%] relative">
-          <motion.div
-            
-            className="opacity-50 absolute -left-12 -top-6 rotate-45">
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, ease: "easeInOut" }}
+          viewport={{ once: true, amount: 0.2 }}
+          className="w-[50%] relative"
+        >
+          <motion.div className="opacity-50 absolute -left-12 -top-6 rotate-45">
             <Image
               width="50"
               height="50"
@@ -391,11 +386,11 @@ whileTap={{ scale: 0.95 }}
           <button
             type="button"
             className="  focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold text-gray-800 rounded-lg text-lg mt-14 text-center inline-flex  items-center justify-items-center  dark:hover:text-blue-700 "
-            onClick={()=>{
-              signIn()
+            onClick={() => {
+              signIn();
             }}
           >
-            Explore PayTm 
+            Explore PayTm
             <svg
               className="rtl:rotate-180 w-5 h-3.5 ms-2 mt-1"
               aria-hidden="true"
@@ -412,48 +407,59 @@ whileTap={{ scale: 0.95 }}
               />
             </svg>
           </button>
-          
         </motion.div>
 
-
         <motion.div
-        initial={{ opacity: 0, x:20, }}
-        whileInView={{ opacity: 1, x:0,  }}
-        transition={{ duration: 1, ease:"easeInOut"}}
-        viewport={{once:true, amount:.2}}
-        className="w-[50%] p-1 bg-gray-100 rounded-lg">
-          <Image src="/fourth.png" alt="" height={500} width={500}/>
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, ease: "easeInOut" }}
+          viewport={{ once: true, amount: 0.2 }}
+          className="w-[50%] p-1 bg-gray-100 rounded-lg"
+        >
+          <Image src="/fourth.png" alt="" height={500} width={500} />
         </motion.div>
       </div>
 
       <div className="footer mt-[13%] mx-2">
-      <footer className="flex flex-row flex-wrap items-center justify-center w-full py-6 text-center border-t gap-y-6 gap-x-12 border-slate-200 md:justify-between">
-  <div className="block text-slate-800 font-semibold text-sm px-10">
-      <Logo/>
-  </div>
-  <ul className="flex flex-wrap items-center gap-y-2 gap-x-8">
-    <li>
-      <a href="#" className="text-slate-700 hover:text-slate-500 focus:text-slate-500 text-sm">
-        About Us
-      </a>
-    </li>
-    <li>
-      <a href="#" className="text-slate-700 hover:text-slate-500 focus:text-slate-500 text-sm">
-        License
-      </a>
-    </li>
-    <li>
-      <a href="#" className="text-slate-700 hover:text-slate-500 focus:text-slate-500 text-sm">
-        Contribute
-      </a>
-    </li>
-    <li>
-      <a href="#" className="text-slate-700 hover:text-slate-500 focus:text-slate-500 text-sm">
-        Contact Us
-      </a>
-    </li>
-  </ul>
-</footer> 
+        <footer className="flex flex-row flex-wrap items-center justify-center w-full py-6 text-center border-t gap-y-6 gap-x-12 border-slate-200 md:justify-between">
+          <div className="block text-slate-800 font-semibold text-sm px-10">
+            <Logo />
+          </div>
+          <ul className="flex flex-wrap items-center gap-y-2 gap-x-8">
+            <li>
+              <a
+                href="#"
+                className="text-slate-700 hover:text-slate-500 focus:text-slate-500 text-sm"
+              >
+                About Us
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="text-slate-700 hover:text-slate-500 focus:text-slate-500 text-sm"
+              >
+                License
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="text-slate-700 hover:text-slate-500 focus:text-slate-500 text-sm"
+              >
+                Contribute
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="text-slate-700 hover:text-slate-500 focus:text-slate-500 text-sm"
+              >
+                Contact Us
+              </a>
+            </li>
+          </ul>
+        </footer>
       </div>
     </div>
   );

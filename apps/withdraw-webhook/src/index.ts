@@ -4,7 +4,8 @@ import cors from "cors"
 import session from "express-session";
 const App = express();
 const port : number = 3005;
-import { getServerSession } from "next-auth";
+let MAX_RETRIES  = 10;
+let retryCout = 0;
 App.get("/", (req,res)=>{
     res.status(200).json({
         msg:'Healthy Server'
@@ -63,6 +64,22 @@ catch(e){
  
 })
 
-App.listen(port, '0.0.0.0',()=>{
-    console.log(`Withdraw sever listing on ${port}`)
-})
+async function startServer() {
+  try {
+    await db.$connect();
+    App.listen(port, "0.0.0.0", () => {
+      console.log(`deposite sever listing on  ${port}`);
+    });
+  } catch (e) {
+    console.log("database went wrog", e);
+    retryCout ++;
+    if(retryCout < MAX_RETRIES){
+        setTimeout(startServer, 3000);
+    }else{
+        console.error('Max Tries Reach');
+        process.exit(1);
+    }
+
+  }
+}
+startServer() 
