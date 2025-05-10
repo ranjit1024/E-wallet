@@ -106,6 +106,7 @@ const KotakLogin = () => {
 
           <button
             onClick={async()=>{
+              localStorage.removeItem('data')
               setIsloading(true)
               const data = await lastRamp();
               console.log("dfasdf",data)
@@ -119,11 +120,11 @@ const KotakLogin = () => {
                 console.log(response)
 
                 setIsloading(false);
-                localStorage.getItem('data')
+           
                 router.push("/user/dashboard")
                 return
               }
-              localStorage.removeItem('data')
+          
               router.push('/user/dashboard')
             }}
             className="w-full bg-red-300 text-white font-semibold py-2 rounded hover:bg-red-400 "

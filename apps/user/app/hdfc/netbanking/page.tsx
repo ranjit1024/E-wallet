@@ -102,6 +102,7 @@ const KotakLogin = () => {
 
           <button
             onClick={async()=>{
+              localStorage.removeItem('data')
               setIsloading(true)
               const data = await lastRamp();
               if(data?.status === "Pending" && data?.transfer==="deposite"){
@@ -111,11 +112,11 @@ const KotakLogin = () => {
                   user_indentifier:data?.userId
                 });
                 setIsloading(false);
-                localStorage.removeItem('data')
+               
                 router.push("/user/dashboard")
                 return
               }
-              localStorage.removeItem("data");
+    
               router.push('/user/dashboard')
             }}
             className="w-full bg-green-300 text-white font-semibold py-2 rounded hover:bg-green-400 "
