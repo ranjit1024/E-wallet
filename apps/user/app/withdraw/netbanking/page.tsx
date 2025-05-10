@@ -25,9 +25,7 @@ const KotakLogin = () => {
     <div className="min-h-screen flex flex-col md:flex-row items-center justify-center bg-white px-4 py-10">
       {isloding?<Loader/>:null}
       {/* Left Illustration */}
-      {
-        JSON.stringify(session?.user.id)
-      }
+ 
       <div className="flex-1 flex items-center justify-center mb-8 md:mb-0">
         <div className="text-center">
           <Image
@@ -106,7 +104,6 @@ const KotakLogin = () => {
 
           <button
             onClick={async()=>{
-              localStorage.removeItem('data')
               setIsloading(true)
               const data = await lastRamp();
               console.log("dfasdf",data)

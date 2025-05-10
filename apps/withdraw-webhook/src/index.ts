@@ -6,6 +6,7 @@ const App = express();
 const port : number = 3005;
 let MAX_RETRIES  = 10;
 let retryCout = 0;
+
 App.get("/", (req,res)=>{
     res.status(200).json({
         msg:'Healthy Server'
@@ -16,13 +17,17 @@ App.use(cors());
 
 App.post("/depositewebhook", async (req,res)=>{
   
-    const paymentInformation = {
+    const paymentInformation:{
+        token:string,
+        userId:number,
+        amount:number
+    } = {
         token:req.body.token,
         userId:req.body.user_indentifier,
         amount:req.body.amount  
     }
 
-    console.log(req.body.token)
+    console.log(req.body)
     try{
       
         await db.$transaction([
