@@ -33,7 +33,7 @@ const KotakLogin = () => {
       <div className="flex-1 flex items-center justify-center mb-8 md:mb-0">
         <div className="text-center">
           <Image
-            src="https://img.freepik.com/premium-vector/donation-charity-flat-illustrations_9206-24104.jpg?w=740"
+            src="https://img.freepik.com/free-vector/man-paying-online-receiving-cashback-wallet_88138-692.jpg?t=st=1746959942~exp=1746963542~hmac=0115b1a2db33c875dccd9866071c39af14ad45917b688c5c8c83cf0d249c6516&w=996"
             alt="Illustration"
             width={1000} height={1000}
             
@@ -125,10 +125,10 @@ const KotakLogin = () => {
   
               router.push('/user/dashboard')
             }}
-            className="w-full bg-green-300 text-white font-semibold py-2 rounded hover:bg-green-400 "
+            className="w-full bg-red-300 text-white font-semibold py-2 rounded hover:bg-red-400 "
 
           >
-            Deposit
+            Withdraw
           </button>
         </div>
       </div>
