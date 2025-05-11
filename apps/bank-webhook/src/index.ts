@@ -57,16 +57,16 @@ App.post("/hdfcWebhook", async (req, res) => {
   }
 });
 
-App.post("/withdraw", async (req,res)=>{
+App.post("/withdrawWebhook", async (req,res)=>{
   
     const paymentInformation:{
         token:string,
         userId:number,
         amount:number
     } = {
-        token:req.body.token,
-        userId:req.body.user_indentifier,
-        amount:req.body.amount  
+        token:req.body?.token,
+        userId:req.body?.user_indentifier,
+        amount:req.body?.amount  
     }
 
     console.log(req.body)
@@ -77,18 +77,18 @@ App.post("/withdraw", async (req,res)=>{
                      
              db.balance.update({
                 where:{
-                    userId:paymentInformation.userId
+                    userId:paymentInformation?.userId
                 },
                 data:{
                     amount:{
-                        decrement:paymentInformation.amount
+                        decrement:paymentInformation?.amount
                     }
                 }
             }),
         
              db.onRampTransaction.update({
                 where:{
-                    token:paymentInformation.token
+                    token:paymentInformation?.token
                 },
                 data:{
                     status:"Success"

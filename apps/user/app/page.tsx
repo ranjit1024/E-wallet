@@ -35,9 +35,9 @@ export default function Home() {
           duration: 0.5,
           ease: "easeIn",
         }}
-        className="flex flex-col justify-center relative  items-center mx-20 mt-[7%] p-4 text-[5.5vw] font-semibold text-center tracking-normal mb-5"
+        className="flex flex-col  justify-center relative  items-center mx-20 mt-[7%] p-4 text-[5.5vw] font-semibold  text-center tracking-normal mb-5 "
       >
-        <div className="text-center w-[90vw]">
+        <div className="text-center w-[90vw] ">
           {/* Safeguard your{" "}
           <*/}
           Secure your money with{" "}
@@ -84,7 +84,7 @@ export default function Home() {
           duration: 0.5,
           delay: 0.2,
         }}
-        className="z-190 text-center flex items-center justify-center w-[100%] -mt-"
+        className="z-190 text-center flex items-center justify-center w-[100%]  -mt-"
       >
         <p className="w-[75%] text-lg text-gray-700 mb-5">
           Paytm is a secure and reliable platform for transferring money between
@@ -106,7 +106,7 @@ export default function Home() {
           ease: "easeOut",
           delay: 0.4,
         }}
-        className="z-190 relative text-center flex items-center justify-center w-[100%] mt-10 gap-5"
+        className="z-190 relative text-center flex items-center  justify-center w-[100%] mt-10 gap-5"
       >
         <div>
           <motion.button
@@ -204,7 +204,7 @@ export default function Home() {
         </p>
       </div>
 
-      <div className="all cards grid grid-cols-3 px-40 mt-12 gap-10 ">
+      <div className="all cards grid grid-cols-3 max-md:grid-cols-1 max px-40 mt-12 gap-10 ">
         <motion.div
           initial={{ opacity: 0, y: 50, scale: 0.95 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -421,11 +421,11 @@ export default function Home() {
       </div>
 
       <div className="footer mt-[13%] mx-2">
-        <footer className="flex flex-row flex-wrap items-center justify-center w-full py-6 text-center border-t gap-y-6 gap-x-12 border-slate-200 md:justify-between">
+        <footer className="flex flex-row fitems-center justify-center w-full py-6 text-center border-t gap-y-6 gap-x-12 border-slate-200 md:justify-between">
           <div className="block text-slate-800 font-semibold text-sm px-10">
             <Logo />
           </div>
-          <ul className="flex flex-wrap items-center gap-y-2 gap-x-8">
+          <ul className="flex items-center gap-y-2 gap-x-8">
             <li>
               <a
                 href="#"

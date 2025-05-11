@@ -6,6 +6,13 @@ import lastRamp from "../../../lib/actions/getOnramp";
 import axios from "axios";
 import Loader from "@repo/ui/loader"
 import Image from "next/image";
+
+
+
+
+
+
+
 const KotakLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
     const{data:session, status} = useSession();
@@ -26,8 +33,8 @@ const KotakLogin = () => {
       <div className="flex-1 flex items-center justify-center mb-8 md:mb-0">
         <div className="text-center">
           <Image
-            src="https://img.freepik.com/premium-vector/woman-saving-piggy-bank-trending-concept-flat-illustrator_720185-2072.jpg?w=826"
-            alt="Illustration" 
+            src="https://img.freepik.com/premium-vector/donation-charity-flat-illustrations_9206-24104.jpg?w=740"
+            alt="Illustration"
             width={1000} height={1000}
             
             className="w-[60vh] mx-auto mb-4"
@@ -101,27 +108,27 @@ const KotakLogin = () => {
 
           <button
             onClick={async()=>{
-          
+              localStorage.removeItem('data')
               setIsloading(true)
               const data = await lastRamp();
-              if(data?.status === "Pending" && data?.transfer==="withdraw"){
-                await axios.post(`https://ewallet.10xdev.shop/withdraw`, {
+              if(data?.status === "Pending"){
+                await axios.post(`https://ewallet.10xdev.shop/withdrawWebhook`, {
                   token:data?.token,
                   amount:data?.amount,
                   user_indentifier:data?.userId
                 });
                 setIsloading(false);
-               
+            
                 router.push("/user/dashboard")
                 return
               }
-    
+  
               router.push('/user/dashboard')
             }}
-            className="w-full bg-red-300 text-white font-semibold py-2 rounded hover:bg-red-400 "
+            className="w-full bg-green-300 text-white font-semibold py-2 rounded hover:bg-green-400 "
 
           >
-            Withdraw
+            Deposit
           </button>
         </div>
       </div>
