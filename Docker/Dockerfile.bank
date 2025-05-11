@@ -12,7 +12,7 @@ RUN npm install
 RUN npm run prisma:generate
 
 # Expose the port your app uses
-EXPOSE 3005
+EXPOSE 3004
 
 # Start your withdraw app
-CMD ["npm", "run", "start-withdraw-app"]
+CMD ["npm", "run", "deposit"]

@@ -7,7 +7,6 @@ import axios from "axios";
 import Loader from "@repo/ui/loader"
 import Image from "next/image";
 import { prod } from "../../../link";
-
 const KotakLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
     const{data:session, status} = useSession();
@@ -25,17 +24,16 @@ const KotakLogin = () => {
     <div className="min-h-screen flex flex-col md:flex-row items-center justify-center bg-white px-4 py-10">
       {isloding?<Loader/>:null}
       {/* Left Illustration */}
- 
       <div className="flex-1 flex items-center justify-center mb-8 md:mb-0">
         <div className="text-center">
           <Image
-            src="https://img.freepik.com/free-vector/flat-receiving-cashback-bonus-from-paying-online_88138-766.jpg?t=st=1745212773~exp=1745216373~hmac=9d1d07bb66e5369af827d0cb36a9527d28939b1d3bd120bb358719f5b38441bf&w=996"
-            alt="Illustration"
-            width={1000}
-            height={1000}
-
+            src="https://img.freepik.com/premium-vector/woman-saving-piggy-bank-trending-concept-flat-illustrator_720185-2072.jpg?w=826"
+            alt="Illustration" 
+            width={1000} height={1000}
+            
+            className="w-[60vh] mx-auto mb-4"
           />
-          <p className="text-lg font-semibold text-blue-800">Transfer,Desposit,Withdraw</p>
+          <p className="text-lg font-semibold text-blue-800">Transfer,Deposit,Withdrawal</p>
           <p className="text-sm text-gray-600">
             Make everyday effortless and uninterrupted
           </p>
@@ -96,7 +94,7 @@ const KotakLogin = () => {
           </div>
 
           <p className="text-xs text-gray-500 mb-4">
-            By clicking on ’WithDraw, you accept that you have read our{" "}
+            By clicking on ‘Deposite’, you accept that you have read our{" "}
             <a href="#" className="underline text-blue-600">Terms & conditions</a>,{" "}
             <a href="#" className="underline text-blue-600">Privacy Policy</a> and the{" "}
             <a href="#" className="underline text-blue-600">Tips for Safe Banking</a>
@@ -104,24 +102,21 @@ const KotakLogin = () => {
 
           <button
             onClick={async()=>{
+              localStorage.removeItem('data')
               setIsloading(true)
               const data = await lastRamp();
-              console.log("dfasdf",data)
               if(data?.status === "Pending" && data?.transfer==="withdraw"){
-
-                const response = await axios.post(`https://ewallet.10xdev.shop/depositewebhook`, {
+                await axios.post(`https://ewallet.10xdev.shop/depositewebhook`, {
                   token:data?.token,
                   amount:data?.amount,
                   user_indentifier:data?.userId
                 });
-                console.log(response)
-
                 setIsloading(false);
-           
+               
                 router.push("/user/dashboard")
                 return
               }
-          
+    
               router.push('/user/dashboard')
             }}
             className="w-full bg-red-300 text-white font-semibold py-2 rounded hover:bg-red-400 "
