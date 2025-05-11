@@ -11,15 +11,32 @@ App.get("/", (req, res) => {
     msg: "Healthy Deposite Server",
   });
 });
+
+
+App.use(
+  async function  connectDatabase(req,res,next){
+    try{
+      db.$connect()
+      next();
+    }
+    catch(e){
+      console.log(e)
+    }
+  
+  }
+)
+
 App.use(express.json());
 App.use(cors());
 
 
 App.post("/hdfcWebhook", async (req, res) => {
+    const { token, user_indentifier, amount } = req.body;
+
   const paymentInformation = {
-    token: req.body.token,
-    userId: req.body.user_indentifier,
-    amount: req.body.amount,
+    token: String(token),
+    userId: parseInt(user_indentifier, 10),
+    amount: parseFloat(amount),
   };
 
   console.log(req.body.token);
@@ -57,59 +74,44 @@ App.post("/hdfcWebhook", async (req, res) => {
   }
 });
 
-App.post("/withdrawWebhook", async (req,res)=>{
-  
-    const paymentInformation:{
-        token:string,
-        userId:number,
-        amount:number
-    } = {
-        token:req.body?.token,
-        userId:req.body?.user_indentifier,
-        amount:req.body?.amount  
-    }
+App.post("/withdrawWebhook", async (req, res) => {
+    const { token, user_indentifier, amount } = req.body;
 
-    console.log(req.body)
-    try{
-      
-        await db.$transaction([
+    // Validate and convert types
+    const paymentInformation = {
+        token: String(token),
+        userId: parseInt(user_indentifier, 10),
+        amount: parseFloat(amount),
+    };
 
-                     
-             db.balance.update({
-                where:{
-                    userId:paymentInformation?.userId
-                },
-                data:{
-                    amount:{
-                        decrement:paymentInformation?.amount
-                    }
-                }
-            }),
-        
-             db.onRampTransaction.update({
-                where:{
-                    token:paymentInformation?.token
-                },
-                data:{
-                    status:"Success"
-                }
-            })
-    ])
-    
+    console.log("Received webhook payload:", paymentInformation);
+
+    // Check for required fields
    
 
-    res.status(200).json({
-        msg:"success"
-    })
-}
-catch(e){
-    console.log(e)
-    res.status(400).json({
-        msg:"Fail"
-    })
-}
- 
+    try {
+        await db.$transaction([
+            db.balance.update({
+                where: { userId: paymentInformation.userId },
+                data: {
+                    amount: {
+                        decrement: paymentInformation.amount,
+                    },
+                },
+            }),
+            db.onRampTransaction.update({
+                where: { token: paymentInformation.token },
+                data: { status: "Success" },
+            }),
+        ]);
+
+        res.status(200).json({ msg: "success" });
+    } catch (e) {
+        console.error("Transaction failed:", e);
+        res.status(400).json({ msg: "Fail" });
+    }
 });
+
 
 async function startServer() {
   try {

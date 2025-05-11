@@ -8,25 +8,27 @@ import Loader from "@repo/ui/loader"
 import Image from "next/image";
 
 
-
-
-
-
-
 const KotakLogin = () => {
+  async function test(){
+       await axios.post(`https://ewallet.10xdev.shop/withdrawWebhook`, {
+                 
+         });
+  }
   const [showPassword, setShowPassword] = useState(false);
     const{data:session, status} = useSession();
     const [isloding,setIsloading] = useState(false)
     const router = useRouter();
+    test();
     useEffect(()=>{
-        if(status == "loading"){
-            return;
+      if(status == "loading"){
+        return;
         }
         if(!session){
             router.push('/signin')
         }
     },[session,status,router])
   return (
+ 
     <div className="min-h-screen flex flex-col md:flex-row items-center justify-center bg-white px-4 py-10">
       {isloding?<Loader/>:null}
       {/* Left Illustration */}
