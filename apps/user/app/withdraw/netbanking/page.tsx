@@ -6,7 +6,6 @@ import lastRamp from "../../../lib/actions/getOnramp";
 import axios from "axios";
 import Loader from "@repo/ui/loader"
 import Image from "next/image";
-import { prod } from "../../../link";
 const KotakLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
     const{data:session, status} = useSession();
@@ -102,11 +101,11 @@ const KotakLogin = () => {
 
           <button
             onClick={async()=>{
-              localStorage.removeItem('data')
+          
               setIsloading(true)
               const data = await lastRamp();
               if(data?.status === "Pending" && data?.transfer==="withdraw"){
-                await axios.post(`https://ewallet.10xdev.shop/depositewebhook`, {
+                await axios.post(`https://ewallet.10xdev.shop/withdraw`, {
                   token:data?.token,
                   amount:data?.amount,
                   user_indentifier:data?.userId
