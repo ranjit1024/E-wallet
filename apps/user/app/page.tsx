@@ -35,7 +35,7 @@ export default function Home() {
           duration: 0.5,
           ease: "easeIn",
         }}
-        className="flex flex-col  justify-center relative  items-center mx-20 mt-[7%] p-4 text-[5.5vw] font-semibold  text-center tracking-normal mb-5 "
+        className="flex flex-col  justify-center relative  items-center mx-20 mt-[7%] p-4 text-[5.5vw] font-semibold max-md:w-[100vw] max-md:mx-1 max-md:text-center max-md:text-3xl  text-center tracking-normal mb-5"
       >
         <div className="text-center w-[90vw] ">
           {/* Safeguard your{" "}
@@ -47,12 +47,12 @@ export default function Home() {
           </span>{" "}
         </div>
 
-        <div className="text-center w-[80%] relative -mt-5">
+        <div className="text-center w-[80%] relative -mt-5 max-md:mt-0">
           bank-level protection
           <div className="h-1 w-1 absolute top-12 opacity-80  transition-all bg-yellow-400 p-1 rounded-full"></div>
         </div>
 
-        <div className="absolute top-10 -left-10 -rotate-90 opacity-40  transition-all">
+        <div className="absolute top-10 -left-10 -rotate-90 opacity-40 max-sm:hidden  transition-all">
           <Image
             width="40"
             height="40"
@@ -61,7 +61,7 @@ export default function Home() {
           />
         </div>
 
-        <div className="absolute top-12 -right-10 -rotate-90 opacity-80  transition-all">
+        <div className="absolute top-12 max-sm:hidden -right-10 -rotate-90 opacity-80  transition-all">
           <Image
             width="40"
             height="40"
@@ -86,7 +86,7 @@ export default function Home() {
         }}
         className="z-190 text-center flex items-center justify-center w-[100%]  -mt-"
       >
-        <p className="w-[75%] text-lg text-gray-700 mb-5">
+        <p className="w-[75%] text-lg text-gray-700 mb-5 max-md:w-[100vw]">
           Paytm is a secure and reliable platform for transferring money between
           banks, ensuring every transaction is protected by advanced encryption.
         </p>{" "}
@@ -106,7 +106,7 @@ export default function Home() {
           ease: "easeOut",
           delay: 0.4,
         }}
-        className="z-190 relative text-center flex items-center  justify-center w-[100%] mt-10 gap-5"
+        className="z-190 relative  text-center flex items-center  justify-center w-[100%] mt-10 gap-5"
       >
         <div>
           <motion.button
@@ -146,7 +146,7 @@ export default function Home() {
         initial={{ y: -10, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1, delay: 1 }}
-        className=" mt-10 flex justify-center w-[100%] items-center gap-12 px-[12%] pt-20"
+        className=" mt-10 flex justify-center w-[100%] max-md:hidden items-center  gap-12 px-[12%] pt-20"
       >
         <div className="size-[90%]  px-2 bg-[#fff5e4]  rounded-xl">
           <Image src="/test.png" alt="" height={500} width={500} />
@@ -177,7 +177,7 @@ export default function Home() {
         viewport={{ once: true, amount: 0.5 }}
         className="mt-[10%] relative flex items-center justify-center flex-col"
       >
-        <p className="text-[7vh] w-[70%] text-center font-semibold leading-tight">
+        <p className="text-[7vh] w-[70%] text-center font-semibold leading-tight max-md:w-[100vw] max-md:mt-10">
           Meet our most popular feature to establish smooth transaction
         </p>
 
@@ -204,7 +204,7 @@ export default function Home() {
         </p>
       </div>
 
-      <div className="all cards grid grid-cols-3 max-md:grid-cols-1 max px-40 mt-12 gap-10 ">
+      <div className="all cards grid grid-cols-3  max-sm:flex max-md:flex-wrap px-40 mt-12 gap-10 max-md:px-1  max-md:w-[100vw]  ">
         <motion.div
           initial={{ opacity: 0, y: 50, scale: 0.95 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -218,7 +218,7 @@ export default function Home() {
             transition: { duration: 0.3 },
             boxShadow: "0 12px 30px rgba(0,0,0,0.1)",
           }}
-          className=" border-2 border-gray-200 p-5 rounded-xl  hover:cursor-pointer "
+          className=" border-2 border-gray-200  p-5 rounded-xl hover:cursor-pointer "
         >
           <div className="p-5 flex flex-col">
             <div className="bg-[#ffe9ca] p-2 rounded-2xl w-[20%]">
@@ -315,15 +315,16 @@ export default function Home() {
       </div>
 
       <div className="mt-[10%]">
-        <div className="px-[11%] flex gap-10">
+        <div className="px-[11%] flex gap-10 max-md:flex-wrap max-md:px-1   max-md:w-[100vw] max-md:justify-center ">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: "easeInOut" }}
             viewport={{ once: true, amount: 0.2 }}
-            className="w-[50%] p-1 bg-[#fce8cc] rounded-lg"
+            className="w-[50%] max-md:w-[100%]  p-1 bg-[#fce8cc] rounded-lg"
+
           >
-            <Image src="/thirdSection.png" alt="" height={500} width={500} />
+            <Image src="/thirdSection.png" alt="" height={500} width={500}  />
           </motion.div>
 
           <motion.div
@@ -331,16 +332,16 @@ export default function Home() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: "easeInOut" }}
             viewport={{ once: true, amount: 0.2 }}
-            className="w-[50%] flex flex-col items-center gap-5 relative"
+            className="w-[50%] max-md:w-[100%] flex flex-col max-md:flex-wrap items-center gap-5 relative"
           >
-            <div className="text-[2.3rem] font-semibold w-[100%] ">
+            <div className="text-[2.3rem] font-semibold w-[100%] max-md:text-center">
               Track your deposits and withdrawals for better money management
             </div>
-            <p className="mt-4 text-[1.2rem] font-medium text-gray-800">
+            <p className="mt-4 text-[1.2rem] font-medium text-gray-800 max-md:text-center">
               Paytm comes with full transaction history for better understanding
               of your spending.
             </p>
-            <div className="absolute bottom-0 left-0 flex gap-10 items-center justify-center">
+            <div className="absolute bottom-0 max-md:w-[100%] max-md: left-0 flex gap-10 items-center flex-wrap w-100 justify-center max-md:static max-md:p-1">
               <div className="bg-blue-500/50 p-5 shadow-md shadow-gray-300 rounded-xl ">
                 <p className="font-semibold text-xl text-center">3+</p>
                 <p className="text-lg">Experience</p>
@@ -358,7 +359,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mt-[10%] mx-[11%] flex gap-10">
+      <div className="mt-[10%] mx-[11%] flex gap-10 max-sm:flex-wrap">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -375,10 +376,10 @@ export default function Home() {
             />
           </motion.div>
 
-          <div className="text-[2.3rem] font-semibold w-[100%] mt-2 ">
+          <div className="text-[2.3rem] font-semibold w-[100%] mt-2 max-md:w-[100vw]">
             Deposit from several banks and withdraw or transfer funds as needed.
           </div>
-          <p className="mt-14 text-[1.2rem] font-medium text-gray-800">
+          <p className="mt-14 text-[1.2rem] font-medium text-gray-800 max-md:w-[100vw]">
             Paytm is a secure way to deposit money from various banks and manage
             your spending, transfers, and withdrawals..
           </p>
@@ -414,7 +415,7 @@ export default function Home() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, ease: "easeInOut" }}
           viewport={{ once: true, amount: 0.2 }}
-          className="w-[50%] p-1 bg-gray-100 rounded-lg"
+          className="w-[50%] p-1 bg-gray-100 rounded-lg max-md:hidden"
         >
           <Image src="/fourth.png" alt="" height={500} width={500} />
         </motion.div>
