@@ -5,6 +5,7 @@ import Record from "@repo/ui/record"
 import {getData} from "../../../lib/actions/getTransactions"
 import {  useEffect, useState } from "react";
 import TransactionSkeleton from "@repo/ui/tranactionScaletor";
+import { poppins } from "../../signup/page";
 
 // 
 
@@ -30,6 +31,7 @@ export default function Tranaction (){
   const [page, setPage] = useState<number>(1)
   const [transactions, setTransactions] = useState<Transaction[]>([])
   const [totalPages, setTotalPages] = useState(1);
+  const isExpense =  "expense";
 
  
   // const[data,setData] = useState()
@@ -50,8 +52,8 @@ export default function Tranaction (){
     return <TransactionSkeleton/>
   }
     return <div className="my-10 mx-5 max-md:w-[100vw] max-md:mx-0  ">
-        <div className="relative p-1 flex flex-col   w-full h-full text-gray-700 bg-white shadow-md rounded-xl bg-clip-border">
-  <div className="relative mx-4 mt-4 text-gray-700 bg-white rounded-none bg-clip-border">
+        <div className="relative p-1 flex flex-col   w-full h-full  text-gray-700 bg-white shadow-md rounded-xl bg-clip-border">
+  <div className="relative mx-4 mt-4 text-gray-700 bg-white  rounded-none bg-clip-border">
     <div className="flex flex-col justify-between gap-8 mb-4 md:flex-row md:items-center">
       <div>
         <h5
@@ -65,22 +67,17 @@ export default function Tranaction (){
       </div>
 
      
-      <div className="flex w-full gap-2 shrink-0 md:w-max">
-        <div className="w-full md:w-72">
-          
-        </div>
-        
-      </div>
+     
     </div>
   </div>
 
   
     
     
-    <div className="p-6 px-0 overflow-hidden">
+    <div className="p-6 px-0 ">
 
     
-    <table className="w-[100%] max-md:w-[100vw] text-left table-auto min-w-max ">
+    <table className="w-[100%] hidden   text-left table-auto min-w-max ">
      
       <thead>
         <tr>
@@ -131,8 +128,38 @@ export default function Tranaction (){
        
       </tbody>
     </table>
+    <div className={poppins.className}>
+      {
+        transactions.map((transactions:Transaction, item:number)=>{
+          return <div key={item} className="p-3 bg-white shadow-sm mb-1 m-2 rounded-md">
+            <div className="flex justify-between">
+            <p className="text-gray-700 font-medium">{transactions.provider}</p>
+            <p>{`${transactions.amount / 100}.${transactions.amount % 100}`}</p>
+            </div>
+            <div className="flex justify-between">
 
+            <p className="text-sm pt-1 text-neutral-800">{transactions.startTime.toLocaleDateString()}</p>
+            <p className={`text-sm pt-1 ${transactions.status === "Success" ? 'text-green-500':'text-yellow-600'}`}>{transactions.status}</p>
+            </div>
+            <p className={`text-sm pt-1 text-end
+            ${transactions.transfer === 'send' ? 'text-red-700':'text-gray-900'} 
+            ${transactions.transfer === 'withdraw' ? 'text-red-700':'text-gray-900'} 
+            ${transactions.transfer === 'receive' ? 'text-green-700':'text-gray-900'} 
+            ${transactions.transfer === 'deposite' ? 'text-green-700':'text-gray-900'} 
+             `
+          
+          }>{transactions.transfer}</p>
+
+            
+          </div>
+        })
+      }
+    </div>
+
+      
   </div>
+
+            
 
   <div className="flex items-center justify-between p-4 border-t border-blue-gray-50">
     <button

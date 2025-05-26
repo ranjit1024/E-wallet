@@ -70,7 +70,7 @@ export default function Home () {
   
 
       <div className=" flex pl-10 max-md:pl-1  items-start max-md:p-2 max-md:items-center text-gray-900  bg-gradient-l from-gray-50 to-white   flex-col  ">
-        <div className="text-[7vh]  flex items-center justify-center max-md:mb-5  mb-20 w-full">
+        <div className="text-[7vh]  flex items-center justify-center max-md:mb-5  mb-12 w-full">
           <div className="text-center  m-auto pt-5 pb-10 ">
             <div className={`flex items-center justify-center  w-[20vh] `}>
              

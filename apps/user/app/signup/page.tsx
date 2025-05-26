@@ -18,7 +18,7 @@ import Image from "next/image";
 
 
 
-const poppins = Poppins({
+export const poppins = Poppins({
   subsets: ["latin"], // Supports Latin characters
   weight: ["100", "400"], // Choose font weights
   style: ["normal", "italic"], // Choose styles

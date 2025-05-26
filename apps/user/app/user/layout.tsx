@@ -1,7 +1,7 @@
 // pages/protected-page.js
 "use client";
 import AppBar from "@repo/ui/appBar";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import DashboardSkeleton from "@repo/ui/sceleton"
@@ -173,6 +173,20 @@ export default function RootLayout({
         }}
       >
         Transcaction
+      </div>
+      <div
+        role="button"
+        className=" flex w-full items-center rounded-md p-3 transition-all hover:bg-slate-100 focus:bg-slate-100 text-red-500 active:bg-red-400"
+        onClick={()=>{
+            // router.push("/user/transaction");
+            localStorage.removeItem('data');
+            signOut(
+              {callbackUrl:"/"}
+            )
+            setHide(!hide)
+        }}
+      >
+        Sign out
       </div>
   </nav>
 </div>:null}

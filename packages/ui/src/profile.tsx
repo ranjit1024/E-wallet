@@ -25,8 +25,7 @@ return <div className={`absolute top-12 right-1 p-4 bg-white rounded-lg  shadow-
          onClick={()=>{
           localStorage.removeItem('data')
            signOut({
-            
-            callbackUrl:`/`
+            callbackUrl:'/'
            })
          }}>
   Sign out
