@@ -31,7 +31,7 @@ export default function Tranaction (){
   const [page, setPage] = useState<number>(1)
   const [transactions, setTransactions] = useState<Transaction[]>([])
   const [totalPages, setTotalPages] = useState(1);
-  const isExpense =  "expense";
+
 
  
   // const[data,setData] = useState()
@@ -131,24 +131,26 @@ export default function Tranaction (){
     <div className={`${poppins.className} md:hidden max-md:visible`}>
       {
         transactions.map((transactions:Transaction, item:number)=>{
-          return <div key={item} className="p-3 bg-white shadow-sm mb-1 m-2 rounded-md">
-            <div className="flex justify-between">
+          return <div key={item} className="p-3 bg-blue-50/80 shadow-sm flex justify-between  items-center  mb-1 m-2 rounded-md">
+            <div className="flex flex-col">
             <p className="text-gray-700 font-medium">{transactions.provider}</p>
-            <p>{`${transactions.amount / 100}.${transactions.amount % 100}`}</p>
-            </div>
-            <div className="flex justify-between">
-
             <p className="text-sm pt-1 text-neutral-800">{transactions.startTime.toLocaleDateString()}</p>
-            <p className={`text-sm pt-1 ${transactions.status === "Success" ? 'text-green-500':'text-yellow-600'}`}>{transactions.status}</p>
             </div>
-            <p className={`text-sm pt-1 text-end
-            ${transactions.transfer === 'send' ? 'text-red-700':'text-gray-900'} 
-            ${transactions.transfer === 'withdraw' ? 'text-red-700':'text-gray-900'} 
-            ${transactions.transfer === 'receive' ? 'text-green-700':'text-gray-900'} 
-            ${transactions.transfer === 'deposite' ? 'text-green-700':'text-gray-900'} 
+
+            <div className="flex flex-col">
+            
+            <p className="font-medium text-gray-900">{`${transactions.amount / 100}.${transactions.amount % 100}`}</p>
+
+            <p className={`text-[0.9rem] font-medium pt-1  ${transactions.status === "Success" ? 'text-[#4CBB17]':'text-yellow-600'}`}>{transactions.status}</p>
+            <p className={`text-[0.9rem] font-medium pt-1 text-end
+            ${transactions.transfer === 'send' ? 'text-red-400':'text-gray-400'} 
+            ${transactions.transfer === 'withdraw' ? 'text-red-400':'text-gray-400'} 
+            ${transactions.transfer === 'receive' ? 'text-blue-400':'text-gray-400'} 
+            ${transactions.transfer === 'deposite' ? 'text-blue-400':'text-gray-400'} 
              `
           
           }>{transactions.transfer}</p>
+            </div>
 
             
           </div>
