@@ -30,7 +30,7 @@ const KotakLogin = () => {
     <div className="min-h-screen flex flex-col md:flex-row items-center justify-center bg-white px-4 py-10">
       {isloding?<Loader/>:null}
       {/* Left Illustration */}
-      <div className="flex-1 flex items-center justify-center mb-8 md:mb-0">
+      <div className="flex-1 flex items-center justify-center mb-8 md:mb-0 max-md:hidden">
         <div className="text-center">
           <Image
             src="https://img.freepik.com/premium-vector/donation-charity-flat-illustrations_9206-24104.jpg?w=740"

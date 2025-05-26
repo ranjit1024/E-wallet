@@ -77,7 +77,7 @@ export default function Tranaction (){
     <div className="p-6 px-0 ">
 
     
-    <table className="w-[100%] hidden   text-left table-auto min-w-max ">
+    <table className="w-[100%]   min-md:visible max-md:hidden   text-left table-auto min-w-max ">
      
       <thead>
         <tr>
@@ -128,7 +128,7 @@ export default function Tranaction (){
        
       </tbody>
     </table>
-    <div className={poppins.className}>
+    <div className={`${poppins.className} min-md:hidden max-md:visible`}>
       {
         transactions.map((transactions:Transaction, item:number)=>{
           return <div key={item} className="p-3 bg-white shadow-sm mb-1 m-2 rounded-md">

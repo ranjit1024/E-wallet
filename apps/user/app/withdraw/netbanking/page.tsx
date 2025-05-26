@@ -32,7 +32,7 @@ const KotakLogin = () => {
     <div className="min-h-screen flex flex-col md:flex-row items-center justify-center bg-white px-4 py-10">
       {isloding?<Loader/>:null}
       {/* Left Illustration */}
-      <div className="flex-1 flex items-center justify-center mb-8 md:mb-0">
+      <div className="flex-1 flex items-center justify-center mb-8 md:mb-0 max-md:hidden">
         <div className="text-center">
           <Image
             src="https://img.freepik.com/free-vector/man-paying-online-receiving-cashback-wallet_88138-692.jpg?t=st=1746959942~exp=1746963542~hmac=0115b1a2db33c875dccd9866071c39af14ad45917b688c5c8c83cf0d249c6516&w=996"
