@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import lastRamp from "../../../lib/actions/getOnramp";
+
 import axios from "axios";
 import Loader from "@repo/ui/loader";
 import Image from "next/image";

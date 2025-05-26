@@ -5,7 +5,7 @@ import Record from "@repo/ui/record"
 import {getData} from "../../../lib/actions/getTransactions"
 import {  useEffect, useState } from "react";
 import TransactionSkeleton from "@repo/ui/tranactionScaletor";
-import { poppins } from "../../signup/page";
+import { Poppins } from "next/font/google";
 
 // 
 
@@ -32,7 +32,12 @@ export default function Tranaction (){
   const [transactions, setTransactions] = useState<Transaction[]>([])
   const [totalPages, setTotalPages] = useState(1);
 
-
+const poppins = Poppins({
+  subsets: ["latin"], // Supports Latin characters
+  weight: ["100", "400"], // Choose font weights
+  style: ["normal", "italic"], // Choose styles
+  variable: "--font-poppins", // Optional: Use CSS variable
+});
  
   // const[data,setData] = useState()
   useEffect(()=>{
