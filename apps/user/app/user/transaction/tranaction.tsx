@@ -9,6 +9,13 @@ import { Poppins } from "next/font/google";
 
 // 
 
+const poppins = Poppins({
+  subsets: ["latin"], // Supports Latin characters
+  weight: ["100", "400"], // Choose font weights
+  style: ["normal", "italic"], // Choose styles
+  variable: "--font-poppins", // Optional: Use CSS variable
+});
+
 type Transaction = {
   id: number;
   status: "Success" |"Pending"|"failed";
@@ -32,12 +39,6 @@ export default function Tranaction (){
   const [transactions, setTransactions] = useState<Transaction[]>([])
   const [totalPages, setTotalPages] = useState(1);
 
-const poppins = Poppins({
-  subsets: ["latin"], // Supports Latin characters
-  weight: ["100", "400"], // Choose font weights
-  style: ["normal", "italic"], // Choose styles
-  variable: "--font-poppins", // Optional: Use CSS variable
-});
  
   // const[data,setData] = useState()
   useEffect(()=>{
