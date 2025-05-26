@@ -35,7 +35,7 @@ export default function Home() {
           duration: 0.5,
           ease: "easeIn",
         }}
-        className="flex flex-col max-md:h-[45vh]  justify-center relative  items-center mx-20 mt-[7%] p-4 max-md:p-1 text-[5.5vw] font-semibold max-md:w-[100vw] max-md:mx-1 max-md:text-center max-md:text-3xl  text-center tracking-normal max-md:pb-0"
+        className="flex flex-col  justify-center relative  items-center mx-20 mt-[7%] p-4 max-md:p-1 text-[5.5vw] font-semibold max-md:w-[100vw] max-md:mx-1 max-md:text-center max-md:text-3xl  text-center tracking-normal max-md:py-8 max-md:pt-20"
       >
         <div className="text-center w-[100%] max-md:text-4xl ">
           {/* Safeguard your{" "}
@@ -84,7 +84,7 @@ export default function Home() {
           duration: 0.5,
           delay: 0.2,
         }}
-        className="z-190 text-center flex items-center justify-center w-[100%] max-md:w-[100vw] max-md:p-2  "
+        className="z-190 text-center flex items-center justify-center w-[100%] max-md:w-[100vw] max-md:p-2 max-md:pb-5  "
       >
         <p className="w-[75%] text-lg text-gray-700 mb-5 max-md:w-[100vw]">
           Paytm is a secure and reliable platform for transferring money between

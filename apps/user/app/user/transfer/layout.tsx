@@ -51,8 +51,8 @@ export default function RootLayout({
           
 
         
-    <div className="w-[100%] flex justify-center items-center">
-      <div className="backdrop-blur-md mt-4 bg-gray-900/10 text-gray-600 transsi border border-white/20 shadow-md transform  w-[99%] rounded-xl px-2 py-1 flex justify-between items-center z-50">
+    <div className="w-[100%] max-md:w-[100vw] flex justify-center items-center">
+      <div className="backdrop-blur-md mt-4 bg-gray-900/10 text-gray-600 transsi border border-white/20 shadow-md transform  w-[99%] rounded-xl px-2 py-1 flex justify-between items-center  ">
       
         <button ref={click} 
         onClick={()=>{

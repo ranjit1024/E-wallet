@@ -23,6 +23,7 @@ export default function RootLayout({
   const { data: session, status } = useSession();
   const router = useRouter();
   const [isActive, setIsActive] = useState<number | null>();
+  const [hide, setHide] = useState(false);
   const date = new Date()
   const pathname = usePathname()
 
@@ -92,7 +93,7 @@ export default function RootLayout({
       className={`h-[100%]  bg-gradient-to-tr to-gray-50 from-gray-50 ${monaSans.className}`}
     >
       <div className="grid grid-cols-[20%,80%]   ">
-        <div className="relative mr-1">
+        <div className="relative mr-1 max-md:hidden">
           <AppBar />
           {/* <Profile/> */}
 
@@ -124,13 +125,59 @@ export default function RootLayout({
         </div>
 
       <div>
-      <div className="pt-2 ml-2  text-gray-950">
-        <p className="flex items-center mb-1 gap-2 text-lg">Hey, {session?.user?.name} 
+      <div className="pt-2   text-gray-950 max-md:w-[100vw] flex justify-between item-ce">
+        <div className="max-md:px-2">
+
+        <p className="flex items-center mb-1 gap-2  text-lg">Hey, {session?.user?.name} 
         
         </p>
         <p className="text-gray-600 text-sm">{
           date.toDateString()
           }</p>
+        </div>
+         <div className="mr-1 md:hidden relative flex flex-col  items-end  ">
+          <svg onClick={()=>{
+            setHide(!hide)
+          }} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 relative">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+</svg>
+{ hide ? 
+          <div  className="absolute z-10  flex flex-col top-5 rounded-lg  bg-white shadow-md border border-slate-200">
+  <nav className="flex min-w-[240px] flex-col gap-1 p-1.5">
+    <div
+      role="button"
+      onClick={()=>{
+        router.push('/user/dashboard');
+        setHide(!hide)
+      }}
+      className="text-slate-800 flex w-full items-center rounded-md p-3 transition-all hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100"
+    >
+      Dashboard
+    </div>
+      <div
+      role="button"
+        className="text-slate-800  flex w-full items-center rounded-md p-3 transition-all hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100"
+        onClick={()=>{
+          router.push('/user/transfer/inittransfer');
+          setHide(!hide)
+        }}
+      >
+        Transfer
+      </div>
+      <div
+        role="button"
+        className="text-slate-800 flex w-full items-center rounded-md p-3 transition-all hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100"
+        onClick={()=>{
+            router.push("/user/transaction");
+            setHide(!hide)
+        }}
+      >
+        Transcaction
+      </div>
+  </nav>
+</div>:null}
+          
+        </div> 
       </div>
       {children}
 

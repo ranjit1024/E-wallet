@@ -24,7 +24,7 @@ export default function Home() {
   const router = useRouter();
 
   return (
-    <div className="h-[80vh] relative flex justify-center items-center">
+    <div className="h-[80vh] max-md:w-[100vw] relative flex justify-center items-center">
       {
         error ? <ErroCopm des="Enter Valid email or amount"/> : null
       }
@@ -47,7 +47,7 @@ export default function Home() {
           duration: 0.6,
           ease: "linear",
         }}
-        className="flex items-center justify-center p-7 w-[70%] rounded-lg  bg-white shadow-md"
+        className="flex items-center justify-center p-7 w-[70%]  max-md:w-[100%] rounded-lg  bg-white shadow-md"
       >
         <div className="w-full  ">
           <p className="mb-2">Enter Email</p>

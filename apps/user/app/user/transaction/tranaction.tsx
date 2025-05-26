@@ -49,8 +49,8 @@ export default function Tranaction (){
   if(loading){
     return <TransactionSkeleton/>
   }
-    return <div className="my-10 mx-5">
-        <div className="relative p-1 flex flex-col  w-full h-full text-gray-700 bg-white shadow-md rounded-xl bg-clip-border">
+    return <div className="my-10 mx-5 max-md:w-[100vw] max-md:mx-0  ">
+        <div className="relative p-1 flex flex-col   w-full h-full text-gray-700 bg-white shadow-md rounded-xl bg-clip-border">
   <div className="relative mx-4 mt-4 text-gray-700 bg-white rounded-none bg-clip-border">
     <div className="flex flex-col justify-between gap-8 mb-4 md:flex-row md:items-center">
       <div>
@@ -80,7 +80,7 @@ export default function Tranaction (){
     <div className="p-6 px-0 overflow-hidden">
 
     
-    <table className="w-full text-left table-auto min-w-max ">
+    <table className="w-[100%] max-md:w-[100vw] text-left table-auto min-w-max ">
      
       <thead>
         <tr>
