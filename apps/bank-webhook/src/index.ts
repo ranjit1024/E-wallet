@@ -40,38 +40,17 @@ App.post("/hdfcWebhook", async (req, res) => {
   };
 
   console.log(req.body.token);
-  try {
-    await db.$transaction([
-      db.balance.update({
-        where: {
-          userId: paymentInformation.userId,
-        },
-        data: {
-          amount: {
-            increment: paymentInformation.amount,
-          },
-        },
-      }),
-
-      db.onRampTransaction.update({
-        where: {
-          token: paymentInformation.token,
-        },
-        data: {
-          status: "Success",
-        },
-      }),
-    ]);
-
-    res.status(200).json({
-      msg: "success",
-    });
-  } catch (e) {
-    console.log(e);
-    res.status(400).json({
-      msg: "Fail",
-    });
+  if(paymentInformation){
+    res.json({
+      message:"success",
+    })
   }
+  else{
+    res.json({
+      message:"fail"
+    })
+  }
+
 });
 
 App.post("/withdrawWebhook", async (req, res) => {
@@ -85,31 +64,40 @@ App.post("/withdrawWebhook", async (req, res) => {
     };
 
     console.log("Received webhook payload:", paymentInformation);
-
+  if(paymentInformation){
+    res.json({
+      message:"success",
+    })
+  }
+  else{
+    res.json({
+      message:"fail"
+    })
+  }
     // Check for required fields
    
 
-    try {
-        await db.$transaction([
-            db.balance.update({
-                where: { userId: paymentInformation.userId },
-                data: {
-                    amount: {
-                        decrement: paymentInformation.amount,
-                    },
-                },
-            }),
-            db.onRampTransaction.update({
-                where: { token: paymentInformation.token },
-                data: { status: "Success" },
-            }),
-        ]);
+    // try {
+    //     await db.$transaction([
+    //         db.balance.update({
+    //             where: { userId: paymentInformation.userId },
+    //             data: {
+    //                 amount: {
+    //                     decrement: paymentInformation.amount,
+    //                 },
+    //             },
+    //         }),
+    //         db.onRampTransaction.update({
+    //             where: { token: paymentInformation.token },
+    //             data: { status: "Success" },
+    //         }),
+    //     ]);
 
-        res.status(200).json({ msg: "success" });
-    } catch (e) {
-        console.error("Transaction failed:", e);
-        res.status(400).json({ msg: "Fail" });
-    }
+    //     res.status(200).json({ msg: "success" });
+    // } catch (e) {
+    //     console.error("Transaction failed:", e);
+    //     res.status(400).json({ msg: "Fail" });
+    // }
 });
 
 

@@ -1,45 +1,40 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import lastRamp from "../../../lib/actions/getOnramp";
-import axios from "axios";
-import Loader from "@repo/ui/loader"
+import { verifyDeposit } from "../../../lib/actions/verifyTransaction";
+import Loader from "@repo/ui/loader";
 import Image from "next/image";
-
-
-
-
-
-
 
 const KotakLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
-    const{data:session, status} = useSession();
-    const [isloding,setIsloading] = useState(false)
-    const router = useRouter();
-    useEffect(()=>{
-        if(status == "loading"){
-            return;
-        }
-        if(!session){
-            router.push('/signin')
-        }
-    },[session,status,router])
+  const { data: session, status } = useSession();
+  const [isloding, setIsloading] = useState(false);
+  const router = useRouter();
+  useEffect(() => {
+    if (status == "loading") {
+      return;
+    }
+    if (!session) {
+      router.push("/signin");
+    }
+  }, [session, status, router]);
   return (
     <div className="min-h-screen flex flex-col md:flex-row items-center justify-center bg-white px-4 py-10">
-      {isloding?<Loader/>:null}
+      {isloding ? <Loader /> : null}
       {/* Left Illustration */}
       <div className="flex-1 flex items-center justify-center mb-8 md:mb-0 max-md:hidden">
         <div className="text-center">
           <Image
             src="https://img.freepik.com/premium-vector/donation-charity-flat-illustrations_9206-24104.jpg?w=740"
             alt="Illustration"
-            width={1000} height={1000}
-            
+            width={1000}
+            height={1000}
             className="w-[60vh] mx-auto mb-4"
           />
-          <p className="text-lg font-semibold text-blue-800">Transfer,Deposit,Withdrawal</p>
+          <p className="text-lg font-semibold text-blue-800">
+            Transfer,Deposit,Withdrawal
+          </p>
           <p className="text-sm text-gray-600">
             Make everyday effortless and uninterrupted
           </p>
@@ -54,7 +49,9 @@ const KotakLogin = () => {
             <span className="text-blue-600 border-b-2 border-blue-600 font-medium cursor-pointer">
               Login
             </span>
-            <span className="text-gray-500 cursor-pointer">Get id and password</span>
+            <span className="text-gray-500 cursor-pointer">
+              Get id and password
+            </span>
           </div>
         </div>
 
@@ -101,32 +98,31 @@ const KotakLogin = () => {
 
           <p className="text-xs text-gray-500 mb-4">
             By clicking on ‘Deposite’, you accept that you have read our{" "}
-            <a href="#" className="underline text-blue-600">Terms & conditions</a>,{" "}
-            <a href="#" className="underline text-blue-600">Privacy Policy</a> and the{" "}
-            <a href="#" className="underline text-blue-600">Tips for Safe Banking</a>
+            <a href="#" className="underline text-blue-600">
+              Terms & conditions
+            </a>
+            ,{" "}
+            <a href="#" className="underline text-blue-600">
+              Privacy Policy
+            </a>{" "}
+            and the{" "}
+            <a href="#" className="underline text-blue-600">
+              Tips for Safe Banking
+            </a>
           </p>
 
           <button
-            onClick={async()=>{
-              localStorage.removeItem('data')
-              setIsloading(true)
-              const data = await lastRamp();
-              if(data?.status === "Pending"){
-                await axios.post(`https://ewallet.10xdev.shop/hdfcWebhook`, {
-                  token:data?.token,
-                  amount:data?.amount,
-                  user_indentifier:data?.userId
-                });
-                setIsloading(false);
-            
-                router.push("/user/dashboard")
-                return
-              }
-  
-              router.push('/user/dashboard')
+            onClick={async () => {
+              localStorage.removeItem("data");
+
+              setIsloading(true);
+
+              await verifyDeposit();
+              setIsloading(false);
+              router.push("/user/transaction");
+             
             }}
             className="w-full bg-green-300 text-white font-semibold py-2 rounded hover:bg-green-400 "
-
           >
             Deposit
           </button>
@@ -136,7 +132,9 @@ const KotakLogin = () => {
       {/* Footer */}
       <p className="absolute bottom-4 text-xs text-gray-600">
         🔒 Never share your password or Card details with anyone.{" "}
-        <a href="#" className="underline">Tips for Safe Banking</a>
+        <a href="#" className="underline">
+          Tips for Safe Banking
+        </a>
       </p>
     </div>
   );

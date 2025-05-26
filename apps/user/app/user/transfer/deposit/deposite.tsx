@@ -73,7 +73,7 @@ export default function Home () {
                 console.log("data2")
             
                 setLoading(true)
-                const response = await createOnRampTransaction(amount,"hdfc");
+                const response = await createOnRampTransaction(amount,"kotak");
                 console.log("response",response)
                 setLoading(false);
                 if(response === "not valid"){

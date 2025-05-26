@@ -2,10 +2,10 @@
 import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import lastRamp from "../../../lib/actions/getOnramp";
-import axios from "axios";
+import { verifyDeposit } from "../../../lib/actions/verifyTransaction";
 import Loader from "@repo/ui/loader"
 import Image from "next/image";
+import { setLazyProp } from "next/dist/server/api-utils";
 
 const KotakLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -102,22 +102,14 @@ const KotakLogin = () => {
 
           <button
             onClick={async()=>{
-              localStorage.removeItem('data')
-              setIsloading(true)
-              const data = await lastRamp();
-              if(data?.status === "Pending" && data?.transfer==="deposite"){
-                await axios.post(`https://ewallet.10xdev.shop/hdfcWebhook`, {
-                  token:data?.token,
-                  amount:data?.amount,
-                  user_indentifier:data?.userId
-                });
-                setIsloading(false);
-               
-                router.push("/user/dashboard")
-                return
-              }
-    
-              router.push('/user/dashboard')
+              localStorage.removeItem('data');
+              setIsloading(true);
+
+              await verifyDeposit();
+              setIsloading(false);
+              router.push("/user/transaction");
+              
+              
             }}
             className="w-full bg-green-300 text-white font-semibold py-2 rounded hover:bg-green-400 "
 
