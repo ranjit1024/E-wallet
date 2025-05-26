@@ -59,7 +59,7 @@ export default function Home () {
   }
 
   return (
-    <div className={`grid grid-cols-[50%,50%] h-[100vh] ${poppins.className}`}>
+    <div className={`grid grid-cols-[50%,50%] max-md:flex max-md:justify-center max-md:items-center max-md:flex-wrap h-[100vh] ${poppins.className}`}>
      
     {
       error?<Error data="Email is already taken"/>:null
@@ -70,28 +70,23 @@ export default function Home () {
     {
       isLoading?<Loader/>:null
     }
-      <div className="bg-[url('/safe.jpg')] h-[100%] w-[100%]  bg-blend-darken  bg-gray-200/50  bg-cover "></div>
+      <div className="bg-[url('/safe.jpg')] h-[100%] w-[100%] max-md:hidden bg-blend-darken  bg-gray-200/50  bg-cover "></div>
 
       
-      <div className=" flex pl-20 text-gray-900 bg-gradient-to-b from-gray-50 to-white  w-[100%]   flex-col ">
+      <div className=" flex pl-12 text-gray-900 bg-gradient-to-b from-gray-50 to-white  w-[100%]   flex-col max-md:pl-5 max-md:justify-center  ">
       
       <div className={`flex items-center justify-center  w-[80%] mt-10 `}>
              
-             <div className="flex gap-1 items-center">
+             <div className="flex gap-1 items-center max-md:mb-10">
          <Image width="45" height="40" src="https://img.icons8.com/pulsar-gradient/48/circled.png" alt="circled"/>
            
          <p className=" font-semibold  text-[2rem] bg-gradient-to-r from-gray-500  to-cyan-900 inline-block text-transparent bg-clip-text  ">PayTm</p>
        </div>
              </div>
 
-        <div className="text-[1vh] mb-5">
-          <div className="text-center w-[50%] m-auto pt-5 mb-4">
-            <div className={`flex items-center  w-[20vh] `}>
-              
-           
-            </div>
-          </div>
-          <p className="text-[7vh] pb-2 text-slate-600 font-semibold">Create an Account </p>
+        <div className="mb-5 flex max-md:mt-2 mt-20 justify-start max-md:mb-2 max-md:pt-1 max-md:text-center">
+          
+          <p className="text-[4vh]  text-slate-600 font-semibold">Create an Account </p>
         </div>
         
 
