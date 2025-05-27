@@ -22,6 +22,8 @@ export default function Home() {
       <div className="mt-2 ml-2">
         <Logo />
       </div>
+
+      <div className="max-md:flex max-md:flex-col max-md:justify-center max-md:items-center max-md:h-[65vh]">
       <motion.div
         initial={{
           y: 10,
@@ -91,6 +93,7 @@ export default function Home() {
           banks, ensuring every transaction is protected by advanced encryption.
         </p>{" "}
       </motion.div>
+      </div>
 
       <motion.div
         initial={{
@@ -106,9 +109,9 @@ export default function Home() {
           ease: "easeOut",
           delay: 0.4,
         }}
-        className="z-190 relative  text-center flex items-center  justify-center w-[100%] mt-10 gap-5 max-md:mt-1"
+        className="z-190 relative  text-center flex items-center  justify-center w-[100%] mt-10 gap-5 max-md:mt-6"
       >
-        <div>
+    
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -124,7 +127,9 @@ export default function Home() {
           >
             Get started
           </motion.button>
-        </div>
+       
+        
+      
 
         <div className="">
           <Image className="" src="/side.png" alt="" width={130} height={20} />

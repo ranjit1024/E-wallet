@@ -70,24 +70,22 @@ export default function Home () {
     {
       isLoading?<Loader/>:null
     }
+     <div className="flex gap-1 items-center mt-3 absolute left-2 top-2">
+            <Image width="30" height="30" src="https://img.icons8.com/pulsar-gradient/48/circled.png" alt="circled"/>
+              
+            <p className=" font-semibold  text-[1.2rem] bg-gradient-to-r from-gray-900  to-cyan-400 inline-block text-transparent bg-clip-text  ">PayTm</p>
+          </div>
       <div className="bg-[url('/safe.jpg')] h-[100%] w-[100%] max-md:hidden bg-blend-darken  bg-gray-200/50  bg-cover "></div>
 
       
-      <div className=" flex pl-12 text-gray-900 bg-gradient-to-b from-gray-50 to-white  w-[100%]   flex-col max-md:pl-5 max-md:justify-center  ">
+      <div className=" flex  text-gray-900 bg-gradient-to-b from-gray-50 to-white  w-[100%]   flex-col max-md:pl-5 max-md:justify-center items-center justify-center p-5  ">
       
-      <div className={`flex items-center justify-center  w-[80%] mt-10 `}>
-             
-             <div className="flex gap-1 items-center max-md:mb-10">
-         <Image width="45" height="40" src="https://img.icons8.com/pulsar-gradient/48/circled.png" alt="circled"/>
-           
-         <p className=" font-semibold  text-[2rem] bg-gradient-to-r from-gray-500  to-cyan-900 inline-block text-transparent bg-clip-text  ">PayTm</p>
-       </div>
-             </div>
+     
 
-        <div className="mb-5 flex max-md:mt-2 mt-20 justify-start max-md:mb-2 max-md:pt-1 max-md:text-center">
+       
           
-          <p className="text-[4vh]  text-slate-600 font-semibold">Create an Account </p>
-        </div>
+          <p className="text-[1.2rem] pb-2   font-medium">Create an Account </p>
+     
         
 
         <div className="w-[90%] flex  flex-col space-y-6 ">

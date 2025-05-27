@@ -56,7 +56,13 @@ export default function Home () {
   return (
     <div className={ `grid grid-cols-[50%,50%] max-md:flex max-md:flex-wrap w-[100vw] h-[100vh] grid-rows-1 ${poppins.className}`}>
      
-        <div className="bg-[url('/safe.jpg')] max-md:hidden bg-blend-darken h-[100%] w-[100%] bg-gray-200/50  bg-cover bg-no-repeat bg bg-center"></div>
+        <div className="flex gap-1 items-center mt-3 absolute left-2 top-2">
+        <Image width="30" height="30" src="https://img.icons8.com/pulsar-gradient/48/circled.png" alt="circled"/>
+          
+        <p className=" font-semibold  text-[1.2rem] bg-gradient-to-r from-gray-900  to-cyan-400 inline-block text-transparent bg-clip-text  ">PayTm</p>
+      </div>
+        <div className="bg-[url('/safe.jpg')] max-md:hidden  h-[100%] w-[100%]   bg-contain bg-[#fbfbfb] bg-no-repeat bg bg-center">
+        </div>
        
         {
           loading ? <Loader/>:null
@@ -69,22 +75,12 @@ export default function Home () {
       }
   
 
-      <div className=" flex pl-10 max-md:pl-1  items-start max-md:p-2 max-md:items-center text-gray-900  bg-gradient-l from-gray-50 to-white   flex-col  ">
-        <div className="text-[7vh]  flex items-center justify-center max-md:mb-5  mb-12 w-full">
-          <div className="text-center  m-auto pt-5 pb-10 ">
-            <div className={`flex items-center justify-center  w-[20vh] `}>
-             
-            <div className="flex gap-1 items-center mt-10">
-        <Image width="45" height="40" src="https://img.icons8.com/pulsar-gradient/48/circled.png" alt="circled"/>
-          
-        <p className=" font-semibold  text-[2rem] bg-gradient-to-r from-gray-500  to-cyan-900 inline-block text-transparent bg-clip-text  ">PayTm</p>
-      </div>
-            </div>
-          </div>
-        </div>
-          <p className="text-[4vh] pb-2 text-slate-600 font-semibold">Welcome Back </p>
+      <div className=" flex  max-md:pl-1   max-md:p-2 max-md:items-center justify-center items-center p-10 text-gray-900    flex-col  ">
+       
+          {/* <p className="text-[3.5vh] pb-2 text-slate-900 font-semibold">Welcome Back </p> */}
 
         <div className="w-[90%] flex  flex-col space-y-6 ">
+        <p className="pb-4 text-center font-medium text-xl text-neutral-900">Welcome back</p>
           
           <div className="w-full">
             <label className="block mb-2 text-sm text-slate-600">Email</label>
