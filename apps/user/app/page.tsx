@@ -372,7 +372,7 @@ export default function Home() {
           viewport={{ once: true, amount: 0.2 }}
           className="w-[50%] relative"
         >
-          <motion.div className="opacity-50 absolute -left-12 -top-6 rotate-45">
+          <motion.div className="opacity-50 absolute -left-12 max-md:-left-2 max-md:top-2 -top-6 rotate-45">
             <Image
               width="50"
               height="50"
@@ -381,17 +381,17 @@ export default function Home() {
             />
           </motion.div>
 
-          <div className="text-[2.3rem] font-semibold w-[100%] mt-2 max-md:w-[100vw]">
+          <div className="text-[2.3rem] font-semibold w-[100%] mt-2 max-md:p-4 max-md:w-[100vw]">
             Deposit from several banks and withdraw or transfer funds as needed.
           </div>
-          <p className="mt-14 text-[1.2rem] font-medium text-gray-800 max-md:w-[100vw]">
+          <p className="mt-14 text-[1.2rem] max-md:p-4 max-md:mt-4 font-medium text-gray-800 max-md:w-[100vw]">
             Paytm is a secure way to deposit money from various banks and manage
             your spending, transfers, and withdrawals..
           </p>
 
           <button
             type="button"
-            className="  focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold text-gray-800 rounded-lg text-lg mt-14 text-center inline-flex  items-center justify-items-center  dark:hover:text-blue-700 "
+            className="  focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold text-gray-800 rounded-lg text-lg mt-14 text-center inline-flex  items-center justify-items-center max-md:pl-4   dark:hover:text-blue-700 "
             onClick={() => {
               signIn();
             }}

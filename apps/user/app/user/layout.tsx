@@ -181,7 +181,7 @@ export default function RootLayout({
             // router.push("/user/transaction");
             localStorage.removeItem('data');
             signOut(
-              {callbackUrl:"/"}
+              {callbackUrl:"https://ewallet.10xdev.shop/"}
             )
             setHide(!hide)
         }}
