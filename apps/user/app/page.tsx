@@ -18,7 +18,7 @@ const monaSans = Mona_Sans({
 export default function Home() {
   const router = useRouter()
   return (
-    <div className={`${monaSans.className}`}>
+    <div className={`${monaSans.className} scroll-smooth`}>
       <div className="mt-2 ml-2">
         <Logo />
       </div>
@@ -346,7 +346,7 @@ export default function Home() {
               Paytm comes with full transaction history for better understanding
               of your spending.
             </p>
-            <div className="absolute bottom-0 max-md:w-[100%] max-md: left-0 flex gap-10 items-center flex-wrap w-100 justify-center max-md:static max-md:p-1">
+            <div className="absolute bottom-0 max-md:w-[100%] max-md: left-0 flex gap-10 items-center  w-100 justify-center max-md:static max-md:p-1 max-md:flex-wrap">
               <div className="bg-blue-500/50 p-5 shadow-md shadow-gray-300 rounded-xl ">
                 <p className="font-semibold text-xl text-center">3+</p>
                 <p className="text-lg">Experience</p>
