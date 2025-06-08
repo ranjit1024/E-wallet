@@ -23,7 +23,7 @@ export default function Home() {
         <Logo />
       </div>
 
-      <div className="max-md:flex max-md:flex-col max-md:justify-center max-md:items-center max-md:h-[65vh]">
+      <div className="max-md:flex max-md:flex-col max-md:justify-center max-md:items-center max-md:h-[55vh]">
       <motion.div
         initial={{
           y: 40,
