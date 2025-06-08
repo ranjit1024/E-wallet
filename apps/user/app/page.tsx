@@ -46,7 +46,7 @@ export default function Home() {
           
         </div>
 
-        <div className="text-center w-[100%] text-[5.2rem]  max-md:w-[100%] relative -mt-3 max-md:mt-0 max-md:text-4xl">
+        <div className="text-center w-[100%] text-[5.2rem]  max-md:w-[100%] relative -mt-8 max-md:mt-0 max-md:text-4xl">
           with bank-level protection
           <div className="h-1 w-1 absolute top-12 opacity-80  transition-all bg-yellow-400 p-1 rounded-full"></div>
         </div>
@@ -83,11 +83,10 @@ export default function Home() {
           duration: 0.5,
           delay: 0.2,
         }}
-        className="z-190 text-center flex items-center justify-center  w-[100%]  max-md:w-[100vw] max-md:p-2 max-md:pb-5  "
+        className="z-190 text-center flex items-center justify-center -mt-1  w-[100%]  max-md:w-[100vw] max-md:p-2 max-md:pb-5  "
       >
-        <p className="w-[100%] text-lg text-gray-700 mb-5 max-md:w-[100vw]">
-          Paytm is a secure and reliable platform for transferring money between
-          banks, ensuring every transaction is protected by advanced encryption.
+        <p className="w-[90%] text-lg text-gray-700 mb-5 max-md:w-[100vw]">
+         Experience the assurance of Paytm—a trusted and secure platform for seamless money transfers between banks. With cutting-edge encryption technology, every transaction is meticulously protected, giving you peace of mind with every transfer.
         </p>{" "}
       </motion.div>
       </div>
@@ -106,7 +105,7 @@ export default function Home() {
           ease: "easeOut",
           delay: 0.4,
         }}
-        className="z-190 relative  text-center flex items-center  justify-center w-[100%] mt-10 gap-5 max-md:mt-6"
+        className="z-190 relative  text-center flex items-center  justify-center w-[100%] mt-7 gap-12 max-md:mt-6"
       >
     
           <motion.button
