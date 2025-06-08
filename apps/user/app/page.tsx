@@ -26,7 +26,7 @@ export default function Home() {
       <div className="max-md:flex max-md:flex-col max-md:justify-center max-md:items-center max-md:h-[65vh]">
       <motion.div
         initial={{
-          y: 10,
+          y: 40,
           opacity: 0,
         }}
         animate={{
@@ -35,22 +35,19 @@ export default function Home() {
         }}
         transition={{
           duration: 0.5,
-          ease: "easeIn",
+  
         }}
-        className="flex flex-col  justify-center relative  items-center mx-20 mt-[7%] p-4 max-md:p-1 text-[5.5vw] font-semibold max-md:w-[100vw] max-md:mx-1 max-md:text-center max-md:text-3xl  text-center tracking-normal max-md:py-8 max-md:pt-20"
+        className="flex flex-col  justify-center relative  items-center mx-20 mt-[7%] p-4 max-md:p-1 text-[5rem] text-[#060631] font-semibold max-md:w-[100%] max-md:mx-1 max-md:text-center max-md:text-3xl  text-center tracking-normal max-md:py-8 max-md:pt-20"
       >
         <div className="text-center w-[100%] max-md:text-4xl ">
           {/* Safeguard your{" "}
           <*/}
-          Secure your money with{" "}
-          <span className="relative w-[100%]">
-            <div className="p-4 absolute  bg-blue-400 opacity-20 max-md:bottom-1  left-0 bottom-4 w-[96%] -z-10"></div>
-            trusted{" "}
-          </span>{" "}
+          Secure your money 
+          
         </div>
 
-        <div className="text-center w-[80%] max-md:w-[100%] relative -mt-5 max-md:mt-0 max-md:text-4xl">
-          bank-level protection
+        <div className="text-center w-[100%] text-[5.2rem]  max-md:w-[100%] relative -mt-3 max-md:mt-0 max-md:text-4xl">
+          with bank-level protection
           <div className="h-1 w-1 absolute top-12 opacity-80  transition-all bg-yellow-400 p-1 rounded-full"></div>
         </div>
 
@@ -86,9 +83,9 @@ export default function Home() {
           duration: 0.5,
           delay: 0.2,
         }}
-        className="z-190 text-center flex items-center justify-center w-[100%] max-md:w-[100vw] max-md:p-2 max-md:pb-5  "
+        className="z-190 text-center flex items-center justify-center  w-[100%]  max-md:w-[100vw] max-md:p-2 max-md:pb-5  "
       >
-        <p className="w-[75%] text-lg text-gray-700 mb-5 max-md:w-[100vw]">
+        <p className="w-[100%] text-lg text-gray-700 mb-5 max-md:w-[100vw]">
           Paytm is a secure and reliable platform for transferring money between
           banks, ensuring every transaction is protected by advanced encryption.
         </p>{" "}
@@ -97,11 +94,11 @@ export default function Home() {
 
       <motion.div
         initial={{
-          scale: 0.6,
+          y:20,
           opacity: 0,
         }}
         animate={{
-          scale: 1,
+          y:0,
           opacity: 1,
         }}
         transition={{
